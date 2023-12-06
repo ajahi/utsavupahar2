@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class OrderRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'user_id' => 'required|exists:users,id',
+            'order_number' => 'required|unique:orders,order_number,' . ($this->route('order') ? $this->route('order')->id : 'NULL'),
+            'total_amount' => 'required|numeric',
+            'status' => 'required',
+            'shipping_address' => 'required',
+            'billing_address' => 'required',
+            'payment_method' => 'required',
+            'special_message' => 'nullable',
+            'preferred_delivery_date' => 'nullable|date',
+            'recipient_name' => 'nullable',
+        ];
+    }
+}
