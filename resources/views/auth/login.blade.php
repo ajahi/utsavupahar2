@@ -45,9 +45,9 @@
                             @csrf
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating log-in-form">
-                                    <input type="email" class="form-control" id="email" placeholder="Email Address" name="email" :value="old('email')" required autofocus autocomplete="username">
-                                    <label for="email">Email Address</label>
-                                    <x-input-error :messages="$errors->get('email')" class="mt-2 alert alert-danger" />
+                                    <input type="number" class="form-control" id="phone_number" placeholder="Phone Number" name="phone_number" :value="old('phone_number')" required autofocus autocomplete="phone_number">
+                                    <label for="phone_number">Phone Number</label>
+                                    <x-input-error :messages="$errors->get('phone_number')" class="mt-2 alert alert-danger" />
 
                                 </div>
                             </div>

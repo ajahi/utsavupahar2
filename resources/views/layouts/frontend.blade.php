@@ -309,7 +309,7 @@
                                 <ul class="category-list">
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="frontassets/svg/1/vegetable.svg" alt="">
+                                            <img src="/frontassets/svg/1/vegetable.svg" alt="">
                                             <h6>Vegetables & Fruit</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -377,7 +377,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="frontassets/svg/1/cup.svg" alt="">
+                                            <img src="/frontassets/svg/1/cup.svg" alt="">
                                             <h6>Beverages</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -416,7 +416,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="frontassets/svg/1/meats.svg" alt="">
+                                            <img src="/frontassets/svg/1/meats.svg" alt="">
                                             <h6>Meats & Seafood</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -475,7 +475,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="frontassets/svg/1/breakfast.svg" alt="">
+                                            <img src="/frontassets/svg/1/breakfast.svg" alt="">
                                             <h6>Breakfast & Dairy</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -549,7 +549,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="frontassets/svg/1/frozen.svg" alt="">
+                                            <img src="/frontassets/svg/1/frozen.svg" alt="">
                                             <h6>Frozen Foods</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -582,7 +582,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="frontassets/svg/1/biscuit.svg" alt="">
+                                            <img src="/frontassets/svg/1/biscuit.svg" alt="">
                                             <h6>Biscuits & Snacks</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>
@@ -635,7 +635,7 @@
 
                                     <li class="onhover-category-list">
                                         <a href="javascript:void(0)" class="category-name">
-                                            <img src="frontassets/svg/1/grocery.svg" alt="">
+                                            <img src="/frontassets/svg/1/grocery.svg" alt="">
                                             <h6>Grocery & Staples</h6>
                                             <i class="fa-solid fa-angle-right"></i>
                                         </a>

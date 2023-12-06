@@ -7,6 +7,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Product;
 use Livewire\Attributes\On;
 
+
 class NavCart extends Component
 {
     public $cartItems, $cartItemCount;

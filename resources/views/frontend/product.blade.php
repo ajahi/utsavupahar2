@@ -84,19 +84,7 @@
 
                     
                     
-                    <div class="product-packege">
-                        
-                        <ul class="select-packege">
-                            @foreach($product->variants  as $variant)
-                            <li>
-                                <a href="javascript:void(0)" class="active"> 
-                                    <b>{{$variant->name}}</b>
-                                    , RS @if($product->discount_p) <del>{{$variant->price}}</del> {{'RS '. ($variant->price - $variant->price*$product->discount_p/100)}} @else  {{'RS '.$variant->price}}@endif</a>
-                            </li>
-                            @endforeach
-                            
-                        </ul>
-                    </div>
+                    
                     
                     {{-- <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1" data-hours="1"
                         data-minutes="2" data-seconds="3">
@@ -141,7 +129,7 @@
 
 
 
-                    @livewire('product-show-buttons',['p_id'=>$product->id])
+                    @livewire('product-show-buttons',['product'=>$product])
 
                     <div class="buy-box">
                         <a href="wishlist.html">

@@ -17,12 +17,18 @@ class ProductCard extends Component
     }
 
     public function addToCart($productId)
-    
     {
-        $Product=Product::findOrFail($productId);
-        Cart::add($Product->id, $Product->name, 1, $Product->purchase_price*$Product->sell_margin_p,['variant'=>$Product->variants()->first()->name])->associate($Product);
+        $this->product=Product::findOrFail($productId);
+        Cart::add($this->product->id, $this->product->name, 1, $this->product->purchase_price*$this->product->sell_margin_p,['variant'=>$this->product->variants()->first()->name])->associate($this->product);
+        session()->flash('success','Product added to cart');
+        $this->dispatch('cart-item-updated');
+    }
 
-        $this->dispatch('update-cart');
+    public function buyNow($productId){
+      Cart::destroy();
+      $this->product=Product::findOrFail($productId);
+      Cart::add($this->product->id, $this->product->name, 1, $this->product->purchase_price*$this->product->sell_margin_p,['variant'=>$this->product->variants()->first()->name])->associate($this->product);
+        return redirect()->to('/checkout');
     }
 
     

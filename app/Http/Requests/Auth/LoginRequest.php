@@ -27,8 +27,15 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'phone_number' => ['required','min:10','numeric','regex:/^(98|97)\d{8}$/','exists:users,phone_number'],
             'password' => ['required', 'string'],
+        ];
+    }
+    public function messages(): array
+    {
+        return
+        [
+            'phone_number.regex'=>'Input valid Nepali phone number',
         ];
     }
 
@@ -41,11 +48,11 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        if (! Auth::attempt($this->only('phone_number', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'phone_number' => trans('auth.failed'),
             ]);
         }
 

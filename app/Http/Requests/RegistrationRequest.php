@@ -25,7 +25,7 @@ class RegistrationRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email:rfc,dns', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'dob'=>['required','date','before:-13 years'],
             'phone_number'=>['required','min:10','numeric','regex:/^(98|97)\d{8}$/']

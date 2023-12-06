@@ -5,23 +5,56 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Models\Variant;
+use Livewire\Attributes\Validate;
 
 
 class ProductShowButtons extends Component
 {
-    public $counter;
-    public $p_id;//product->id
+    
+    public $count=1;
+    public $variant;
+    public $product;
+    public $activeVariant = null;
+
     public function render()
     {
         return view('livewire.product-show-buttons');
     }
 
-    public function addToCart($productId)
-    
+    public function mount()
     {
-        $Product=Product::findOrFail($productId);
-        Cart::add($Product->id, $Product->name, 1, $Product->purchase_price*$Product->sell_margin_p,['variant'=>$Product->variants()->first()->name])->associate($Product);
+        // make activeVariant and variant to the first variant.
+        $firstVariant = $this->product->variants->first();
+        $this->activeVariant = $firstVariant->id;
+        $this->variant=$firstVariant;
+    }
+    
+    public function updateVariant($variantId){
+       $this->variant=Variant::find($variantId);
 
+       $this->activeVariant = $variantId;
+    }
+
+    public function increment(){
+        $this->count++;
+    }
+
+    public function decrement(){
+        $this->count--;
+    }
+
+    public function addToCart($productId)
+    {   $pro=Product::findOrFail($productId);
+        Cart::add($pro->id, $pro->name . "( ". $this->variant->name .")", $this->count, ($this->variant->price - $this->variant->price*$pro->discount_p/100),['variant'=>$this->variant->name])->associate($pro);
+        session()->flash('success','Product added to cart');
         $this->dispatch('update-cart');
     }
+    public function buyNow($productId){
+        Cart::destroy();
+        $this->product=Product::findOrFail($productId);
+        Cart::add($this->product->id, $this->product->name, 1, $this->product->purchase_price*$this->product->sell_margin_p,['variant'=>$this->product->variants()->first()->name])->associate($this->product);
+          return redirect()->to('/checkout');
+      }
+    
 }

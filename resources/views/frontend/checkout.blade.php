@@ -469,55 +469,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
-                                                                <div class="custom-form-check form-check">
-                                                                    <input class="form-check-input mt-0"
-                                                                        type="radio" name="flexRadioDefault"
-                                                                        id="gpay">
-                                                                    <label class="form-check-label"
-                                                                        for="gpay">Google Pay</label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="custom-form-check form-check">
-                                                                    <input class="form-check-input mt-0"
-                                                                        type="radio" name="flexRadioDefault"
-                                                                        id="airtel">
-                                                                    <label class="form-check-label"
-                                                                        for="airtel">Airtel Money</label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="custom-form-check form-check">
-                                                                    <input class="form-check-input mt-0"
-                                                                        type="radio" name="flexRadioDefault"
-                                                                        id="paytm">
-                                                                    <label class="form-check-label"
-                                                                        for="paytm">Paytm Pay</label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="custom-form-check form-check">
-                                                                    <input class="form-check-input mt-0"
-                                                                        type="radio" name="flexRadioDefault"
-                                                                        id="jio">
-                                                                    <label class="form-check-label" for="jio">JIO
-                                                                        Money</label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="custom-form-check form-check">
-                                                                    <input class="form-check-input mt-0"
-                                                                        type="radio" name="flexRadioDefault"
-                                                                        id="free">
-                                                                    <label class="form-check-label"
-                                                                        for="free">Freecharge</label>
-                                                                </div>
-                                                            </div>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -539,73 +491,37 @@
                         </div>
 
                         <ul class="summery-contain">
-                            <li>
-                                <img src="../assets/images/vegetable/product/1.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Bell pepper <span>X 1</span></h4>
-                                <h4 class="price">$32.34</h4>
-                            </li>
 
+                            @foreach($cart_items as $item)
+                            
                             <li>
-                                <img src="../assets/images/vegetable/product/2.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Eggplant <span>X 3</span></h4>
-                                <h4 class="price">$12.23</h4>
+                                <img src="{{App\Models\Product::findOrFail($item->id)->getMedia('images')->first()->getFullUrl()}}"
+                                    class="img-fluid blur-up lazyloaded checkout-image" alt="{{$item->name}}">
+                                <h4>{{$item->name}} <span>X {{$item->qty}}</span></h4>
+                                <h4 class="price">{{$item->price}}</h4>
                             </li>
-
-                            <li>
-                                <img src="../assets/images/vegetable/product/3.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Onion <span>X 2</span></h4>
-                                <h4 class="price">$18.27</h4>
-                            </li>
-
-                            <li>
-                                <img src="../assets/images/vegetable/product/4.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Potato <span>X 1</span></h4>
-                                <h4 class="price">$26.90</h4>
-                            </li>
-
-                            <li>
-                                <img src="../assets/images/vegetable/product/5.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Baby Chili <span>X 1</span></h4>
-                                <h4 class="price">$19.28</h4>
-                            </li>
-
-                            <li>
-                                <img src="../assets/images/vegetable/product/6.png"
-                                    class="img-fluid blur-up lazyloaded checkout-image" alt="">
-                                <h4>Broccoli <span>X 2</span></h4>
-                                <h4 class="price">$29.69</h4>
-                            </li>
+                            @endforeach
                         </ul>
 
                         <ul class="summery-total">
                             <li>
                                 <h4>Subtotal</h4>
-                                <h4 class="price">$111.81</h4>
+                                <h4 class="price">RS.{{Cart::subTotal()}}</h4>
                             </li>
 
                             <li>
                                 <h4>Shipping</h4>
-                                <h4 class="price">$8.90</h4>
+                                <h4 class="price">RS.100</h4>
                             </li>
 
                             <li>
                                 <h4>Tax</h4>
-                                <h4 class="price">$29.498</h4>
-                            </li>
-
-                            <li>
-                                <h4>Coupon/Code</h4>
-                                <h4 class="price">$-23.10</h4>
+                                <h4 class="price">{{Cart::tax()}}</h4>
                             </li>
 
                             <li class="list-total">
                                 <h4>Total (USD)</h4>
-                                <h4 class="price">$19.28</h4>
+                                <h4 class="price">RS. {{Cart::Total()}}</h4>
                             </li>
                         </ul>
                     </div>
