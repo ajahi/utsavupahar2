@@ -150,7 +150,10 @@
 
                         <div class="pickup-detail">
                             <h4 class="text-content">
-                                {{ucwords($product->description)}}
+                                @php
+                                echo $product->description
+                                @endphp
+
                             </h4>
                         </div>
 

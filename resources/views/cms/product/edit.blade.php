@@ -119,20 +119,20 @@
                                     <label
                                         class="col-sm-3 col-form-label form-label-title">Images</label>
                                     <div class="col-sm-9">
-                                        <input class="form-control form-choose" name="images" type="file"
-                                            id="formFile" multiple>
+                                        <input class="form-control form-choose" name="images[]" type="file"
+                                            id="selectImage"  multiple>
                                     </div>
                                 </div>
-                                @if($product->getMedia('images')->first()!==null)
-                                    <img src={{$product->getMedia('images')->first()->getFullUrl()}} width='50%' height='50%'
-                                    >
-                                @else
-                                    <img src="{{asset('assets/images/product/1.png')}}" class="img-fluid"
-                                         alt="{{$product->name}}">
-                                                    
-                                @endif
+                                <h4>Preview</h4>
                                 
+                                <div id="previewContainer"></div>
+                                <hr>
+                                <h3>Previous Images</h3>
+                                @foreach($product->getMedia('images') as $image)
+                                <img src="{{$image->getFullUrl()}}" alt="{{$product->name}}" height='200px' width="200px">
+                                @endforeach
                             </div>
+
                         </div>
                     </div>
 
@@ -394,6 +394,30 @@
             .catch( error => {
                 console.error( error );
             } );
+
+ //listens to changes on dom with id selectImage
+    selectImage.onchange = evt => {
+    // grabs element with id previewContainer
+        const previewContainer = document.getElementById('previewContainer');
+        // sets its innerHTML to an empty string to clear previous previews
+        previewContainer.innerHTML = '';
+
+        const files = selectImage.files;
+
+        for (const file of files) {
+            // creates an image element for each file
+            const img = document.createElement('img');
+            img.style.maxWidth = '200px'; // Adjust the size as needed
+            img.style.maxHeight = '200px'; // Adjust the size as needed
+
+            // if there is a file, change src of img to the upload object URL
+            if (file) {
+                img.src = URL.createObjectURL(file);
+                previewContainer.appendChild(img);
+                
+            }
+        }
+    };
 </script>
 
     

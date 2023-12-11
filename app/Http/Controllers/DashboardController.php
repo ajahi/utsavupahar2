@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\OrderDetail;
+
+
 
 class DashboardController extends Controller
 {
@@ -11,7 +18,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view("cms.dashboard");
+        return view("cms.dashboard",[
+            'total_revenue'=>Order::sum('total_amount'),
+            'total_products'=>Product::count(),
+            'total_customers'=>User::count(),
+            'total_orders'=>Order::count(),
+            'categories'=>Category::all(),
+            'soldProducts'=>OrderDetail::all()
+        ]);
     }
 
     /**

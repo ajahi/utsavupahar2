@@ -22,16 +22,12 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required|exists:users,id',
-            'order_number' => 'required|unique:orders,order_number,' . ($this->route('order') ? $this->route('order')->id : 'NULL'),
-            'total_amount' => 'required|numeric',
-            'status' => 'required',
+            
             'shipping_address' => 'required',
             'billing_address' => 'required',
             'payment_method' => 'required',
             'special_message' => 'nullable',
-            'preferred_delivery_date' => 'nullable|date',
-            'recipient_name' => 'nullable',
+            'preferred_delivery_date' => 'nullable|date|after:4days',
         ];
     }
 }

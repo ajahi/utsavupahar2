@@ -25,9 +25,9 @@ class ProductCard extends Component
     }
 
     public function buyNow($productId){
-      Cart::destroy();
-      $this->product=Product::findOrFail($productId);
-      Cart::add($this->product->id, $this->product->name, 1, $this->product->purchase_price*$this->product->sell_margin_p,['variant'=>$this->product->variants()->first()->name])->associate($this->product);
+        Cart::deleteStoredCart();
+        $this->product=Product::findOrFail($productId);
+        Cart::add($this->product->id, $this->product->name, 1, $this->product->purchase_price*$this->product->sell_margin_p,['variant'=>$this->product->variants()->first()->name])->associate($this->product);
         return redirect()->to('/checkout');
     }
 

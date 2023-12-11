@@ -34,7 +34,8 @@ class StoreProductRequest extends FormRequest
             'meta_word' => 'required|string|max:255',
             'meta_description' => 'required|string',
             'selected_categories'=>'required|exists:categories,id',
-            'images'=>'required',
+            'images' => 'required|array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             
              
     

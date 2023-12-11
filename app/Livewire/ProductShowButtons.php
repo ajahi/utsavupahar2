@@ -46,12 +46,21 @@ class ProductShowButtons extends Component
 
     public function addToCart($productId)
     {   $pro=Product::findOrFail($productId);
-        Cart::add($pro->id, $pro->name . "( ". $this->variant->name .")", $this->count, ($this->variant->price - $this->variant->price*$pro->discount_p/100),['variant'=>$this->variant->name])->associate($pro);
-        session()->flash('success','Product added to cart');
+        Cart::add($pro->id, $pro->name . "( ". $this->variant->name .")", $this->count, ($this->variant->price - $this->variant->price*$pro->discount_p/100),
+        [
+            'variant'=>$this->variant->name,
+            'variant_id'=>$this->variant->id,
+            'variant_price'=>$this->variant->price
+            ])->associate($pro);
+        //mssg flash to uer
+        $this->dispatch('flash', mssg:'Items Added to Cart Successfully.');//event named flash that displays notification.
+        //updates cart.
         $this->dispatch('update-cart');
     }
+    
     public function buyNow($productId){
-        Cart::destroy();
+        Cart::remove($rowId);
+        Cart::deleteStoredCart();
         $this->product=Product::findOrFail($productId);
         Cart::add($this->product->id, $this->product->name, 1, $this->product->purchase_price*$this->product->sell_margin_p,['variant'=>$this->product->variants()->first()->name])->associate($this->product);
           return redirect()->to('/checkout');

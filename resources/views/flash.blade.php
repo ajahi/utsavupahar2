@@ -27,7 +27,6 @@
 
 
 @if ($message = Session::get('warning'))
-
 <div class="alert alert-secondary alert-block notification">
 
 	<button type="btn btn-solid" class="close" data-dismiss="alert">×</button>	

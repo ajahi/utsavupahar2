@@ -10,9 +10,9 @@
     <meta name="keywords"
         content="gifts for mother, gifts for anniversary,coorporate gifts, birthday gifts, anniversary gifts, graduation gifts">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/product/smallLogo.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <title>Fastkart - Dashboard</title>
+    <title>Utsav Upahar - Dashboard</title>
 
     <!-- Google font-->
     <link
@@ -71,15 +71,15 @@
             <div class="header-wrapper m-0">
                 <div class="header-logo-wrapper p-0">
                     <div class="logo-wrapper">
-                        <a href="{{route('home')}}">
+                        <a href="{{route('admin.dashboard')}}">
                             <img class="img-fluid main-logo" src="{{asset('assets/images/logo/1.png')}}" alt="logo">
                             <img class="img-fluid white-logo" src="{{asset('assets/images/logo/1-white.png')}}" alt="logo">
                         </a>
                     </div>
                     <div class="toggle-sidebar">
                         <i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
-                        <a href="{{route('home')}}">
-                            <img src="{{asset('assets/images/logo/1.png')}}" class="img-fluid" alt="">
+                        <a href="{{route('admin.dashboard')}}">
+                            <img src="{{asset('/product/smallLogo.png')}}" class="img-fluid" alt="">
                         </a>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="order-list.html">
+                                    <a href="{{route('order.index')}}">
                                         <i data-feather="archive"></i>
                                         <span>Orders</span>
                                     </a>

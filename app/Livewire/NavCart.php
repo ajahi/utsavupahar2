@@ -15,12 +15,12 @@ class NavCart extends Component
     public function mount()
     {
         $this->cartItems = Cart::content()->toArray();
-        $this->cartItemCount = Cart::content()->count();
+        $this->cartItemCount = Cart::count();
     }
     #[On('update-cart')]
     public function updateCartData()
     {
-        $this->cartItemCount = Cart::content()->count();
+        $this->cartItemCount = Cart::count();
         $this->cartItems = Cart::content()->toArray();
     }
     public function render()
@@ -32,7 +32,10 @@ class NavCart extends Component
     {
         Cart::remove($rowId);
         $this->cartItems = Cart::content()->toArray();
-        $this->cartItemCount = Cart::content()->count();
+        $this->cartItemCount = Cart::count();
+        $this->dispatch('flash', mssg:'Items Removed from Cart Successfully.');
+        $this->dispatch('update-cart');
+
         // You may emit an event or perform other actions after removing an item
     }
 
@@ -40,7 +43,7 @@ class NavCart extends Component
     {
         Cart::destroy();
         $this->cartItems = Cart::content()->toArray();
-        $this->cartItemCount = Cart::content()->count();
+        $this->cartItemCount = Cart::count();
         // You may emit an event or perform other actions after clearing the cart
     }
 }

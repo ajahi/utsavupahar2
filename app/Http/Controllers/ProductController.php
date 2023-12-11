@@ -20,34 +20,69 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::paginate(20);
-        return view('cms.product.index',[
-            'products'=>$products
+        $query = Product::query();
+
+        $search=$request->input('search');
+        if($search){
+        $query->where('name', 'like', '%' . $search . '%')
+                ->orWhere('id', 'like', '%' . $search . '%')->get();
+        }
+
+        $products=$query->paginate(10);
+
+        return view('cms.product.index', [
+            'products' => $products
         ]);
+    }
 
         // Transform the paginated products into ProductResource
         
-    }
+    
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreProductRequest $request)
     {   
-        $product = Product::create($request->safe()->only('name','description','refundable','featured','meta_word','meta_description','weight','dimension','purchase_price','discount_p','sell_margin_p'));
-        $request->slug=Str::slug($request->name);
+        if(!$request->refundable){
+            $request->refundable=0;
+        }
+        if(!$request->featured){
+            $request->featured=0;
+        }
+        $product = Product::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'description' => $request->description,
+            'refundable' => $request->refundable,
+            'featured' => $request->featured,
+            'meta_word' => $request->meta_word,
+            'meta_description' => $request->meta_description,
+            'weight' => $request->weight,
+            'dimension' => $request->dimension,
+            'purchase_price' => $request->purchase_price,
+            'discount_p' => $request->discount_p,
+            'sell_margin_p' => $request->sell_margin_p,
+            
+        ]);
+        
         $product->category()->sync(explode(',', $request->selected_categories ));
         for($i=0;$i<count(array_filter($request->variants));$i++){
             Variant::create([
                 'name'=>$request->variants[$i],
+                
                 'status'=>$request->status[$i],
                 'quantity'=>$request->quantities[$i],
                 'price'=>$request->prices[$i],
                 'product_id'=> $product->id
             ]); 
         }
-        if($request->has('images')&&$request->images!==null){
-            $product->addMediaFromRequest('images')->toMediaCollection('images');
+       
+        if ($request->hasFile('images')) {
+            $fileAdders = $product->addMultipleMediaFromRequest(['images'])
+                ->each(function ($fileAdder) {
+                    $fileAdder->toMediaCollection('images');
+                });
         }
         return redirect()->route('product.index')->with('success','Succesfully created your Product.');
     }

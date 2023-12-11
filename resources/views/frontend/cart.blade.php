@@ -25,13 +25,15 @@
 <!-- Breadcrumb Section End -->
 
 <!-- Cart Section Start -->
-
+<form action="{{route('checkout')}}" method='get'>
 <section class="cart-section section-b-space">
     <div class="container-fluid-lg">
         <div class="row g-sm-5 g-3">
             <div class="col-xxl-9">
                 <div class="cart-table">
+
                     @livewire('cart-item')
+
                 </div>
             </div>
 
@@ -63,14 +65,14 @@
 
                             <li class="align-items-start">
                                 <h4>Shipping (Freeshipping)</h4>
-                                <h4 class="price text-end">RS . </h4>
+                                <h4 class="price text-end">RS .100 </h4>
                             </li>
                         </ul>
                     </div>
 
                     <ul class="summery-total">
                         <li class="list-total border-top-0">
-                            <h4>Total (USD)</h4>
+                            <h4>Total (NRP)</h4>
                             <h4 class="price theme-color">RS. {{Cart::total()}}</h4>
                         </li>
                     </ul>
@@ -78,7 +80,7 @@
                     <div class="button-group cart-button">
                         <ul>
                             <li>
-                                <button onclick="location.href = 'checkout.html';"
+                                <button type="submit"
                                     class="btn btn-animation proceed-btn fw-bold">Process To Checkout</button>
                             </li>
 
@@ -94,5 +96,6 @@
         </div>
     </div>
 </section>
+</form>
     
 @endsection

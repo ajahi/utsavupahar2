@@ -3,7 +3,7 @@
     <div>
         <div class="logo-wrapper logo-wrapper-center">
             <a href="{{route('dashboard')}}" data-bs-original-title="" title="">
-                <img class="img-fluid for-white" src="{{asset('assets/images/logo/full-white.png')}}" alt="logo">
+                <img class="img-fluid for-white" src="{{asset('/product/large_logo_white.png')}}" alt="logo">
             </a>
             <div class="back-btn">
                 <i class="fa fa-angle-left"></i>
@@ -47,6 +47,24 @@
 
                             <li>
                                 <a href="{{route('product.create')}}">Add New Products</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                            <i class="ri-archive-line"></i>
+                            <span>Orders</span>
+                        </a>
+                        <ul class="sidebar-submenu">
+                            <li>
+                                <a href="{{route('order.index')}}">Order List</a>
+                            </li>
+                            <li>
+                                <a href="order-detail.html">Order Detail</a>
+                            </li>
+                            <li>
+                                <a href="order-tracking.html">Order Tracking</a>
                             </li>
                         </ul>
                     </li>
@@ -120,23 +138,7 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                            <i class="ri-archive-line"></i>
-                            <span>Orders</span>
-                        </a>
-                        <ul class="sidebar-submenu">
-                            <li>
-                                <a href="{{route('order.index')}}">Order List</a>
-                            </li>
-                            <li>
-                                <a href="order-detail.html">Order Detail</a>
-                            </li>
-                            <li>
-                                <a href="order-tracking.html">Order Tracking</a>
-                            </li>
-                        </ul>
-                    </li>
+                    
 
                     {{-- <li class="sidebar-list">
                         <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">

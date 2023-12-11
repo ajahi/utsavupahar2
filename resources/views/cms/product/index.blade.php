@@ -9,6 +9,13 @@
                     <div class="title-header option-title d-sm-flex d-block">
                         <h5>Products List</h5>
                         <div class="right-options">
+                            <div class="m-3">
+                                <form action="#" method="get">
+                                    <input type="text" name="search" placeholder="Search products by id or name" value="{{ request('query') }}">
+                                    <button class="form-search" type="submit"><i class="ri-search-line"></i></button>
+                                </form>
+                                
+                            </div>
                             <ul>
                                 
                                 <li>
@@ -127,8 +134,10 @@
                                 </tbody>
                             </table>
                         </div>
+                        
                     </div>
                 </div>
+                {{$products->links()}}
             </div>
         </div>
     </div>

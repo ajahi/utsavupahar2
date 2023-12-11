@@ -29,6 +29,15 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    public function reduceItemByOne(Request $request){
+        Cart::update($request->rowid,1);
+        return redirect()->back();
+    }
+    public function addItemByOne(Request $request){
+        Cart::update($request->rowid,1);
+        return redirect()->back();
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -53,10 +62,7 @@ class CartController extends Controller
         ]);
     }
 
-    public function orderSuccess($id){
-        $order=Order::findOrFail($id);
-        return view('frontend.order-success',compact($order));
-    }
+    
 
     /**
      * Display the specified resource.

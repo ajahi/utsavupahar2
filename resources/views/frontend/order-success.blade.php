@@ -1,6 +1,8 @@
 @extends('layouts.frontend')
 
+
 @section('page-content')
+
 <section class="breadscrumb-section pt-0">
     <div class="container-fluid-lg">
         <div class="row">
@@ -63,7 +65,7 @@
                         <div class="order-contain">
                             <h3 class="theme-color">Order Success</h3>
                             <h5 class="text-content">Payment Is Successfully And Your Order Is On The Way</h5>
-                            <h6>Transaction ID: 1708031724431131</h6>
+                            <h6>Order Number: {{$order->order_number}}</h6>
                         </div>
                     </div>
                 </div>
@@ -82,22 +84,23 @@
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <tbody>
+                                @foreach($order->items as $orderDetail)
                                 <tr>
+                                    
                                     <td class="product-detail">
                                         <div class="product border-0">
+                                            #{{$loop->iteration.'  '}}
                                             <a href="product.left-sidebar.html" class="product-image">
-                                                <img src="../assets/images/vegetable/product/1.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
+                                                <img src={{App\Models\Product::find($orderDetail->product_id)->getMedia('images')->first()->getFullUrl()}}
+                                                    class="img-fluid blur-up lazyload" alt="{{App\Models\Product::find($orderDetail->product_id)->name}}">
                                             </a>
                                             <div class="product-detail">
                                                 <ul>
                                                     <li class="name">
-                                                        <a href="product-left-thumbnail.html">Bell pepper</a>
+                                                        <a href="{{route('front.product',App\Models\Product::find($orderDetail->product_id)->slug)}}">{{ucwords(App\Models\Product::find($orderDetail->product_id)->name)}}</a>
                                                     </li>
 
-                                                    <li class="text-content">Sold By: Fresho</li>
-
-                                                    <li class="text-content">Quantity - 500 g</li>
+                                                    {{-- <li class="text-content">Price - {{App\Models\Product::find($orderDetail->product_id)->}}</li> --}}
                                                 </ul>
                                             </div>
                                         </div>
@@ -105,93 +108,20 @@
 
                                     <td class="price">
                                         <h4 class="table-title text-content">Price</h4>
-                                        <h6 class="theme-color">$20.68</h6>
+                                        <h6 class="theme-color">RS. {{$orderDetail->unit_price}}</h6>
                                     </td>
 
                                     <td class="quantity">
                                         <h4 class="table-title text-content">Qty</h4>
-                                        <h4 class="text-title">01</h4>
+                                        <h4 class="text-title">{{$orderDetail->quantity}}</h4>
                                     </td>
 
                                     <td class="subtotal">
                                         <h4 class="table-title text-content">Total</h4>
-                                        <h5>$35.10</h5>
+                                        <h5>RS {{$orderDetail->total_price}}</h5>
                                     </td>
                                 </tr>
-
-                                <tr>
-                                    <td class="product-detail">
-                                        <div class="product border-0">
-                                            <a href="product.left-sidebar.html" class="product-image">
-                                                <img src="../assets/images/vegetable/product/2.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                            </a>
-                                            <div class="product-detail">
-                                                <ul>
-                                                    <li class="name">
-                                                        <a href="product-left-thumbnail.html">Eggplant</a>
-                                                    </li>
-
-                                                    <li class="text-content">Sold By: Nesto</li>
-
-                                                    <li class="text-content">Quantity - 250 g</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                    <td class="price">
-                                        <h4 class="table-title text-content">Price</h4>
-                                        <h6 class="theme-color">$15.14</h6>
-                                    </td>
-
-                                    <td class="quantity">
-                                        <h4 class="table-title text-content">Qty</h4>
-                                        <h4 class="text-title">01</h4>
-                                    </td>
-
-                                    <td class="subtotal">
-                                        <h4 class="table-title text-content">Total</h4>
-                                        <h5>$52.95</h5>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="product-detail">
-                                        <div class="product border-0">
-                                            <a href="product.left-sidebar.html" class="product-image">
-                                                <img src="../assets/images/vegetable/product/3.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                            </a>
-                                            <div class="product-detail">
-                                                <ul>
-                                                    <li class="name">
-                                                        <a href="product-left-thumbnail.html">Onion</a>
-                                                    </li>
-
-                                                    <li class="text-content">Sold By: Basket</li>
-
-                                                    <li class="text-content">Quantity - 750 g</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                    <td class="price">
-                                        <h4 class="table-title text-content">Price</h4>
-                                        <h6 class="theme-color">$29.22</h6>
-                                    </td>
-
-                                    <td class="quantity">
-                                        <h4 class="table-title text-content">Qty</h4>
-                                        <h4 class="text-title">01</h4>
-                                    </td>
-
-                                    <td class="subtotal">
-                                        <h4 class="table-title text-content">Total</h4>
-                                        <h5>$67.36</h5>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -204,24 +134,26 @@
                         <div class="summery-box">
                             <div class="summery-header">
                                 <h3>Price Details</h3>
-                                <h5 class="ms-auto theme-color">(3 Items)</h5>
+                                <h5 class="ms-auto theme-color">({{count($order->items)}} Items)</h5>
                             </div>
 
                             <ul class="summery-contain">
                                 <li>
-                                    <h4>Vegetables Total</h4>
-                                    <h4 class="price">$32.34</h4>
+                                    <h4>Total</h4>
+                                    <h4 class="price">RS {{$order->total_amount}}
+                                        
+                                    </h4>
                                 </li>
 
-                                <li>
-                                    <h4>Vegetables Saving</h4>
-                                    <h4 class="price theme-color">$12.23</h4>
-                                </li>
+                                {{-- <li>
+                                    <h4> Saving</h4>
+                                    <h4 class="price theme-color">RS {{}}</h4>
+                                </li> --}}
 
-                                <li>
+                                {{-- <li>
                                     <h4>Coupon Discount</h4>
                                     <h4 class="price text-danger">$6.27</h4>
-                                </li>
+                                </li> --}}
                             </ul>
 
                             <ul class="summery-total">
@@ -241,8 +173,8 @@
 
                             <ul class="summery-contain pb-0 border-bottom-0">
                                 <li class="d-block">
-                                    <h4>8424 James Lane South</h4>
-                                    <h4 class="mt-2">San Francisco, CA 94080</h4>
+                                    <h4>{{$order->shipping_address}}</h4>
+                                    <h4 class="mt-2"></h4>
                                 </li>
 
                                 <li class="pb-0">
@@ -255,7 +187,7 @@
 
                             <ul class="summery-total">
                                 <li class="list-total border-top-0 pt-2">
-                                    <h4 class="fw-bold">Oct 21, 2021</h4>
+                                    <h4 class="fw-bold">{{($order->preferred_delivery_date) ? $order->preferred_delivery_date : $expected_delivery_date }}</h4>
                                 </li>
                             </ul>
                         </div>
@@ -269,8 +201,10 @@
 
                             <ul class="summery-contain pb-0 border-bottom-0">
                                 <li class="d-block pt-0">
-                                    <p class="text-content">Pay on Delivery (Cash/Card). Cash on delivery (COD)
-                                        available. Card/Net banking acceptance subject to device availability.</p>
+                                    <p class="text-content">
+
+                                        {{($order->payment_method =='cod') ? 'Cash-On-Delivery' :ucwords($order->payment_method)}}
+                                    </p>
                                 </li>
                             </ul>
                         </div>

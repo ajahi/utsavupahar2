@@ -8,7 +8,7 @@
             <tr class="product-box-contain">
                 <td class="product-detail">
                     <div class="product border-0">
-                        <a href="product-left-thumbnail.html" class="product-image">
+                        <a href="{{route('front.product',App\Models\Product::findOrFail($item['id'])->slug)}}" class="product-image">
                             
                             <img src="{{App\Models\Product::findOrFail($item['id'])->getMedia('images')->first()->getFullUrl()}}"
                                 class="img-fluid blur-up lazyload" alt="">
@@ -16,46 +16,44 @@
                         <div class="product-detail">
                             <ul>
                                 <li class="name">
-                                    <a href="product-left-thumbnail.html">{{$item['name']}}</a>
+                                    <a href="{{route('front.product',App\Models\Product::findOrFail($item['id'])->slug)}}">{{$item['name']}}</a>
                                 </li>
 
                                 {{-- <li class="text-content"><span class="text-title">Sold
                                         By:</span> Fresho</li> --}}
 
                                 <li class="text-content"><span
-                                        class="text-title">Quantity</span> - 500 g</li>
+                                        class="text-title">Discount</span> - {{App\Models\Product::findOrFail($item['id'])->discount_p}} %</li>
 
                                 <li>
                                     <h5 class="text-content d-inline-block">Price :</h5>
-                                    <span>$35.10</span>
-                                    <span class="text-content">$45.68</span>
+                                    <span>RS. {{$item['price']}}</span>
+                                    
                                 </li>
                                 
-                                <li>
-                                    <h5 class="saving theme-color">Saving : $20.68</h5>
-                                </li>
+                                
 
                                 <li class="quantity-price-box">
                                     <div class="cart_qty">
                                         <div class="input-group">
-                                            <button type="button" class="btn qty-left-minus"
-                                                data-type="minus" data-field="">
+                                            <form action="{{route('reduceItemByOne')}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="rowid" value={{$item['rowId']}}>
+                                                <button type="submit" class="btn qty-left-minus">
                                                 <i class="fa fa-minus ms-0"
                                                     aria-hidden="true"></i>
                                             </button>
+                                            </form>
+                                            
                                             <input class="form-control input-number qty-input"
                                                 type="text" name="quantity" value="0">
-                                            <button type="button" class="btn qty-right-plus"
-                                                data-type="plus" data-field="">
-                                                <i class="fa fa-plus ms-0"
-                                                    aria-hidden="true"></i>
-                                            </button>
+                                            
                                         </div>
                                     </div>
                                 </li>
 
                                 <li>
-                                    <h5>Total: Rs. </h5>
+                                    <h5>Total: Rs.  </h5>
                                 </li>
                             </ul>
                         </div>
@@ -64,8 +62,8 @@
 
                 <td class="price">
                     <h4 class="table-title text-content">Price</h4>
-                    <h5>$35.10 <del class="text-content">$45.68</del></h5>
-                    <h6 class="theme-color">You Save : $20.68</h6>
+                    <h5> RS. {{$item['price']}} <del class="text-content">RS . {{$item['options']['variant_price']}}</del></h5>
+                    <h6 class="theme-color">You Save : RS . {{$item['options']['variant_price']-$item['price']}}</h6>
                 </td>
 
                 <td class="quantity">
@@ -78,7 +76,7 @@
                                     <i class="fa fa-minus ms-0" aria-hidden="true"></i>
                                 </button>
                                 <input class="form-control input-number qty-input" type="text"
-                                    name="quantity" value="0">
+                                    name="quantity" value="{{$item['qty']}}">
                                 <button type="button" class="btn qty-right-plus"
                                     data-type="plus" data-field="">
                                     <i class="fa fa-plus ms-0" aria-hidden="true"></i>
@@ -90,7 +88,7 @@
 
                 <td class="subtotal">
                     <h4 class="table-title text-content">Total</h4>
-                    <h5>$35.10</h5>
+                    <h5>RS.{{$item['price']*$item['qty']}}</h5>
                 </td>
 
                 <td class="save-remove">

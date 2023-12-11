@@ -38,4 +38,13 @@ class CartItem extends Component
         $this->cartItems=Cart::content()->toArray();
     }
 
+    public function reduceItemByOne($RowId){
+        Cart::update($RowId,1);
+        $this->disptach('update-cart');
+    }
+    public function addItemByOne($RowId){
+        Cart::update($RowId,1);
+        $this->disptach('update-cart');
+    }
+
 }

@@ -8,8 +8,8 @@
     <meta name="description" content="Fastkart">
     <meta name="keywords" content="Fastkart">
     <meta name="author" content="Fastkart">
-    <link rel="icon" href="/frontassets/images/favicon/1.png" type="image/x-icon">
-    <title>On-demand last-mile delivery</title>
+    <link rel="icon" href="/product/smallLogo.png" type="image/x-icon">
+    <title>Best GIfts all over Nepal.</title>
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -78,7 +78,7 @@
                             <div class="notification-slider">
                                 <div>
                                     <div class="timer-notification">
-                                        <h6><strong class="me-1">Welcome to Fastkart!</strong>Wrap new offers/gift
+                                        <h6><strong class="me-1">Welcome to UtsavUpahar!</strong>Wrap new offers/gift
                                             every signle day on Weekends.<strong class="ms-1">New Coupon Code: Fast024
                                             </strong>
 
@@ -158,7 +158,15 @@
                 </div>
             </div>
         </div>
-@include('flash')
+<!-- Livewire Blade View -->
+
+
+@livewire('flash-message')
+    
+
+
+
+
 
         <div class="top-nav top-header sticky-header">
             <div class="container-fluid-lg">
@@ -172,7 +180,7 @@
                                 </span>
                             </button>
                             <a href="{{route('home')}}" class="web-logo nav-logo">
-                                <img src="/frontassets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
+                                <img src="/product/large_logo.png" class="img-fluid blur-up lazyload" alt="Utsav Upahar logo">
                             </a>
 
                             <div class="middle-box">
@@ -221,7 +229,7 @@
                                         </div>
                                     </li>
                                     <li class="right-side">
-                                        <a href="contact-us.html" class="delivery-login-box">
+                                        <a href="{{route('contactus')}}" class="delivery-login-box" >
                                             <div class="delivery-icon">
                                                 <i data-feather="phone-call"></i>
                                             </div>
@@ -870,13 +878,10 @@
                     <span>My Wish</span>
                 </a>
             </li>
-
             <li>
-                <a href="{{route('cart.index')}}">
-                    <i class="iconly-Bag-2 icli fly-cate"></i>
-                    <span>Cart</span>
-                </a>
+                @livewire('mobile-nav-cart')
             </li>
+            
             
         </ul>
     </div>
@@ -895,7 +900,7 @@
                         <div class="service-contain">
                             <div class="service-box">
                                 <div class="service-image">
-                                    <img src="/frontassets/svg/product.svg" class="blur-up lazyload" alt="">
+                                    <img src="/product/large_logo.png" class="img-fluid blur-up lazyload" alt="Utsav Upahar logo">
                                 </div>
 
                                 <div class="service-detail">
@@ -943,7 +948,7 @@
                         <div class="footer-logo">
                             <div class="theme-logo">
                                 <a href="index.html">
-                                    <img src="/frontassets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                    <img src="/product/large_logo.png" class="img-fluid blur-up lazyload" alt="Utsav Upahar logo">
                                 </a>
                             </div>
 
@@ -1314,7 +1319,7 @@
     <!-- Location Modal End -->
 
     <!-- Cookie Bar Box Start -->
-    <div class="cookie-bar-box">
+    {{-- <div class="cookie-bar-box">
         <div class="cookie-box">
             <div class="cookie-image">
                 <img src="/frontassets/images/cookie-bar.png" class="blur-up lazyload" alt="">
@@ -1330,7 +1335,7 @@
             <button class="btn privacy-button">Privacy Policy</button>
             <button class="btn ok-button">OK</button>
         </div>
-    </div>
+    </div> --}}
     <!-- Cookie Bar Box End -->
 
     <!-- Deal Box Modal Start -->
@@ -1428,10 +1433,30 @@
     <!-- Bg overlay End -->
 
     <!-- latest jquery-->
+    <script src="//code.jquery.com/jquery.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="{{asset('/frontassets/js/jquery-3.6.0.min.js')}}" ></script>
+    <script>
+        // Wait for the document to be ready
+        $(document).ready(function() {
+            // Check if the flash message exists
+            const flashMessage = $('#flashMessage');
+            if (flashMessage.length > 0) {
+                // Automatically fade out the flash message after 3000 milliseconds (3 seconds)
+                setTimeout(function() {
+                    console.log($(this))
+                    flashMessage.fadeOut(500, function() {
+                        // Optionally, you can remove the element from the DOM after fading out
+                        $(this).remove();
+                    });
+                }, 3000);
+            }
+        });
+    </script>
 
     <!-- jquery ui-->
     <script src="{{asset('/frontassets/js/jquery-ui.min.js')}}"></script>
+    
     
 
     <!-- Bootstrap js-->

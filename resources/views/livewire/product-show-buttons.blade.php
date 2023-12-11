@@ -1,14 +1,18 @@
 <div>
+    <hr>  
     <div class="product-packege">
-                        
+                    <h3 class="name">Variants</h3>  
+                    
         <ul class="select-packege">
             @foreach($product->variants  as $variant)
             <li>
                 
                 {{-- class='active' for button clicked--}} 
-                <button wire:click="updateVariant({{$variant->id}})" class="form-control" 
-                    style="padding: 0;" data-variant-id='{{$variant->id}}' onclick="buttonPressed(this)">
-                    <a  class="{{ $activeVariant == $variant->id ? 'active' : '' }}"  id='variant{{$variant->id}}'> 
+                <button class="form-control"
+                    wire:click="updateVariant({{$variant->id}})"  
+                    {{($variant->stock < 2) ?  'disabled' : ' '; }}
+                    style="padding: 0;">
+                    <a  class="{{ $activeVariant == $variant->id ? 'active' : '' }}"> 
                         <b>{{$variant->name}}</b>
                         , RS @if($product->discount_p) <del>{{$variant->price}}</del> {{'RS '. ($variant->price - $variant->price*$product->discount_p/100)}} @else  {{'RS '.$variant->price}}@endif
                     </a>

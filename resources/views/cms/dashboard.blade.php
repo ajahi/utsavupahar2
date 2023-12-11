@@ -10,9 +10,9 @@
                     <div class="media align-items-center static-top-widget">
                         <div class="media-body p-0">
                             <span class="m-0">Total Revenue</span>
-                            <h4 class="mb-0 counter">$6659
-                                <span class="badge badge-light-primary grow">
-                                    <i data-feather="trending-up"></i>8.5%</span>
+                            <h4 class="mb-0 counter">RS.{{$total_revenue}}
+                                {{-- <span class="badge badge-light-primary grow">
+                                    <i data-feather="trending-up"></i>8.5%</span> --}}
                             </h4>
                         </div>
                         <div class="align-self-center text-center">
@@ -29,9 +29,9 @@
                     <div class="media static-top-widget">
                         <div class="media-body p-0">
                             <span class="m-0">Total Orders</span>
-                            <h4 class="mb-0 counter">9856
-                                <span class="badge badge-light-danger grow">
-                                    <i data-feather="trending-down"></i>8.5%</span>
+                            <h4 class="mb-0 counter">{{$total_orders}}
+                                {{-- <span class="badge badge-light-danger grow">
+                                    <i data-feather="trending-down"></i>8.5%</span> --}}
                             </h4>
                         </div>
                         <div class="align-self-center text-center">
@@ -48,8 +48,8 @@
                     <div class="media static-top-widget">
                         <div class="media-body p-0">
                             <span class="m-0">Total Products</span>
-                            <h4 class="mb-0 counter">893
-                                <a href="add-new-product.html" class="badge badge-light-secondary grow">
+                            <h4 class="mb-0 counter">{{$total_products}}
+                                <a href="{{route('product.create')}}" class="badge badge-light-secondary grow" title="Add new Product">
                                     ADD NEW</a>
                             </h4>
                         </div>
@@ -68,9 +68,9 @@
                     <div class="media static-top-widget">
                         <div class="media-body p-0">
                             <span class="m-0">Total Customers</span>
-                            <h4 class="mb-0 counter">4.6k
-                                <span class="badge badge-light-success grow">
-                                    <i data-feather="trending-down"></i>8.5%</span>
+                            <h4 class="mb-0 counter">{{$total_customers}}
+                                {{-- <span class="badge badge-light-success grow">
+                                    <i data-feather="trending-down"></i>8.5%</span> --}}
                             </h4>
                         </div>
 
@@ -91,159 +91,19 @@
                 </div>
                 <div class="card-body p-0">
                     <div class="category-slider no-arrow">
+                        @foreach($categories as $category)
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/vegetable.svg" class="img-fluid" alt="">
+                                    <img src="/assets/svg/vegetable.svg" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
-                                    <h6>Vegetables & Fruit</h6>
+                                    <h6>{{ucwords($category->name)}}</h6>
                                 </a>
                             </div>
                         </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/cup.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Beverages</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/meats.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Meats & Seafood</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/breakfast.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Breakfast</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/frozen.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Frozen Foods</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/milk.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Milk & Dairies</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/pet.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Pet Food</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/vegetable.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Vegetables & Fruit</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/cup.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Beverages</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/meats.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Meats & Seafood</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/breakfast.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Breakfast</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/frozen.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Frozen Foods</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/milk.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Milk & Dairies</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/pet.svg" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>Pet Food</h6>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>
@@ -301,7 +161,7 @@
                                         <td>
                                             <div class="best-product-box">
                                                 <div class="product-image">
-                                                    <img src="assets/images/product/1.png"
+                                                    <img src="/assets/images/product/1.png"
                                                         class="img-fluid" alt="Product">
                                                 </div>
                                                 <div class="product-name">
@@ -344,7 +204,7 @@
                                         <td>
                                             <div class="best-product-box">
                                                 <div class="product-image">
-                                                    <img src="assets/images/product/2.png"
+                                                    <img src="/assets/images/product/2.png"
                                                         class="img-fluid" alt="Product">
                                                 </div>
                                                 <div class="product-name">
@@ -387,7 +247,7 @@
                                         <td>
                                             <div class="best-product-box">
                                                 <div class="product-image">
-                                                    <img src="assets/images/product/3.png"
+                                                    <img src="/assets/images/product/3.png"
                                                         class="img-fluid" alt="Product">
                                                 </div>
                                                 <div class="product-name">
@@ -463,12 +323,13 @@
                         <div class="table-responsive">
                             <table class="best-selling-table table border-0">
                                 <tbody>
+                                    @foreach($soldProducts as $product)
                                     <tr>
                                         <td>
                                             <div class="best-product-box">
                                                 <div class="product-name">
-                                                    <h5>Aata Buscuit</h5>
-                                                    <h6>#64548</h6>
+                                                    <h5>{{$product->product->name}}</h5>
+                                                    <h6>{{$product->order_id}}</h6>
                                                 </div>
                                             </div>
                                         </td>
@@ -476,151 +337,32 @@
                                         <td>
                                             <div class="product-detail-box">
                                                 <h6>Date Placed</h6>
-                                                <h5>5/1/22</h5>
+                                                <h5>{{$product->created_at->toDateString()}}</h5>
                                             </div>
                                         </td>
 
                                         <td>
                                             <div class="product-detail-box">
                                                 <h6>Price</h6>
-                                                <h5>$250.00</h5>
+                                                <h5>{{$product->total_price}}</h5>
                                             </div>
                                         </td>
 
                                         <td>
                                             <div class="product-detail-box">
                                                 <h6>Order Status</h6>
-                                                <h5>Completed</h5>
+                                                <h5>{{$product->order->status}}</h5>
                                             </div>
                                         </td>
 
                                         <td>
                                             <div class="product-detail-box">
                                                 <h6>Payment</h6>
-                                                <h5 class="text-danger">Unpaid</h5>
+                                                <h5 class="text-danger">{{$product->order->payment_method}}</h5>
                                             </div>
                                         </td>
                                     </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div class="best-product-box">
-                                                <div class="product-name">
-                                                    <h5>Aata Buscuit</h5>
-                                                    <h6>26-08-2022</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Date Placed</h6>
-                                                <h5>5/1/22</h5>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Price</h6>
-                                                <h5>$250.00</h5>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Order Status</h6>
-                                                <h5>Completed</h5>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Payment</h6>
-                                                <h5 class="theme-color">Paid</h5>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div class="best-product-box">
-                                                <div class="product-name">
-                                                    <h5>Aata Buscuit</h5>
-                                                    <h6>26-08-2022</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Date Placed</h6>
-                                                <h5>5/1/22</h5>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Price</h6>
-                                                <h5>$250.00</h5>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Order Status</h6>
-                                                <h5>Completed</h5>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Payment</h6>
-                                                <h5 class="theme-color">Paid</h5>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <div class="best-product-box">
-                                                <div class="product-name">
-                                                    <h5>Aata Buscuit</h5>
-                                                    <h6>26-08-2022</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Date Placed</h6>
-                                                <h5>5/1/22</h5>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Price</h6>
-                                                <h5>$250.00</h5>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Order Status</h6>
-                                                <h5>Completed</h5>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-detail-box">
-                                                <h6>Payment</h6>
-                                                <h5 class="theme-color">Paid</h5>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -757,7 +499,7 @@
 
 
         <!-- To Do List start-->
-        <div class="col-xxl-4 col-md-6">
+        {{-- <div class="col-xxl-4 col-md-6">
             <div class="card o-hidden card-hover">
                 <div class="card-header border-0">
                     <div class="card-header-title">
@@ -823,7 +565,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- To Do List end-->
 
 

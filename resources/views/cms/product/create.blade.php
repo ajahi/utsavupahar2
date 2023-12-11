@@ -108,11 +108,12 @@
                                     <label
                                         class="col-sm-3 col-form-label form-label-title">Images</label>
                                     <div class="col-sm-9">
-                                        <input class="form-control form-choose" name="images" type="file"
-                                            id="formFile" multiple>
+                                        <input class="form-control form-choose" name="images[]" type="file"
+                                            id="selectImage"  multiple>
                                     </div>
                                 </div>
-
+                                <h4>Preview</h4>
+                                <div id="previewContainer"></div>
                                 
                             </div>
                         </div>
@@ -367,7 +368,7 @@
     }
 
     function Addvariant(){
-        const table=document.querySelector('.tbody');
+        const table=document.querySelector('.tbody'); $('.tbody')
         const row =document.createElement('tr');
         row.addClass('template');
         row.innerHTML=`<td><input type="text" name="variants[]" ></td>`+
@@ -400,17 +401,47 @@
 
     }
     
- 
+ //textarea editor mode
     ClassicEditor
             .create( document.querySelector( '#editor' ) )
             .catch( error => {
                 console.error( error );
             } );
-</script>
 
+    //multiple image upload
+    
+    //listens to changes on dom with id selectImage
+    selectImage.onchange = evt => {
+    // grabs element with id previewContainer
+    const previewContainer = document.getElementById('previewContainer');
+    // sets its innerHTML to an empty string to clear previous previews
+    previewContainer.innerHTML = '';
+
+    const files = selectImage.files;
+
+    for (const file of files) {
+        // creates an image element for each file
+        const img = document.createElement('img');
+        img.style.maxWidth = '200px'; // Adjust the size as needed
+        img.style.maxHeight = '200px'; // Adjust the size as needed
+
+        // if there is a file, change src of img to the upload object URL
+        if (file) {
+            img.src = URL.createObjectURL(file);
+            previewContainer.appendChild(img);
+            
+        }
+    }
+};
+
+</script>
 
 
 
 
     
 @endsection
+
+
+
+

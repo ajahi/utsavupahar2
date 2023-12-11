@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use App\Http\Requests\RegistrationRequest;
+use Ichtrojan\Otp\Otp;
 
 class RegisteredUserController extends Controller
 {
@@ -40,10 +41,34 @@ class RegisteredUserController extends Controller
 
         ]);
 
+        $otp=$user->otpGenerate();
+        //Registration otp message
+        $message='Dear '.strtok($user->name,' ') .', Thank you for registering with UtsavUpahar.'  .$otp->message. 'Your OTP is .' .$otp->token;
+        
+        $user->sendSms($message);
+
         event(new Registered($user));
 
-        Auth::login($user);
+        
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('otp.show',$user->phone_number);
+    }
+
+    public function otpShow($num){
+        return view('Otp',['num'=>$num]);
+    }
+
+    public function OtpVerification(Request $request){
+        $otp=new Otp();
+        $res= $otp->validate($request->phone_number,implode( "",$request->otp));
+
+        $user=User::where('phone_number',$request->phone_number)->first();
+
+        // if validated with otp user is loggedin
+        if($res->status){
+            Auth::login($user);
+            return redirect(RouteServiceProvider::HOME);
+        }//else returned back to otp page with error message
+        return redirect()->back()->with('otp_error',$res->message.'.Check your OTP and phone number');
     }
 }

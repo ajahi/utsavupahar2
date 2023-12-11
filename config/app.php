@@ -171,8 +171,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\VoltServiceProvider::class,
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
-
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Ichtrojan\Otp\OtpServiceProvider::class,
+        App\Providers\SmsServiceProvider::class,
         
     ])->toArray(),
 
@@ -188,7 +189,8 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-       
+       'OTP'=> Ichtrojan\Otp\Otp::class,
+
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),

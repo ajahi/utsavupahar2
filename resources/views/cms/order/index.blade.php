@@ -8,6 +8,13 @@
                 <div class="card-body">
                     <div class="title-header option-title">
                         <h5>Order List</h5>
+                        <div class="m-3">
+                            <form action="#" method="get">
+                                <input type="text" name="search" placeholder="Search products by id or name" value="{{ request('query') }}">
+                                <button class="form-search" type="submit"><i class="ri-search-line"></i></button>
+                            </form>
+                            
+                        </div>
                         <a href="#" class="btn btn-solid">Download all orders</a>
                     </div>
                     <div>
@@ -15,7 +22,7 @@
                             <table class="table all-package order-table theme-table" id="table_id">
                                 <thead>
                                     <tr>
-                                        <th>Recipient Name</th> <!-- Replaced "Order Image" with "Recipient Name" -->
+                                        <!-- Replaced "Order Image" with "Recipient Name" -->
                                         <th>Order Code</th>
                                         <th>Date</th>
                                         <th>Payment Method</th>
@@ -28,14 +35,21 @@
                                 <tbody>
                                     @foreach($orders as $order)
                                     <tr data-bs-toggle="offcanvas" href="#order-details">
-                                        <td>{{ $order->recipient_name }}</td> <!-- Display recipient name -->
-                                        <td>{{ $order->order_number }}</td>
+                                       <!-- Display recipient name -->
+                                       
+                                        <td>
+                                            <a href="{{route('order.show',$order->id)}}">
+                                                {{ $order->order_number }}
+                                            </a>
+                                        </td>
+                                    
                                         <td>{{ $order->created_at }}</td>
                                         <td>{{ $order->payment_method }}</td>
                                         <td class="order-{{ $order->status }}">
                                             <span>{{ $order->status }}</span>
                                         </td>
                                         <td>${{ number_format($order->total_amount, 2) }}</td>
+                                    
                                         <td>
                                             <ul>
                                                 <li>
@@ -66,7 +80,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            
                         </div>
+                        <span class="form-control">{{$orders->links()}} </span>
                     </div>
                 </div>
             </div>
