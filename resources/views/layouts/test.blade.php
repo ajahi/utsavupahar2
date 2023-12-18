@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -116,33 +115,15 @@
                                     <i class="ri-notification-line"></i>
                                     <h6 class="f-18 mb-0">Notitications</h6>
                                 </li>
+
+                                @foreach (auth()->user()->unreadNotifications as $notification)
                                 <li>
                                     <p>
-                                        <i class="fa fa-circle me-2 font-primary"></i>Delivery processing <span
-                                            class="pull-right">10 min.</span>
+                                        <i class="fa fa-circle me-2 font-primary"></i>{{$notification->data['message']}} <span
+                                            class="pull-right">{{$notification->created_at->diffForHumans()}}</span>
                                     </p>
                                 </li>
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-success"></i>Order Complete<span
-                                            class="pull-right">1 hr</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-info"></i>Tickets Generated<span
-                                            class="pull-right">3 hr</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-danger"></i>Delivery Complete<span
-                                            class="pull-right">6 hr</span>
-                                    </p>
-                                </li>
-                                <li>
-                                    <a class="btn btn-primary" href="javascript:void(0)">Check all notification</a>
-                                </li>
+                                @endforeach
                             </ul>
                         </li>
 

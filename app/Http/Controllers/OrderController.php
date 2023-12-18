@@ -11,8 +11,10 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Product;
 use App\Models\User;
+use App\Notifications\CartCheckedOut;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Notification;
 
 class OrderController extends Controller
 {
@@ -68,6 +70,8 @@ class OrderController extends Controller
             //empties cart.
             Cart::remove($product['rowId']);
         }
+        $admins = User::all();
+        Notification::send($admins, new CartCheckedOut($order));
         return redirect()->route('order.success',$order->id)->with('success','you have successfully placed an order');
     }
 

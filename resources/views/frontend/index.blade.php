@@ -458,7 +458,7 @@
                                         <div class="product-box">
                                             <div class="product-image">
                                                 <a href="{{route('front.product',$product->slug)}}" target="blank">
-                                                    @if($product->getMedia('images'))
+                                                    @if($product->getMedia('images')->first())
                                                     <img src="{{$product->getMedia('images')->first()->getFullUrl()}}" alt={{$product->name}}
                                                         class="img-fluid blur-up lazyload" alt="{{$product->name}}">
                                                         @else

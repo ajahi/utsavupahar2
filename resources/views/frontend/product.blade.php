@@ -55,7 +55,9 @@
 
             <div class="col-xl-6">
                 <div class="right-box-contain p-sticky wow fadeInUp">
+                    @if($product->discount_p)
                     <h6 class="offer-top">{{$product->discount_p}} %</h6>
+                    @endif
                     <h2 class="name">{{ucwords($product->name)}}</h2>
                     {{-- <div class="price-rating">
                         <h3 class="theme-color price">{{}} <del class="text-content">RS {{}}</del> <span
@@ -713,7 +715,7 @@
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.html">
-                                        <img src={{$product->getMedia('images')->first()->getFullUrl()}}
+                                        <img src={{$product->getMedia('images')->first()?->getFullUrl()}}
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
 

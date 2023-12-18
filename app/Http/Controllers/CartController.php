@@ -54,7 +54,9 @@ class CartController extends Controller
     public function checkout(){
         $shippment=100.00;
         Cart::tax(0);
-        $totalCost=(int)Cart::subtotal() + $shippment; 
+        $totalCostString = str_replace(',', '', Cart::subtotal());
+        // dd((int)$totalCostString + $shippment);
+        $totalCost= (int)$totalCostString + $shippment; 
         return view('frontend.checkout',[
             'cart_items'=>Cart::content(),
             'user_details'=>Auth::user(),

@@ -294,8 +294,9 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="right-side onhover-dropdown">
-                                        <div class="delivery-login-box">
+                                    <li class="right-side onhover-dropdown" id="pointer">
+                                    
+                                        <div class="delivery-login-box" >
                                             <div class="delivery-icon">
                                                 <i data-feather="user"></i>
                                             </div>
@@ -304,7 +305,6 @@
                                                 <h5>My Account</h5>
                                             </div>
                                         </div>
-
                                         <div class="onhover-div onhover-div-login">
                                             <ul class="user-box-name">
                                                 <li class="product-box-contain">

@@ -601,7 +601,7 @@
     
                                 <li class="list-total">
                                     <h4>Total (NRP)</h4>
-                                    <h4 class="price">RS. {{(int)Cart::Total() + 100}}</h4>
+                                    <h4 class="price">RS. {{Number::format($totalCost)}}</h4>
                                 </li>
                             </ul>
                         </div>

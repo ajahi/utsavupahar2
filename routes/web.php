@@ -31,6 +31,7 @@ use Darryldecode\Cart\Facades\CartFacade as Cart;
 Route::get('/', [FeedController::class,'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
+    
     Route::get('/dashboard', function () {
         return redirect()->route('home');})->name('dashboard');
 
@@ -47,6 +48,9 @@ Route::middleware('auth')->group(function () {
 
 //    All content mangement system routes
     Route::prefix('admin')->group(function(){
+        Route::get("/", function() {
+            return redirect("/admin/dashboard");
+        });
         Route::get('dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
 
         Route::resource('product',ProductController::class,  [
