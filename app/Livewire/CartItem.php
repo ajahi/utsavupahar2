@@ -8,17 +8,15 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CartItem extends Component
 {
     public $cartItems;
-    
 
-    public function mount(){
-        $this->cartItems=Cart::content()->toArray();
-    }
+
     public function render()
     {
-        return view('livewire.cart-item',['items'=>$this->cartItems]);
+        $this->cartItems = Cart::content()->toArray();
+        return view('livewire.cart-item', ['items' => $this->cartItems]);
     }
 
-    
+
     public function removeCartItem($rowId)
     {
         Cart::remove($rowId);
@@ -34,17 +32,21 @@ class CartItem extends Component
 
         // You may emit an event or perform other actions after clearing the cart
     }
-    public function getData(){
-        $this->cartItems=Cart::content()->toArray();
+    public function getData()
+    {
+        $this->cartItems = Cart::content()->toArray();
     }
 
-    public function reduceItemByOne($RowId){
-        Cart::update($RowId,1);
-        $this->disptach('update-cart');
+    public function decrementCartQuantity($rowId)
+    {
+        $current = Cart::get($rowId);
+        Cart::update($rowId, $current->qty - 1);
+        $this->dispatch('update-cart');
     }
-    public function addItemByOne($RowId){
-        Cart::update($RowId,1);
-        $this->disptach('update-cart');
+    public function incrementCartQuantity($rowId)
+    {
+        $current = Cart::get($rowId);
+        Cart::update($rowId, $current->qty + 1);
+        $this->dispatch('update-cart');
     }
-
 }

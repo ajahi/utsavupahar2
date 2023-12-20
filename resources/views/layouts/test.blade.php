@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Best gifts and memories to give to your loved ones.">
-    <meta name="keywords"
-        content="gifts for mother, gifts for anniversary,coorporate gifts, birthday gifts, anniversary gifts, graduation gifts">
+    <meta name="description" content="Best gifts and memories to give to your loved ones.">
+    <meta name="keywords" content="gifts for mother, gifts for anniversary,coorporate gifts, birthday gifts, anniversary gifts, graduation gifts">
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="/product/smallLogo.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
     <title>Utsav Upahar - Dashboard</title>
 
     <!-- Google font-->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- Linear Icon css -->
     <link rel="stylesheet" href="{{asset('/assets/css/linearicon.css')}}">
@@ -56,7 +53,7 @@
 </head>
 
 <body>
-    
+
     <!-- tap on top start -->
     <div class="tap-top">
         <span class="lnr lnr-chevron-up"></span>
@@ -87,8 +84,7 @@
                     <div class="form-group w-100">
                         <div class="Typeahead Typeahead--twitterUsers">
                             <div class="u-posRelative">
-                                <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text"
-                                    placeholder="Search Fastkart .." name="q" title="" autofocus>
+                                <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder="Search Fastkart .." name="q" title="" autofocus>
                                 <i class="close-search" data-feather="x"></i>
                                 <div class="spinner-border Typeahead-spinner" role="status">
                                     <span class="sr-only">Loading...</span>
@@ -106,27 +102,9 @@
                             </span>
                         </li>
                         <li class="onhover-dropdown">
-                            <div class="notification-box">
-                                <i class="ri-notification-line"></i>
-                                <span class="badge rounded-pill badge-theme">4</span>
-                            </div>
-                            <ul class="notification-dropdown onhover-show-div">
-                                <li>
-                                    <i class="ri-notification-line"></i>
-                                    <h6 class="f-18 mb-0">Notitications</h6>
-                                </li>
-
-                                @foreach (auth()->user()->unreadNotifications as $notification)
-                                <li>
-                                    <p>
-                                        <i class="fa fa-circle me-2 font-primary"></i>{{$notification->data['message']}} <span
-                                            class="pull-right">{{$notification->created_at->diffForHumans()}}</span>
-                                    </p>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </li>
-
+                            @livewire('notification_list')
+                        
+                            </li>
                         <li>
                             <div class="mode">
                                 <i class="ri-moon-line"></i>
@@ -166,8 +144,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                        href="javascript:void(0)">
+                                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="javascript:void(0)">
                                         <i data-feather="log-out"></i>
                                         <span>Log out</span>
                                     </a>
@@ -196,4 +173,4 @@
                 <!-- Container-fluid Ends-->
 
                 <!-- footer start-->
-@include('components.cms.footer')
+                @include('components.cms.footer')

@@ -1,17 +1,16 @@
 <div class="table-responsive-xl">
-    
-    <table class="table" >
+
+    <table class="table">
         <tbody wire.poll.3s='getData'>
-          
+            @if(count($items))
             @foreach($items as $item)
-            
+
             <tr class="product-box-contain">
                 <td class="product-detail">
                     <div class="product border-0">
                         <a href="{{route('front.product',App\Models\Product::findOrFail($item['id'])->slug)}}" class="product-image">
-                            
-                            <img src="{{App\Models\Product::findOrFail($item['id'])->getMedia('images')->first()->getFullUrl()}}"
-                                class="img-fluid blur-up lazyload" alt="">
+
+                            <img src="{{App\Models\Product::findOrFail($item['id'])->getMedia('images')->first()->getFullUrl()}}" class="img-fluid blur-up lazyload" alt="">
                         </a>
                         <div class="product-detail">
                             <ul>
@@ -22,16 +21,15 @@
                                 {{-- <li class="text-content"><span class="text-title">Sold
                                         By:</span> Fresho</li> --}}
 
-                                <li class="text-content"><span
-                                        class="text-title">Discount</span> - {{App\Models\Product::findOrFail($item['id'])->discount_p}} %</li>
+                                <li class="text-content"><span class="text-title">Discount</span> - {{App\Models\Product::findOrFail($item['id'])->discount_p}} %</li>
 
                                 <li>
                                     <h5 class="text-content d-inline-block">Price :</h5>
                                     <span>RS. {{$item['price']}}</span>
-                                    
+
                                 </li>
-                                
-                                
+
+
 
                                 <li class="quantity-price-box">
                                     <div class="cart_qty">
@@ -40,20 +38,18 @@
                                                 @csrf
                                                 <input type="hidden" name="rowid" value={{$item['rowId']}}>
                                                 <button type="submit" class="btn qty-left-minus">
-                                                <i class="fa fa-minus ms-0"
-                                                    aria-hidden="true"></i>
-                                            </button>
+                                                    <i class="fa fa-minus ms-0" aria-hidden="true"></i>
+                                                </button>
                                             </form>
-                                            
-                                            <input class="form-control input-number qty-input"
-                                                type="text" name="quantity" value="0">
-                                            
+
+                                            <input class="form-control input-number qty-input" type="text" name="quantity" value="0">
+
                                         </div>
                                     </div>
                                 </li>
 
                                 <li>
-                                    <h5>Total: Rs.  </h5>
+                                    <h5>Total: Rs. </h5>
                                 </li>
                             </ul>
                         </div>
@@ -71,14 +67,11 @@
                     <div class="quantity-price">
                         <div class="cart_qty">
                             <div class="input-group">
-                                <button type="button" class="btn qty-left-minus"
-                                    data-type="minus" data-field="">
+                                <button type="button" class="btn qty-left-minus" data-type="minus" data-field="" wire:click.prevent="decrementCartQuantity('{{ $item['rowId'] }}')">
                                     <i class="fa fa-minus ms-0" aria-hidden="true"></i>
                                 </button>
-                                <input class="form-control input-number qty-input" type="text"
-                                    name="quantity" value="{{$item['qty']}}">
-                                <button type="button" class="btn qty-right-plus"
-                                    data-type="plus" data-field="">
+                                <input class="form-control input-number qty-input" type="text" name="quantity" value="{{$item['qty']}}">
+                                <button type="button" class="btn qty-right-plus" data-type="plus" data-field="" wire:click.prevent="incrementCartQuantity('{{ $item['rowId'] }}')">
                                     <i class="fa fa-plus ms-0" aria-hidden="true"></i>
                                 </button>
                             </div>
@@ -97,18 +90,16 @@
                     <button class="form-control" wire:click="removeCartItem('{{ $item['rowId'] }}')" class="close-button close_button">
                         Remove
                     </button>
-                    
+
                 </td>
             </tr>
             @endforeach
-            
-            
+            @endif
 
         </tbody>
     </table>
-    
-    
-   
-    
-</div>
 
+
+
+
+</div>

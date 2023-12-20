@@ -11,7 +11,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-
+use App\Http\Controllers\NotificationController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
@@ -40,9 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('checkout',[CartController::class,'checkout'])->name('checkout');
-    Route::get('order_success/{id}',[OrderController::Class,'orderSuccess'])->name('order.success'); 
+    Route::get('order_success/{id}',[OrderController::class,'orderSuccess'])->name('order.success'); 
     Route::post('order',[OrderController::class,'store'])->name('store.checkout');
 
+    
     
 
 
@@ -51,6 +52,7 @@ Route::middleware('auth')->group(function () {
         Route::get("/", function() {
             return redirect("/admin/dashboard");
         });
+        Route::get('/notifications', [NotificationController::class, 'getAllNotifications']);
         Route::get('dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
 
         Route::resource('product',ProductController::class,  [
