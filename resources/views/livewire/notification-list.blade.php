@@ -11,7 +11,7 @@
         </li>
 
         @foreach ($notifications as $notification)
-        <li wire:key="{{$notification->id}}">
+        <li wire:key="{{$notification->id}}" wire:click.prevent="markOneAsRead('{{$notification->id}}')">
             <p>
                 <i class="fa fa-circle me-2 font-primary"></i>{{$notification->data['message']}} <span class="pull-right">{{$notification->created_at->diffForHumans()}}</span>
             </p>

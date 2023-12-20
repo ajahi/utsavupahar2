@@ -11,6 +11,10 @@ class NotificationList extends Component
     {
         $this->notifications->markAsRead();
     }
+    public function markOneAsRead($id)
+    {
+        $this->notifications->find($id)->markAsRead();
+    }
     public function render()
     {
         $this->notifications = auth()->user()->unreadNotifications;
