@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
+
 
 class FeedController extends Controller
 {
@@ -13,7 +15,8 @@ class FeedController extends Controller
     public function index()
     {
         return view('frontend.index',[
-            'products'=>Product::all()
+            'products'=>Product::all(),
+            'categories'=>Category::all()
         ]);
     }
 
@@ -52,7 +55,8 @@ class FeedController extends Controller
         $product->increment('view_count');
         return view('frontend.product',[
             'product'=>$product,
-            'similarProduct'=>$product->similarCategoryProduct
+            'similarProduct'=>$product->similarCategoryProduct,
+            'reviews'=>$product->review
 
         ]);
     }

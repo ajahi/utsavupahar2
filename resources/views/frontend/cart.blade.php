@@ -44,14 +44,14 @@
                     </div>
 
                     <div class="summery-contain">
-                        <div class="coupon-cart">
+                        {{-- <div class="coupon-cart">
                             <h6 class="text-content mb-2">Coupon Apply</h6>
                             <div class="mb-3 coupon-box input-group">
                                 <input type="email" class="form-control" id="exampleFormControlInput1"
                                     placeholder="Enter Coupon Code Here...">
                                 <button class="btn-apply">Apply</button>
                             </div>
-                        </div>
+                        </div> --}}
                         <ul>
                             <li>
                                 <h4>Subtotal</h4>

@@ -159,7 +159,7 @@
                             <ul class="summery-total">
                                 <li class="list-total">
                                     <h4>Total (USD)</h4>
-                                    <h4 class="price">$19.28</h4>
+                                    <h4 class="price">RS. {{$order->total_amount +100}}</h4>
                                 </li>
                             </ul>
                         </div>

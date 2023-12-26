@@ -67,5 +67,11 @@ class User extends Authenticatable
         $code=$otp->generate($this->phone_number,5,10);
         return $code;
     }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
+    
 };
     

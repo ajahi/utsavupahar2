@@ -31,9 +31,9 @@ class ProductShowButtons extends Component
     }
     
     public function updateVariant($variantId){
-       $this->variant=Variant::find($variantId);
-
-       $this->activeVariant = $variantId;
+        $variant=Variant::findOrFail($variantId);
+        $this->variant=$variant;
+        $this->activeVariant=$variantId;
     }
 
     public function increment(){
@@ -53,7 +53,6 @@ class ProductShowButtons extends Component
             'variant_price'=>$this->variant->price
             ])->associate($pro);
         //mssg flash to uer
-        $this->dispatch('flash', mssg:'Items Added to Cart Successfully.');//event named flash that displays notification.
         //updates cart.
         $this->dispatch('update-cart');
     }

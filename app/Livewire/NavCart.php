@@ -14,18 +14,14 @@ class NavCart extends Component
 
     public function mount()
     {
-        $this->cartItems = Cart::content()->toArray();
-        $this->cartItemCount = Cart::count();
+        $this->dispatch('update-cart');
     }
     #[On('update-cart')]
     public function updateCartData()
     {
         $this->cartItemCount = Cart::count();
+        // dd($this->cartItemCount);
         $this->cartItems = Cart::content()->toArray();
-    }
-    public function render()
-    {
-        return view('livewire.nav-cart', ['items' => $this->cartItems]);
     }
 
     public function removeCartItem($rowId)
@@ -33,7 +29,7 @@ class NavCart extends Component
         Cart::remove($rowId);
         $this->cartItems = Cart::content()->toArray();
         $this->cartItemCount = Cart::count();
-        $this->dispatch('flash', mssg:'Items Removed from Cart Successfully.');
+        $this->dispatch('flash', mssg: 'Items Removed from Cart Successfully.');
         $this->dispatch('update-cart');
 
         // You may emit an event or perform other actions after removing an item
@@ -44,6 +40,15 @@ class NavCart extends Component
         Cart::destroy();
         $this->cartItems = Cart::content()->toArray();
         $this->cartItemCount = Cart::count();
+        $this->dispatch('update-cart');
         // You may emit an event or perform other actions after clearing the cart
+    }
+
+    public function render()
+    {
+        $this->cartItems = Cart::content()->toArray();
+        $this->cartItemCount = Cart::count();
+        // dd(Cart::content()->toArray());
+        return view('livewire.nav-cart', ['items' => $this->cartItems]);
     }
 }

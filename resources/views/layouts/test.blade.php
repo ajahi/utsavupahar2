@@ -101,10 +101,10 @@
                                 <i class="ri-search-line"></i>
                             </span>
                         </li>
-                        <li class="onhover-dropdown">
+                        <li class="onhover-dropdown" >
                             @livewire('notification_list')
-                        
-                            </li>
+
+                        </li>
                         <li>
                             <div class="mode">
                                 <i class="ri-moon-line"></i>

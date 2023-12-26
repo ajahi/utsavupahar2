@@ -33,5 +33,9 @@ class Product extends Model implements HasMedia
         })->where('id', '!=', $this->id)->get();
     }
 
+    public function review(){
+        return $this->hasMany(Review::class);
+    }
+
     
 }

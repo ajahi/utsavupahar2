@@ -1,19 +1,19 @@
-<li class="right-side">
+<div>
     <div class="onhover-dropdown header-badge">
-        <button type="button" class="btn p-0 position-relative header-wishlist">
-            <a href="{{ route('cart.index') }}">
+        <a wire:click.prevent="addItemToWishlist" href="#" class="btn p-0 position-relative header-wishlist">
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-            </a>
-            <span class="position-absolute top-0 start-100 translate-middle badge">{{ $cartItemCount }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            @if($product_id)
+            <span>Add To Wishlist</span>
+            @else
+            <span class="position-absolute top-0 start-100 translate-middle badge">{{ $wishlistItemCount }}
                 <span class="visually-hidden">unread messages</span>
             </span>
-        </button>
-
+            @endif
+        </a>
+        @if(!$product_id)
         <div class="onhover-div">
             <ul class="cart-list">
                 @if (count($items))
@@ -39,22 +39,23 @@
                 @endforeach
                 @else
                 <li>
-                    No items in the cart.
+                    No items in wishlist.
                 </li>
                 @endif
             </ul>
 
 
-            <div class="price-box">
+            {{--<div class="price-box">
                 <h5>Total :</h5>
                 <h4 class="theme-color fw-bold">{{ Cart::subTotal() }}</h4>
-            </div>
-
-            <div class="button-group">
-                <a href="{{ route('cart.index') }}" class="btn btn-sm cart-button">View Cart</a>
-                <a href="{{route('checkout')}}" class="btn btn-sm cart-button theme-bg-color
-                text-white">Checkout</a>
-            </div>
         </div>
+
+        <div class="button-group">
+            <a href="{{ route('cart.index') }}" class="btn btn-sm cart-button">View Cart</a>
+            <a href="{{route('checkout')}}" class="btn btn-sm cart-button theme-bg-color
+                text-white">Checkout</a>
+        </div>--}}
     </div>
-</li>
+    @endif
+</div>
+</div>

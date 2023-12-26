@@ -5,7 +5,7 @@
     <div class="container-fluid-lg">
         <div class="row">
             <div class="col-12">
-                
+
                 <div class="breadscrumb-contain">
                     <h2>{{$product->name}}</h2>
                     <nav>
@@ -35,20 +35,19 @@
                     <div class="row g-sm-4 g-2">
 
                         @if($product->getMedia('images')!==0)
-                        
-                            @foreach($product->getMedia('images') as $images)
-                            <div class="col-6 col-grid-box wow fadeInUp" data-wow-delay="{{rand(0.02,0.15)}}">
-                                <div class="slider-image">
-                                    <img src={{$images->getFullUrl()}} id="img-1"
-                                        data-zoom-image="{{$images->first()->getFullUrl()}}" class="img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
-                                </div>
+
+                        @foreach($product->getMedia('images') as $images)
+                        <div class="col-6 col-grid-box wow fadeInUp" data-wow-delay="{{rand(0.02,0.15)}}">
+                            <div class="slider-image">
+                                <img src={{$images->getFullUrl()}} id="img-1" data-zoom-image="{{$images->first()->getFullUrl()}}" class="img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
                             </div>
-                            @endforeach
+                        </div>
+                        @endforeach
 
                         @else
                         <img src="/frontassets/images/cake/product/4.png" alt="Assigned no-image">
                         @endif
-                       
+
                     </div>
                 </div>
             </div>
@@ -60,35 +59,34 @@
                     @endif
                     <h2 class="name">{{ucwords($product->name)}}</h2>
                     {{-- <div class="price-rating">
-                        <h3 class="theme-color price">{{}} <del class="text-content">RS {{}}</del> <span
-                                class="offer theme-color">(8% off)</span></h3>
-                        <div class="product-rating custom-rate">
-                            <ul class="rating">
-                                <li>
-                                    <i data-feather="star" class="fill"></i>
-                                </li>
-                                <li>
-                                    <i data-feather="star" class="fill"></i>
-                                </li>
-                                <li>
-                                    <i data-feather="star" class="fill"></i>
-                                </li>
-                                <li>
-                                    <i data-feather="star" class="fill"></i>
-                                </li>
-                                <li>
-                                    <i data-feather="star"></i>
-                                </li>
-                            </ul>
-                            <span class="review">23 Customer Review</span>
-                        </div>
-                    </div> --}}
+                        <h3 class="theme-color price">{{}} <del class="text-content">RS {{}}</del> <span class="offer theme-color">(8% off)</span></h3>
+                    <div class="product-rating custom-rate">
+                        <ul class="rating">
+                            <li>
+                                <i data-feather="star" class="fill"></i>
+                            </li>
+                            <li>
+                                <i data-feather="star" class="fill"></i>
+                            </li>
+                            <li>
+                                <i data-feather="star" class="fill"></i>
+                            </li>
+                            <li>
+                                <i data-feather="star" class="fill"></i>
+                            </li>
+                            <li>
+                                <i data-feather="star"></i>
+                            </li>
+                        </ul>
+                        <span class="review">23 Customer Review</span>
+                    </div>
+                </div> --}}
 
-                    
-                    
-                    
-                    
-                    {{-- <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1" data-hours="1"
+
+
+
+
+                {{-- <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1" data-hours="1"
                         data-minutes="2" data-seconds="3">
                         <div class="product-title">
                             <h4>Hurry up! Sales Ends In</h4>
@@ -131,35 +129,32 @@
 
 
 
-                    @livewire('product-show-buttons',['product'=>$product])
+                @livewire('product-show-buttons',['product'=>$product])
 
-                    <div class="buy-box">
-                        <a href="wishlist.html">
-                            <i data-feather="heart"></i>
-                            <span>Add To Wishlist</span>
-                        </a>
+                {{-- <div class="buy-box">
+                    @livewire('add-wishlist', ['product_id' => $product->id])
 
-                        {{-- <a href="compare.html">
+                    <a href="compare.html">
                             <i data-feather="shuffle"></i>
                             <span>Add To Compare</span>
-                        </a> --}}
+                        </a>
+                </div> --}}
+
+                <div class="pickup-box">
+                    <div class="product-title">
+                        <h4>Description</h4>
                     </div>
 
-                    <div class="pickup-box">
-                        <div class="product-title">
-                            <h4>Description</h4>
-                        </div>
+                    <div class="pickup-detail">
+                        <h4 class="text-content">
+                            @php
+                            echo $product->description
+                            @endphp
 
-                        <div class="pickup-detail">
-                            <h4 class="text-content">
-                                @php
-                                echo $product->description
-                                @endphp
+                        </h4>
+                    </div>
 
-                            </h4>
-                        </div>
-
-                        {{-- <div class="product-info">
+                    {{-- <div class="product-info">
                             <ul class="product-info-list">
                                 <li>Type : <a href="javascript:void(0)">Black Forest</a></li>
                                 <li>SKU : <a href="javascript:void(0)">SDFVW65467</a></li>
@@ -169,20 +164,20 @@
                                         href="javascript:void(0)">Backery</a></li>
                             </ul>
                         </div> --}}
-                    </div>
+                </div>
 
-                    <div class="paymnet-option">
-                        <div class="product-title">
-                            <h4>Payment Option</h4>
-                        </div>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <img src="{{asset('/product/cod.png')}}" alt="Cash on delivery" height="40px" style="background: rgb(233, 227, 227); padding:6px; border-radius:7px;">
-                                </a>
-                            </li>
-                            <li>
-                                {{--<a href="javascript:void(0)">
+                <div class="paymnet-option">
+                    <div class="product-title">
+                        <h4>Payment Option</h4>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="{{asset('/product/cod.png')}}" alt="Cash on delivery" height="40px" style="background: rgb(233, 227, 227); padding:6px; border-radius:7px;">
+                            </a>
+                        </li>
+                        <li>
+                            {{--<a href="javascript:void(0)">
                                     <img src="/frontassets/images/product/payment/1.svg" class="blur-up lazyload"
                                         alt="">
                                 </a>
@@ -211,15 +206,15 @@
                                         alt="">
                                 </a>
                             </li> --}}
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
             </div>
+        </div>
 
-            <div class="col-12">
-                <div class="product-section-box">
-                    <ul class="nav nav-tabs custom-nav" id="myTab" role="tablist">
-                        {{-- <li class="nav-item" role="presentation">
+        <div class="col-12">
+            <div class="product-section-box">
+                <ul class="nav nav-tabs custom-nav" id="myTab" role="tablist">
+                    {{-- <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
                                 data-bs-target="#description" type="button" role="tab" aria-controls="description"
                                 aria-selected="true">Description</button>
@@ -237,18 +232,15 @@
                                 Instuctions</button>
                         </li> --}}
 
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
-                                type="button" role="tab" aria-controls="review"
-                                aria-selected="true">Review</button>
-                        </li>
-                    </ul>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="true">Review</button>
+                    </li>
+                </ul>
 
-                    <div class="tab-content custom-tab" id="myTabContent">
-                        <div class="tab-pane fade show active" id="description" role="tabpanel"
-                            aria-labelledby="description-tab">
-                            <div class="product-description">
-                                {{-- <div class="nav-desh">
+                <div class="tab-content custom-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                        <div class="product-description">
+                            {{-- <div class="nav-desh">
                                     <p>Jelly beans carrot cake icing biscuit oat cake gummi bears tart. Lemon drops
                                         carrot cake pudding sweet gummi bears. Chocolate cake tart cupcake donut
                                         topping liquorice sugar plum chocolate bar. Jelly beans tiramisu caramels
@@ -376,311 +368,233 @@
                             </div>
                         </div> --}}
 
-                        <div class="tab-pane" id="review" role="tabpanel" aria-labelledby="review-tab">
-                            <div class="review-box">
-                                <div class="row g-4">
-                                    <div class="col-xl-6">
-                                        <div class="review-title">
-                                            <h4 class="fw-500">Customer reviews</h4>
-                                        </div>
+                            <div class="tab-pane" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                <div class="review-box">
+                                    <div class="row g-4">
+                                        <div class="col-xl-6">
+                                            <div class="review-title">
+                                                <h4 class="fw-500">Customer reviews</h4>
+                                            </div>
 
-                                        <div class="d-flex">
-                                            <div class="product-rating">
-                                                <ul class="rating">
+                                            <div class="d-flex">
+                                                <div class="product-rating">
+                                                    <ul class="rating">
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star"></i>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <h6 class="ms-3">4.2 Out Of 5</h6>
+                                            </div>
+
+                                            <div class="rating-box">
+                                                <ul>
                                                     <li>
-                                                        <i data-feather="star" class="fill"></i>
+                                                        <div class="rating-list">
+                                                            <h5>5 Star</h5>
+                                                            <div class="progress">
+                                                                <div class="progress-bar" role="progressbar" style="width: 68%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                                    68%
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </li>
+
                                                     <li>
-                                                        <i data-feather="star" class="fill"></i>
+                                                        <div class="rating-list">
+                                                            <h5>4 Star</h5>
+                                                            <div class="progress">
+                                                                <div class="progress-bar" role="progressbar" style="width: 67%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                                    67%
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </li>
+
                                                     <li>
-                                                        <i data-feather="star" class="fill"></i>
+                                                        <div class="rating-list">
+                                                            <h5>3 Star</h5>
+                                                            <div class="progress">
+                                                                <div class="progress-bar" role="progressbar" style="width: 42%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                                    42%
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </li>
+
                                                     <li>
-                                                        <i data-feather="star"></i>
+                                                        <div class="rating-list">
+                                                            <h5>2 Star</h5>
+                                                            <div class="progress">
+                                                                <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                                    30%
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </li>
+
                                                     <li>
-                                                        <i data-feather="star"></i>
+                                                        <div class="rating-list">
+                                                            <h5>1 Star</h5>
+                                                            <div class="progress">
+                                                                <div class="progress-bar" role="progressbar" style="width: 24%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                                    24%
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <h6 class="ms-3">4.2 Out Of 5</h6>
                                         </div>
-
-                                        <div class="rating-box">
-                                            <ul>
-                                                <li>
-                                                    <div class="rating-list">
-                                                        <h5>5 Star</h5>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar"
-                                                                style="width: 68%" aria-valuenow="100"
-                                                                aria-valuemin="0" aria-valuemax="100">
-                                                                68%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li>
-                                                    <div class="rating-list">
-                                                        <h5>4 Star</h5>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar"
-                                                                style="width: 67%" aria-valuenow="100"
-                                                                aria-valuemin="0" aria-valuemax="100">
-                                                                67%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li>
-                                                    <div class="rating-list">
-                                                        <h5>3 Star</h5>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar"
-                                                                style="width: 42%" aria-valuenow="100"
-                                                                aria-valuemin="0" aria-valuemax="100">
-                                                                42%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li>
-                                                    <div class="rating-list">
-                                                        <h5>2 Star</h5>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar"
-                                                                style="width: 30%" aria-valuenow="100"
-                                                                aria-valuemin="0" aria-valuemax="100">
-                                                                30%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li>
-                                                    <div class="rating-list">
-                                                        <h5>1 Star</h5>
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar"
-                                                                style="width: 24%" aria-valuenow="100"
-                                                                aria-valuemin="0" aria-valuemax="100">
-                                                                24%
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xl-6">
-                                        <div class="review-title">
-                                            <h4 class="fw-500">Add a review</h4>
-                                        </div>
-
-                                        <div class="row g-4">
-                                            <div class="col-md-6">
-                                                <div class="form-floating theme-form-floating">
-                                                    <input type="text" class="form-control" id="name"
-                                                        placeholder="Name">
-                                                    <label for="name">Your Name</label>
+                                        @guest
+                                            <div class="col-xl-6">
+                                                <div class="class-title">
+                                                    <h2 class="form-control"><a href="{{route('register')}}">Register</a> or <a href="{{route('login')}}">Login</a> to leave a review.</h2>
                                                 </div>
                                             </div>
+                                        @endguest
+                                        
+                                        @auth
+                                        
+                                        <div class="col-xl-6">
+                                            <div class="review-title">
+                                                <h4 class="fw-500">Add a review</h4>
+                                            </div>
+                                            <form action="{{route('review.store')}}" method="post">
+                                            @csrf
+                                            
+                                            <div class="row g-4">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating theme-form-floating">
+                                                        <input type="text" class="form-control" id="name" placeholder="Name" value="{{Auth::user()->name}}"  readonly>
+                                                        <label for="name">Your Name</label>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="product_id" value={{$product->id}}>
+                                                <input type="hidden" name='user_id' value={{Auth::id()}}>
 
-                                            <div class="col-md-6">
-                                                <div class="form-floating theme-form-floating">
-                                                    <input type="email" class="form-control" id="email"
-                                                        placeholder="Email Address">
-                                                    <label for="email">Email Address</label>
+                                                
+
+                                                <div class="col-md-6">
+                                                    <div class="form-floating theme-form-floating">
+                                                        <label for="review1"> ⭐  Rating </label>
+
+                                                        <select name="rating" id="" class="form-control" required>
+                                                            <option value="1"> 
+                                                                ⭐
+                                                            </option>
+                                                            <option value="2">
+                                                                ⭐⭐
+                                                            </option>                                                      </option>
+                                                            <option value="3">
+                                                                ⭐⭐⭐
+                                                           </option>
+                                                            <option value="4">
+                                                                ⭐⭐⭐⭐
+                                                            </option>
+                                                            <option value="5">
+                                                                ⭐⭐⭐⭐⭐
+                                                            </option>
+                                                        </select>
+                                                        
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12">
+                                                    <div class="form-floating theme-form-floating">
+                                                        <textarea class="form-control" name="comment" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 150px"></textarea>
+                                                        <label for="floatingTextarea2">Write Your
+                                                            Comment</label>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-floating theme-form-floating">
-                                                    <input type="url" class="form-control" id="website"
-                                                        placeholder="Website">
-                                                    <label for="website">Website</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-floating theme-form-floating">
-                                                    <input type="url" class="form-control" id="review1"
-                                                        placeholder="Give your review a title">
-                                                    <label for="review1">Review Title</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="form-floating theme-form-floating">
-                                                    <textarea class="form-control"
-                                                        placeholder="Leave a comment here" id="floatingTextarea2"
-                                                        style="height: 150px"></textarea>
-                                                    <label for="floatingTextarea2">Write Your
-                                                        Comment</label>
-                                                </div>
-                                            </div>
+                                            <button class="btn btn-md bg-primary cart-button text-white w-100" type="submit">Submit</button>
+                                        </form>
                                         </div>
-                                    </div>
+                                        @endauth
+                                        <div class="col-12">
+                                            <div class="review-title">
+                                                <h4 class="fw-500">Customer questions & answers</h4>
+                                            </div>
 
-                                    <div class="col-12">
-                                        <div class="review-title">
-                                            <h4 class="fw-500">Customer questions & answers</h4>
-                                        </div>
-
-                                        <div class="review-people">
-                                            <ul class="review-list">
-                                                <li>
-                                                    <div class="people-box">
-                                                        <div>
-                                                            <div class="people-image">
-                                                                <img src="/frontassets/images/review/1.jpg"
-                                                                    class="img-fluid blur-up lazyload" alt="">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="people-comment">
-                                                            <a class="name" href="javascript:void(0)">Tracey</a>
-                                                            <div class="date-time">
-                                                                <h6 class="text-content">14 Jan, 2022 at 12.58 AM
-                                                                </h6>
-
-                                                                <div class="product-rating">
-                                                                    <ul class="rating">
-                                                                        <li>
-                                                                            <i data-feather="star" class="fill"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star" class="fill"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star" class="fill"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star"></i>
-                                                                        </li>
-                                                                    </ul>
+                                            <div class="review-people">
+                                                <ul class="review-list">
+                                                    @foreach($reviews as $review)
+                                                    <li>
+                                                        <div class="people-box">
+                                                            <div>
+                                                                <div class="people-image">
+                                                                    <img src="/frontassets/images/review/1.jpg" class="img-fluid blur-up lazyload" alt="">
                                                                 </div>
                                                             </div>
 
-                                                            <div class="reply">
-                                                                <p>Icing cookie carrot cake chocolate cake sugar
-                                                                    plum jelly-o danish. Dragée dragée shortbread
-                                                                    tootsie roll croissant muffin cake I love gummi
-                                                                    bears. Candy canes ice cream caramels tiramisu
-                                                                    marshmallow cake shortbread candy canes
-                                                                    cookie.<a href="javascript:void(0)">Reply</a>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                            <div class="people-comment">
+                                                                <a class="name" href="javascript:void(0)">{{$review->user->name}}</a>
+                                                                <div class="date-time">
+                                                                    <h6 class="text-content">{{$review->created_at}}
+                                                                    </h6>
 
-                                                <li>
-                                                    <div class="people-box">
-                                                        <div>
-                                                            <div class="people-image">
-                                                                <img src="/frontassets/images/review/2.jpg"
-                                                                    class="img-fluid blur-up lazyload" alt="">
-                                                            </div>
-                                                        </div>
+                                                                    <div class="product-rating">
+                                                                        <ul class="rating">
+                                                                            <li>
+                                                                                <i data-feather="star"  
+                                                                                @if($review->rating==1) 
+                                                                                    class="fill"
+                                                                                    @endif
+                                                                                ></i>
+                                                                            </li>
+                                                                            <li>
+                                                                                <i data-feather="star"
+                                                                                @if($review->rating==2) 
+                                                                                    class="fill"
+                                                                                    @endif
+                                                                                ></i>
+                                                                            </li>
+                                                                            <li>
+                                                                                <i data-feather="star" 
+                                                                                @if($review->rating==3) 
+                                                                                    class="fill"
+                                                                                    @endif
+                                                                                >
+                                                                            </i>
+                                                                            </li>
+                                                                            <li>
+                                                                                <i data-feather="star" @if($review->rating==4) 
+                                                                                    lass="fill"
+                                                                                    @endif></i>
+                                                                            </li>
+                                                                            <li>
+                                                                                <i data-feather="star" @if($review->rating==5) 
+                                                                                    lass="fill"
+                                                                                    @endif></i></i>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
 
-                                                        <div class="people-comment">
-                                                            <a class="name" href="javascript:void(0)">Olivia</a>
-                                                            <div class="date-time">
-                                                                <h6 class="text-content">01 May, 2022 at 08.31 AM
-                                                                </h6>
-                                                                <div class="product-rating">
-                                                                    <ul class="rating">
-                                                                        <li>
-                                                                            <i data-feather="star" class="fill"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star" class="fill"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star" class="fill"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star"></i>
-                                                                        </li>
-                                                                    </ul>
+                                                                <div class="reply">
+                                                                    <p>{{$review->comment}}<a href="#">Reply</a>
+                                                                    </p>
                                                                 </div>
                                                             </div>
-
-                                                            <div class="reply">
-                                                                <p>Tootsie roll cake danish halvah powder cake.
-                                                                    Tootsie roll candy marshmallow cookie brownie
-                                                                    apple pie pudding brownie chocolate bar. Jujubes
-                                                                    gummi bears I love powder danish oat cake tart
-                                                                    croissant.<a href="javascript:void(0)">Reply</a>
-                                                                </p>
-                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-
-                                                <li>
-                                                    <div class="people-box">
-                                                        <div>
-                                                            <div class="people-image">
-                                                                <img src="/frontassets/images/review/3.jpg"
-                                                                    class="img-fluid blur-up lazyload" alt="">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="people-comment">
-                                                            <a class="name" href="javascript:void(0)">Gabrielle</a>
-                                                            <div class="date-time">
-                                                                <h6 class="text-content">21 May, 2022 at 05.52 PM
-                                                                </h6>
-
-                                                                <div class="product-rating">
-                                                                    <ul class="rating">
-                                                                        <li>
-                                                                            <i data-feather="star" class="fill"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star" class="fill"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star" class="fill"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star"></i>
-                                                                        </li>
-                                                                        <li>
-                                                                            <i data-feather="star"></i>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="reply">
-                                                                <p>Biscuit chupa chups gummies powder I love sweet
-                                                                    pudding jelly beans. Lemon drops marzipan apple
-                                                                    pie gingerbread macaroon croissant cotton candy
-                                                                    pastry wafer. Carrot cake halvah I love tart
-                                                                    caramels pudding icing chocolate gummi bears.
-                                                                    Gummi bears danish cotton candy muffin marzipan
-                                                                    caramels awesome feel. <a
-                                                                        href="javascript:void(0)">Reply</a>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                    </li>
+                                                    @endforeach
+                                                    
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -690,7 +604,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>
 <!-- Product Left Sidebar End -->
 
@@ -708,15 +621,14 @@
         <div class="row">
             <div class="col-12">
                 <div class="slider-6_1 product-wrapper">
-                    
+
                     @foreach($similarProduct as $product)
                     <div>
                         <div class="product-box-3 wow fadeInUp" data-wow-delay="0.05s">
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.html">
-                                        <img src={{$product->getMedia('images')->first()?->getFullUrl()}}
-                                            class="img-fluid blur-up lazyload" alt="">
+                                        <img src={{$product->getMedia('images')->first()?->getFullUrl()}} class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
                                     {{-- <ul class="product-option">
@@ -746,32 +658,32 @@
                                     <span class="span-name">{{ucwords($product->category->first()->name)}}</span>
                                     <a href="{{route('front.product',$product->slug)}}">
                                         <h5 class="name">{{ucwords($product->name)}}</h5>
-                                    
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>(4.0)</span>
-                                    </div>
-                                    
-                                    <h6 class="unit">{{ucwords($product->discount_p)}} % OFF</h6>
-                                    <h5 class="price"><span class="theme-color">RS {{($product->variants->first()->price) -($product->variants->first()->price * $product->discount_p/100)}} </span> <del>RS {{$product->variants->first()->price}}</del>
-                                    </h5>
-                                </a>
+
+                                        <div class="product-rating mt-2">
+                                            <ul class="rating">
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star"></i>
+                                                </li>
+                                            </ul>
+                                            <span>(4.0)</span>
+                                        </div>
+
+                                        <h6 class="unit">{{ucwords($product->discount_p)}} % OFF</h6>
+                                        <h5 class="price"><span class="theme-color">RS {{($product->variants->first()->price) -($product->variants->first()->price * $product->discount_p/100)}} </span> <del>RS {{$product->variants->first()->price}}</del>
+                                        </h5>
+                                    </a>
                                     {{-- <div class="add-to-cart-box bg-white">
                                         <button class="btn btn-add-cart addcart-button">Add
                                             <span class="add-icon bg-light-gray">
@@ -798,11 +710,11 @@
                         </div>
                     </div>
                     @endforeach
-                    
+
                 </div>
             </div>
         </div>
     </div>
 </section>
-    
+
 @endsection

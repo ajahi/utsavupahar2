@@ -137,6 +137,8 @@ Route::post('addItemByOne',[CartController::class],'addItemByOne')->name('addIte
 Route::get('about_us',[FeedController::class,'about_us'])->name('aboutus');
 Route::get('contact_us',[FeedController::class,'contact_us'])->name('contactus');
 Route::get('/product/{slug}',[FeedController::class,'show'])->name('front.product');
+
+ROute::get('/category/{slug}',[CategoryController::class,'showBySlug'])->name('front.category');
 Route::get('test',function(){
     $res=new Otp();
     $res->generate('9805816686',5,10);

@@ -239,11 +239,10 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <li class="right-side">
-                                        <a href="wishlist.html" class="btn p-0 position-relative header-wishlist">
-                                            <i data-feather="heart"></i>
-                                        </a>
-                                    </li>
+                                    {{-- <li class="right-side">
+                                        
+                                        @livewire('add-wishlist')
+                                    </li> --}}
                                     @livewire('nav-cart')
                                     <li class="right-side onhover-dropdown">
                                         <div class="delivery-login-box">
@@ -1436,7 +1435,7 @@
     <script src="//code.jquery.com/jquery.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="{{asset('/frontassets/js/jquery-3.6.0.min.js')}}" ></script>
-    <script>
+    {{-- <script>
         // Wait for the document to be ready
         $(document).ready(function() {
             // Check if the flash message exists
@@ -1452,7 +1451,7 @@
                 }, 3000);
             }
         });
-    </script>
+    </script> --}}
 
     <!-- jquery ui-->
     <script src="{{asset('/frontassets/js/jquery-ui.min.js')}}"></script>

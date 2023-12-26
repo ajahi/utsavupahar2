@@ -15,6 +15,12 @@
                                 <li>{{$order->created_at->toDateString()}}</li>
                                 <li>{{count($orderDetail)}}</li>
                                 <li>Total RS {{$order->total_amount}}</li>
+                                
+                                <li class="bg-primary text-light  p-3">
+                                    
+                                        @livewire('order-status', ['oid' => $order->id])
+                                    
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -25,11 +31,10 @@
                                     <table class="table cart-table table-borderless">
                                         <thead>
                                             <tr>
-                                                <th colspan="2">Items ({{$order->status}})</th>
+                                                <th colspan="2" id="order-status">Items ({{$order->status}})</th>
                                                 <th class="text-end" colspan="2">
-                                                    <a href="#"
-                                                        class="theme-color">Edit
-                                                        Status</a>
+
+
                                                 </th>
                                             </tr>
                                         </thead>
@@ -39,8 +44,7 @@
                                             <tr class="table-order">
                                                 <td>
                                                     <a href="javascript:void(0)">
-                                                        <img src={{$item->product->getMedia('images')->first()->getFullUrl()}}
-                                                            class="img-fluid blur-up lazyload" alt="">
+                                                        <img src={{$item->product->getMedia('images')->first()->getFullUrl()}} class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                 </td>
                                                 <td>
@@ -58,7 +62,7 @@
                                                 </td>
                                             </tr>
                                             @endforeach
-                                            
+
                                         </tbody>
 
                                         <tfoot>
@@ -67,7 +71,7 @@
                                                     <h5>Subtotal :</h5>
                                                 </td>
                                                 <td>
-                                                    <h4>RS </h4>
+                                                    <h4>RS {{$subTotal}}</h4>
                                                 </td>
                                             </tr>
 
@@ -76,18 +80,18 @@
                                                     <h5>Shipping :</h5>
                                                 </td>
                                                 <td>
-                                                    <h4>RS 100</h4>
+                                                    <h4>RS {{$shipping}}</h4>
                                                 </td>
                                             </tr>
 
-                                            
+
 
                                             <tr class="table-order">
                                                 <td colspan="3">
                                                     <h4 class="theme-color fw-bold">Total Price :</h4>
                                                 </td>
                                                 <td>
-                                                    <h4 class="theme-color fw-bold">RS{{$order->total_amount}}</h4>
+                                                    <h4 class="theme-color fw-bold">RS{{$total}}</h4>
                                                 </td>
                                             </tr>
                                         </tfoot>
@@ -100,6 +104,10 @@
                                     <div class="row g-4">
                                         <h4>summery</h4>
                                         <ul class="order-details">
+                                            <li>User Name:{{$user->name}}</li>
+                                            <li>User Number:{{$user->phone_number}}</li>
+                                        </ul>
+                                        <ul class="order-details">
                                             <li>Order ID: {{$order->order_number}}</li>
                                             <li>Order Date: {{$order->created_at->toDateString()}}</li>
                                             <li>Order Total: RS.{{$order->total_amount}}</li>
@@ -108,7 +116,7 @@
                                         <h4>shipping address</h4>
                                         <ul class="order-details">
                                             <li>{{$order->shipping_address}}</li>
-                                            
+
                                         </ul>
 
                                         <div class="payment-mode">
@@ -132,6 +140,12 @@
         </div>
     </div>
 </div>
-
+<script>
+    document.addEventListener('livewire:init', () => {
+        Livewire.on('order-status-changed', (status) => {
+            document.getElementById('order-status').innerText = "Items (" + status + ")";
+        });
+    });
+</script>
 
 @endsection

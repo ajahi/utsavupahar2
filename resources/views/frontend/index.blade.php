@@ -7,15 +7,14 @@
             <div class="col-xl-8 ratio_65">
                 <div class="home-contain h-100">
                     <div class="h-100">
-                        <img src="frontassets/images/vegetable/banner/1.jpg" class="bg-img blur-up lazyload" alt="">
+                        <img src="frontassets/images/vegetable/banner/christmas.jpg" class="bg-img blur-up lazyload" alt="">
                     </div>
                     <div class="home-detail p-center-left w-75">
                         <div>
                             <h6>Exclusive offer <span>30% Off</span></h6>
                             <h1 class="text-uppercase">Stay home & delivered your <span class="daily">Daily
                                     Needs</span></h1>
-                            <p class="w-75 d-none d-sm-block">Vegetables contain many vitamins and minerals that are
-                                good for your health.</p>
+                            <p class="w-75 d-none d-sm-block">Best gift ideas for men.</p>
                             <button onclick="location.href = 'shop-left-sidebar.html';"
                                 class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i
                                     class="fa-solid fa-right-long icon"></i></button>
@@ -28,7 +27,7 @@
                 <div class="row g-4">
                     <div class="col-xl-12 col-md-6">
                         <div class="home-contain">
-                            <img src="frontassets/images/vegetable/banner/2.jpg" class="bg-img blur-up lazyload"
+                            <img src="frontassets/images/vegetable/banner/right-banner.jpg" class="bg-img blur-up lazyload"
                                 alt="">
                             <div class="home-detail p-center-left home-p-sm w-75">
                                 <div>
@@ -36,7 +35,7 @@
                                     </h2>
                                     <h3 class="theme-color">Nut Collection</h3>
                                     <p class="w-75">We deliver organic vegetables & fruits</p>
-                                    <a href="shop-left-sidebar.html" class="shop-button">Shop Now <i
+                                    <a href="{{route('front.category','marriage')}}" class="shop-button">Shop Now <i
                                             class="fa-solid fa-right-long"></i></a>
                                 </div>
                             </div>
@@ -45,14 +44,14 @@
 
                     <div class="col-xl-12 col-md-6">
                         <div class="home-contain">
-                            <img src="frontassets/images/vegetable/banner/3.jpg" class="bg-img blur-up lazyload"
+                            <img src="frontassets/images/vegetable/banner/healthy.jpg" class="bg-img blur-up lazyload"
                                 alt="">
                             <div class="home-detail p-center-left home-p-sm w-75">
                                 <div>
                                     <h3 class="mt-0 theme-color fw-bold">Healthy Food</h3>
                                     <h4 class="text-danger">Organic Market</h4>
                                     <p class="organic">Start your daily shopping with some Organic food</p>
-                                    <a href="shop-left-sidebar.html" class="shop-button">Shop Now <i
+                                    <a href="{{route('front.category','anniversary')}}" class="shop-button">Shop Now <i
                                             class="fa-solid fa-right-long"></i></a>
                                 </div>
                             </div>
@@ -71,14 +70,14 @@
         <div class="banner-slider">
             <div>
                 <div class="banner-contain hover-effect">
-                    <img src="frontassets/images/vegetable/banner/4.jpg" class="bg-img blur-up lazyload" alt="">
+                    <img src="frontassets/images/vegetable/banner/eggs.jpg" class="bg-img blur-up lazyload" alt="">
                     <div class="banner-details">
                         <div class="banner-box">
                             <h6 class="text-danger">5% OFF</h6>
                             <h5>Hot Deals on New Items</h5>
                             <h6 class="text-content">Daily Essentials Eggs & Dairy</h6>
                         </div>
-                        <a href="shop-left-sidebar.html" class="banner-button text-white">Shop Now <i
+                        <a href="{{route('front.category','birthday')}}" class="banner-button text-white">Shop Now <i
                                 class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
@@ -86,14 +85,14 @@
 
             <div>
                 <div class="banner-contain hover-effect">
-                    <img src="frontassets/images/vegetable/banner/5.jpg" class="bg-img blur-up lazyload" alt="">
+                    <img src="frontassets/images/vegetable/banner/veg.jpg" class="bg-img blur-up lazyload" alt="">
                     <div class="banner-details">
                         <div class="banner-box">
                             <h6 class="text-danger">5% OFF</h6>
                             <h5>Buy More & Save More</h5>
                             <h6 class="text-content">Fresh Vegetables</h6>
                         </div>
-                        <a href="shop-left-sidebar.html" class="banner-button text-white">Shop Now <i
+                        <a href="{{route('front.category','baby-shower')}}" class="banner-button text-white">Shop Now <i
                                 class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
@@ -101,14 +100,14 @@
 
             <div>
                 <div class="banner-contain hover-effect">
-                    <img src="frontassets/images/vegetable/banner/6.jpg" class="bg-img blur-up lazyload" alt="">
+                    <img src="frontassets/images/vegetable/banner/left.png" class="bg-img blur-up lazyload" alt="">
                     <div class="banner-details">
                         <div class="banner-box">
                             <h6 class="text-danger">5% OFF</h6>
                             <h5>Organic Meat Prepared</h5>
                             <h6 class="text-content">Delivered to Your Home</h6>
                         </div>
-                        <a href="shop-left-sidebar.html" class="banner-button text-white">Shop Now <i
+                        <a href="{{route('front.category','graduations')}}" class="banner-button text-white">Shop Now <i
                                 class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
@@ -116,14 +115,14 @@
 
             <div>
                 <div class="banner-contain hover-effect">
-                    <img src="frontassets/images/vegetable/banner/7.jpg" class="bg-img blur-up lazyload" alt="">
+                    <img src="frontassets/images/vegetable/banner/snacks.jpg" class="bg-img blur-up lazyload" alt="">
                     <div class="banner-details">
                         <div class="banner-box">
                             <h6 class="text-danger">5% OFF</h6>
                             <h5>Buy More & Save More</h5>
                             <h6 class="text-content">Nuts & Snacks</h6>
                         </div>
-                        <a href="shop-left-sidebar.html" class="banner-button text-white">Shop Now <i
+                        <a href="{{route('front.category','coorporate')}}" class="banner-button text-white">Shop Now <i
                                 class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
@@ -142,89 +141,20 @@
                     <div class="category-menu">
                         <h3>Category</h3>
                         <ul>
+                            @foreach($categories as $category)
                             <li>
                                 <div class="category-list">
                                     <img src="frontassets/svg/1/vegetable.svg" class="blur-up lazyload" alt="">
                                     <h5>
-                                        <a href="shop-left-sidebar.html">Vegetables & Fruit</a>
+                                        <a href="{{route('front.category',$category->slug)}}">{{ucwords($category->name)}}</a>
                                     </h5>
                                 </div>
                             </li>
-                            <li>
-                                <div class="category-list">
-                                    <img src="frontassets/svg/1/cup.svg" class="blur-up lazyload" alt="">
-                                    <h5>
-                                        <a href="shop-left-sidebar.html">Beverages</a>
-                                    </h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="category-list">
-                                    <img src="frontassets/svg/1/meats.svg" class="blur-up lazyload" alt="">
-                                    <h5>
-                                        <a href="shop-left-sidebar.html">Meats & Seafood</a>
-                                    </h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="category-list">
-                                    <img src="frontassets/svg/1/breakfast.svg" class="blur-up lazyload" alt="">
-                                    <h5>
-                                        <a href="shop-left-sidebar.html">Breakfast & Dairy</a>
-                                    </h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="category-list">
-                                    <img src="frontassets/svg/1/frozen.svg" class="blur-up lazyload" alt="">
-                                    <h5>
-                                        <a href="shop-left-sidebar.html">Frozen Foods</a>
-                                    </h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="category-list">
-                                    <img src="frontassets/svg/1/biscuit.svg" class="blur-up lazyload" alt="">
-                                    <h5>
-                                        <a href="shop-left-sidebar.html">Biscuits & Snacks</a>
-                                    </h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="category-list">
-                                    <img src="frontassets/svg/1/grocery.svg" class="blur-up lazyload" alt="">
-                                    <h5>
-                                        <a href="shop-left-sidebar.html">Grocery & Staples</a>
-                                    </h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="category-list">
-                                    <img src="frontassets/svg/1/drink.svg" class="blur-up lazyload" alt="">
-                                    <h5>
-                                        <a href="shop-left-sidebar.html">Wines & Alcohol Drinks</a>
-                                    </h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="category-list">
-                                    <img src="frontassets/svg/1/milk.svg" class="blur-up lazyload" alt="">
-                                    <h5>
-                                        <a href="shop-left-sidebar.html">Milk & Dairies</a>
-                                    </h5>
-                                </div>
-                            </li>
-                            <li class="pb-30">
-                                <div class="category-list">
-                                    <img src="frontassets/svg/1/pet.svg" class="blur-up lazyload" alt="">
-                                    <h5>
-                                        <a href="shop-left-sidebar.html">Pet Foods</a>
-                                    </h5>
-                                </div>
-                            </li>
+                            @endforeach
+                            
                         </ul>
 
-                        <ul class="value-list">
+                        {{-- <ul class="value-list">
                             <li>
                                 <div class="category-list">
                                     <h5 class="ms-0 text-title">
@@ -246,7 +176,7 @@
                                     </h5>
                                 </div>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
 
                     <div class="ratio_156 section-t-space">
@@ -449,6 +379,107 @@
                 </div>
 
                 <div class="section-b-space">
+                    <div class="product-border border-row overflow-hidden">
+                        <div class="product-box-slider no-arrow">
+                            @foreach($products as $product)
+                            <div>
+                                <div class="row m-0">
+                                    <div class="col-12 px-0">
+                                        <div class="product-box">
+                                            <div class="product-image">
+                                                <a href="{{route('front.product',$product->slug)}}" target="blank">
+                                                    @if($product->getMedia('images')->first())
+                                                    <img src="{{$product->getMedia('images')->first()->getFullUrl()}}" alt={{$product->name}}
+                                                        class="img-fluid blur-up lazyload" alt="{{$product->name}}">
+                                                        @else
+                                                        <img src="frontassets/images/bg.jpg" alt="empty image" class="img-fluid blur-up lazyload">
+                                                        @endif
+                                                </a>
+                                                {{-- <ul class="product-option">
+                                                    <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="View">
+                                                        <a href="javascript:void(0)" data-bs-toggle="modal"
+                                                            data-bs-target="#view">
+                                                            <i data-feather="eye"></i>
+                                                        </a>
+                                                    </li>
+                                        
+                                                    <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Compare">
+                                                        <a href="compare.html">
+                                                            <i data-feather="refresh-cw"></i>
+                                                        </a>
+                                                    </li>
+                                        
+                                                    <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Wishlist">
+                                                        <a href="wishlist.html" class="notifi-wishlist">
+                                                            <i data-feather="heart"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul> --}}
+                                            </div>
+                                            <div class="product-detail">
+                                                <span class="span-name">{{ucwords($product->category->first()->name)}}</span>
+                                                <a href="{{route('front.product',$product->slug)}}">
+                                                    <h5 class="name">{{ucwords($product->name)}}</h5>
+                                                
+                                                <div class="product-rating mt-2">
+                                                    <ul class="rating">
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star" class="fill"></i>
+                                                        </li>
+                                                        <li>
+                                                            <i data-feather="star"></i>
+                                                        </li>
+                                                    </ul>
+                                                    <span>(4.0)</span>
+                                                </div>
+                                                
+                                                <h6 class="unit">{{ucwords($product->discount_p)}} % OFF</h6>
+                                                <h5 class="price"><span class="theme-color">RS {{($product->variants->first()->price) -($product->variants->first()->price * $product->discount_p/100)}} </span> <del>RS {{$product->variants->first()->price}}</del>
+                                                </h5>
+                                            </a>
+                                                {{-- <div class="add-to-cart-box bg-white">
+                                                    <button class="btn btn-add-cart addcart-button">Add
+                                                        <span class="add-icon bg-light-gray">
+                                                            <i class="fa-solid fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                    <div class="cart_qty qty-box">
+                                                        <div class="input-group bg-white">
+                                                            <button type="button" class="qty-left-minus bg-gray"
+                                                                data-type="minus" data-field="">
+                                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                                            </button>
+                                                            <input class="form-control input-number qty-input" type="text"
+                                                                name="quantity" value="0">
+                                                            <button type="button" class="qty-right-plus bg-gray"
+                                                                data-type="plus" data-field="">
+                                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                        
+                                    </div> 
+                                </div>
+                            </div>
+                            @endforeach 
+                        </div>
+                    </div>
+
                     <div class="product-border border-row overflow-hidden">
                         <div class="product-box-slider no-arrow">
                             @foreach($products as $product)

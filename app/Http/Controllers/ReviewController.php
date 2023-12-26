@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ReviewRequest;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
@@ -17,17 +16,29 @@ class ReviewController extends Controller
         return view('cms.review.index', compact('reviews'));
     }
 
-    public function create()
-    {
-        return view('cms.review.create');
-    }
+    
 
-    public function store(ReviewRequest $request)
-    {
-        $validatedData = $request->validated();
-        Review::create($validatedData);
-        return redirect()->route('cms.review.index')->with('success', 'Review created successfully');
-    }
+    public function store(Request $request)
+{
+    
+    $rules = [
+        'user_id' => 'required|exists:users,id',
+        'product_id' => 'required|exists:products,id',
+        'rating' => 'required|integer|between:1,5',
+        'comment' => 'required|string|max:255',
+    ];
+
+    $messages = [
+        'rating.between' => 'The rating must be between 1 and 5.',
+    ];
+
+    $validatedData = $request->validate($rules, $messages);
+
+    Review::create($validatedData);
+
+    return redirect()->back()->with('success', 'Review created successfully');
+}
+
 
     public function show(Review $review)
     {

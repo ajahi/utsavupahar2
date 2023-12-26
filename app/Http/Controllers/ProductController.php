@@ -70,7 +70,6 @@ class ProductController extends Controller
         for($i=0;$i<count(array_filter($request->variants));$i++){
             Variant::create([
                 'name'=>$request->variants[$i],
-                
                 'status'=>$request->status[$i],
                 'quantity'=>$request->quantities[$i],
                 'price'=>$request->prices[$i],
@@ -100,7 +99,11 @@ class ProductController extends Controller
      
     public function show(Product $product)
     {
-        return view('cms.product.show',['product'=>$product]);
+        return view('cms.product.show',
+        [
+            'product'=>$product,
+            'reviews'=>$product->review
+        ]);
     }
 
     public function edit(Product $product){
@@ -133,13 +136,24 @@ class ProductController extends Controller
                 ]); 
             }
         }
-        if($request->has('images')&&$request->images!==null){
-            if($product->getMedia('images')->first()!==null){
-                $product->getMedia('images')->first()->delete();
-                $product->addMediaFromRequest('images')->toMediaCollection('images');
+       
+        if ($request->has('images') && $request->images !== null) {
+            // Check if there is an existing image
+            $existingImage = $product->getFirstMedia('images');
+        
+            if ($existingImage !== null) {
+                // Delete the existing image
+                $existingImage->delete();
             }
-            $product->addMediaFromRequest('images')->toMediaCollection('images');
+        
+            // Add the new images
+            $fileAdders = $product->addMultipleMediaFromRequest(['images'])
+                ->each(function ($fileAdder) {
+                    $fileAdder->toMediaCollection('images');
+                });
         }
+        
+       
         return redirect()->route('product.index')->with('info','Succesfully updated your Product.');
     }
 

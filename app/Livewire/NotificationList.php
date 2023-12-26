@@ -6,18 +6,20 @@ use Livewire\Component;
 
 class NotificationList extends Component
 {
-    public $notifications;
-    public function markAllAsRead()
+    public $readNotifications, $unreadNotifications;
+    // public function markAllAsRead()
+    // {
+    //     $this->notifications->markAsRead();
+    // }
+    public function markOneAsRead($id, $oid)
     {
-        $this->notifications->markAsRead();
-    }
-    public function markOneAsRead($id)
-    {
-        $this->notifications->find($id)->markAsRead();
+        $this->unreadNotifications->find($id)?->markAsRead();
+        return redirect()->route('order.show', $oid);
     }
     public function render()
     {
-        $this->notifications = auth()->user()->unreadNotifications;
+        $this->readNotifications = auth()->user()->readNotifications;
+        $this->unreadNotifications = auth()->user()->unreadNotifications;
         return view('livewire.notification-list');
     }
 }

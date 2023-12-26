@@ -8,10 +8,7 @@
             <li>
                 
                 {{-- class='active' for button clicked--}} 
-                <button class="form-control"
-                    wire:click="updateVariant({{$variant->id}})"  
-                    {{($variant->stock < 2) ?  'disabled' : ' '; }}
-                    style="padding: 0;">
+                <button wire:click='updateVariant({{$variant->id}})' class="form-control" style="padding:0">
                     <a  class="{{ $activeVariant == $variant->id ? 'active' : '' }}"> 
                         <b>{{$variant->name}}</b>
                         , RS @if($product->discount_p) <del>{{$variant->price}}</del> {{'RS '. ($variant->price - $variant->price*$product->discount_p/100)}} @else  {{'RS '.$variant->price}}@endif

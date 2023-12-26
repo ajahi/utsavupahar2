@@ -43,6 +43,16 @@ class CategoryController extends Controller
         return view('categories.show', compact('category'));
     }
 
+    public function showBySlug(Request $request){
+        $cat=Category::where('slug',$request->slug)->first();
+        
+        return view('frontend.category',[
+            'category'=>$cat,
+            'products'=>$cat->products,
+            'categories'=>Category::all()
+        ]);
+    }
+
     public function edit(Category $category)
     {
         $categories = Category::where('parent_id',null)->get();

@@ -2,33 +2,35 @@
 
     <div class="notification-box">
         <i class="ri-notification-line"></i>
-        <span class="badge rounded-pill badge-theme">{{$notifications->count()}}</span>
+        <span class="badge rounded-pill badge-theme">{{$unreadNotifications->count()}}</span>
     </div>
-    <ul class="notification-dropdown onhover-show-div">
-        <li>
+    <ul class="notification-dropdown onhover-show-div" style="overflow-y: scroll; max-height: 50vh;">
+        <li class="mb-2">
             <i class="ri-notification-line"></i>
             <h6 class="f-18 mb-0">Notitications</h6>
         </li>
-
-        @foreach ($notifications as $notification)
-        <li wire:key="{{$notification->id}}" wire:click.prevent="markOneAsRead('{{$notification->id}}')">
+        @foreach ($unreadNotifications as $notification)
+        <li class="mb-2" style="background-color: rgba(13, 164, 135, 0.5);" wire:key="{{$notification->id}}" wire:click.prevent="markOneAsRead('{{$notification->id}}', '{{$notification->data['oid']}}')">
             <p>
-                <i class="fa fa-circle me-2 font-primary"></i>{{$notification->data['message']}} <span class="pull-right">{{$notification->created_at->diffForHumans()}}</span>
+                <i class="fa fa-circle me-2 font-primary"></i>{{$notification->data['message']}} <span class="pull-right font-primary">{{$notification->created_at->diffForHumans()}}</span>
             </p>
         </li>
         @endforeach
-        @if($notifications->count())
-        <li>
-            <a class="btn btn-primary" wire:click.prevent="markAllAsRead" href="#" data-bs-original-title="" title="">Check all notification</a>
+        @foreach ($readNotifications as $notification)
+        <li class="mb-2" wire:key="{{$notification->id}}" wire:click.prevent="markOneAsRead('{{$notification->id}}', '{{$notification->data['oid']}}')">
+            <p>
+                <i class="fa fa-circle me-2 font-secondary"></i>{{$notification->data['message']}} <span class="pull-right">{{$notification->created_at->diffForHumans()}}</span>
+            </p>
         </li>
-        @endif
+        @endforeach
+
     </ul>
 
     @script
     <script>
         setInterval(() => {
             $wire.$refresh()
-        }, 2000)
+        }, 4000)
     </script>
     @endscript
 </div>
