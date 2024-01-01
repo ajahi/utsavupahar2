@@ -196,13 +196,15 @@
                                 </div>
 
                                 <div class="search-box">
-                                    <div class="input-group">
-                                        <input wire:model="search" type="search" class="form-control" placeholder="I'm searching for..."
-                                            aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <button class="btn" type="button" id="button-addon2">
-                                            <i data-feather="search"></i>
-                                        </button>
-                                    </div>
+                                    <form action="{{route('search')}}" method="GET">
+                                        <div class="input-group">
+                                            <input name='search' type="search" class="form-control" placeholder="I'm searching for..."
+                                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                                            <button class="btn" type="button" id="button-addon2" onclick="this.form.submit()">
+                                                <i data-feather="search"></i>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
 
@@ -274,6 +276,9 @@
                                                 @auth
                                                 <li>
                                                     {{ucwords(Auth::user()->name)}}
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Dashboard</a>
                                                 </li>
                                                 <li>
                                                     <form action="{{route('logout')}}" method="POST">

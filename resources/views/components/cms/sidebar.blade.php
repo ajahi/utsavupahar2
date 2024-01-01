@@ -15,8 +15,7 @@
         <div class="logo-icon-wrapper">
             <a href="index.html">
                 <img class="img-fluid main-logo main-white" src="{{asset('assets/images/logo/logo.png')}}" alt="logo">
-                <img class="img-fluid main-logo main-dark" src="{{asset('assets/images/logo/logo-white.png')}}"
-                    alt="logo">
+                <img class="img-fluid main-logo main-dark" src="{{asset('assets/images/logo/logo-white.png')}}" alt="logo">
             </a>
         </div>
         <nav class="sidebar-main">
@@ -123,10 +122,24 @@
                         </a>
                         <ul class="sidebar-submenu">
                             <li>
-                                <a href="role.html">All roles</a>
+                                <a href="{{route('roles.index')}}">All roles</a>
                             </li>
                             <li>
-                                <a href="create-role.html">Create Role</a>
+                                <a href="{{route('roles.create')}}">Create Role</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                            <i class="ri-user-3-line"></i>
+                            <span>Permissions</span>
+                        </a>
+                        <ul class="sidebar-submenu">
+                            <li>
+                                <a href="{{route('permissions.index')}}">All Permissions</a>
+                            </li>
+                            <li>
+                                <a href="{{route('permissions.create')}}">Create Permission</a>
                             </li>
                         </ul>
                     </li>
@@ -138,7 +151,7 @@
                         </a>
                     </li>
 
-                    
+
 
                     {{-- <li class="sidebar-list">
                         <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">

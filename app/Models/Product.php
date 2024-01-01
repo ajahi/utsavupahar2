@@ -6,11 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Product extends Model implements HasMedia
+class Product extends Model implements HasMedia, Searchable
 {
     use HasFactory,InteractsWithMedia;
     protected $guarded=[];
+
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('front.product', $this->slug);
+        
+        return new SearchResult(
+            $this,
+            $this->name,
+            $url
+        );
+    }
 
     public function category(){
         return $this->belongsToMany(Category::class);
