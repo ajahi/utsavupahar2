@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserController;
 use App\Livewire\SearchWebsite;
 
 /*
@@ -46,6 +47,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
     Route::get('order_success/{id}', [OrderController::class, 'orderSuccess'])->name('order.success');
+    Route::get('track-order/{id}', [OrderController::class, 'track'])->name('order.track');
     Route::post('order', [OrderController::class, 'store'])->name('store.checkout');
 
 
@@ -59,7 +61,9 @@ Route::middleware('auth')->group(function () {
         });
         Route::get('/notifications', [NotificationController::class, 'getAllNotifications']);
         Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::post('/users/role/{user}', [UserController::class, 'assignRole'])->name('users.assign_role');
+        Route::post('/users/permission/{user}', [UserController::class, 'assignPermission'])->name('users.assign_permission');
         Route::resource('product', ProductController::class,  [
             'names' => [
                 'index' => 'product.index',
@@ -145,10 +149,10 @@ Route::middleware('auth')->group(function () {
                 'update' => 'permissions.update',
                 'store' => 'permissions.store',
                 'destroy' => 'permissions.delete',
-                ]
-            ]);
-        });
-        Route::post('/{permission}/update-roles', [PermissionController::class, 'change'])->name('permissions.roles.change');
+            ]
+        ]);
+    });
+    Route::post('/{permission}/update-roles', [PermissionController::class, 'change'])->name('permissions.roles.change');
 });
 Route::get('otp/{id}', [RegisteredUserController::class, 'otpShow'])->name('otp.show');
 Route::post('otpVerification', [RegisteredUserController::class, 'otpVerification'])->name('otp.verification');

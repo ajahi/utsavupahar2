@@ -36,7 +36,7 @@ class OrderController extends Controller
         }
 
         // Paginate the results with 10 items per page (you can adjust as needed)
-        $orders = $query->orderBy('created_at','desc')->paginate(10);
+        $orders = $query->orderBy('created_at', 'desc')->paginate(10);
 
         return view('cms.order.index', compact('orders', 'search'));
     }
@@ -89,7 +89,7 @@ class OrderController extends Controller
             'shipping' => $shipping,
             'total' => Number::format($totalCost),
             'subTotal' => Number::format($order->total_amount),
-            'user'=>$order->user
+            'user' => $order->user
         ]);
     }
 
@@ -124,5 +124,12 @@ class OrderController extends Controller
             'order' => $order,
             'expected_delivery_date' => $order->created_at->addDays(4)
         ]);
+    }
+
+    public function track($id)
+    {
+        $order = Order::findOrFail($id);
+        // dd($order);
+        return view('frontend.track-order', ['order' => $order]);
     }
 }

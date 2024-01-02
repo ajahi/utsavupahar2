@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="breadscrumb-contain breadscrumb-order">
-                    <div class="order-box">
+                    <div class="order-box"> 
                         <div class="order-image">
                             <div class="checkmark">
                                 <svg class="star" height="19" viewBox="0 0 19 19" width="19"
@@ -180,7 +180,7 @@
                                 <li class="pb-0">
                                     <h4>Expected Date Of Delivery:</h4>
                                     <h4 class="price theme-color">
-                                        <a href="order-tracking.html" class="text-danger">Track Order</a>
+                                        <a href="{{route('order.track', $order->id)}}" class="text-danger">Track Order</a>
                                     </h4>
                                 </li>
                             </ul>

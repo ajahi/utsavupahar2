@@ -41,7 +41,7 @@
                            <div class="product-box-3 h-100">
                                <div class="product-header">
                                    <div class="product-image">
-                                       <a href="product-left-thumbnail.html">
+                                       <a href="{{$searchResult->url}}">
                                            <img src="{{$searchResult->searchable->getMedia('images')->first()?->getFullUrl()}}" class="img-fluid" alt="{{$type}}">
                                        </a>
                                    </div>

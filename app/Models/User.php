@@ -8,10 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Ichtrojan\Otp\Otp;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -45,11 +48,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function numero(){
+    public function numero()
+    {
         return $this->phone_number;
     }
 
-    public function sendSms($mssg){
+    public function sendSms($mssg)
+    {
         //otp generation
         $apiUrl = "http://api.sparrowsms.com/v2/sms/?" . http_build_query([
             'token' => 'v2_P7mMPVea8k3vQytf7cW5xJXQj1A.ulcg',
@@ -59,19 +64,18 @@ class User extends Authenticatable
         ]);
 
         $response = file_get_contents($apiUrl);
-        return $response;       
+        return $response;
     }
     //returns array [status: bool,token: string,message:string]
-    public function otpGenerate(){
-        $otp=new Otp();
-        $code=$otp->generate($this->phone_number,5,10);
+    public function otpGenerate()
+    {
+        $otp = new Otp();
+        $code = $otp->generate($this->phone_number, 5, 10);
         return $code;
     }
 
-    public function orders(){
+    public function orders()
+    {
         return $this->hasMany(Order::class);
     }
-
-    
 };
-    

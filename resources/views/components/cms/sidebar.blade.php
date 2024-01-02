@@ -107,11 +107,11 @@
                         </a>
                         <ul class="sidebar-submenu">
                             <li>
-                                <a href="all-users.html">All users</a>
+                                <a href="{{route('users.index')}}">All users</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="add-new-user.html">Add new user</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
 
