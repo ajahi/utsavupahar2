@@ -27,7 +27,6 @@
                                         <th>User Image</th>
                                         <th>User Name</th>
                                         <th>Roles</th>
-                                        <th>Permissions</th>
                                     </tr>
                                 </thead>
 
@@ -49,47 +48,63 @@
 
                                         <td>{{$user->name}}</td>
 
-                                        <td class="justify-start">
+                                        {{-- <td class="justify-start">
                                             <form class="theme-form theme-form-2 mega-form" action="{{route('users.assign_role', $user->id)}}" method="post">
+                                        @csrf
+                                        <div class="roles-form">
+                                            <ul>
+                                                @foreach ($roles as $role)
+                                                <li>
+                                                    @if ($user->hasRole($role->name))
+                                                    <input onchange="this.form.submit()" class="checkbox_animated checkall" name="roles[]" type="checkbox" value="{{$role->name}}" id="{{$role->name}}" checked />
+                                                    @else
+                                                    <input onchange="this.form.submit()" class="checkbox_animated checkall" name="roles[]" type="checkbox" value="{{$role->name}}" id="{{$role->name}}" />
+                                                    @endif
+                                                    <label class="form-check-label m-0" for="{{$role->name}}">{{$role->name}}</label>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        </form>
+
+
+                                        </td> --}}
+                                        <td class="justify-start">
+                                            <form class="theme-form theme-form-2 mega-form d-flex gap-2" action="{{route('users.assign_role', $user->id)}}" method="post">
                                                 @csrf
-                                                <div class="roles-form">
-                                                    <ul>
-                                                        @foreach ($roles as $role)
-                                                        <li>
-                                                            @if ($user->hasRole($role->name))
-                                                            <input onchange="this.form.submit()" class="checkbox_animated checkall" name="roles[]" type="checkbox" value="{{$role->name}}" id="{{$role->name}}" checked />
-                                                            @else
-                                                            <input onchange="this.form.submit()" class="checkbox_animated checkall" name="roles[]" type="checkbox" value="{{$role->name}}" id="{{$role->name}}" />
-                                                            @endif
-                                                            <label class="form-check-label m-0" for="{{$role->name}}">{{$role->name}}</label>
-                                                        </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
+                                                <select name="roles[]" class="form-control">
+                                                    <option value="">Select roles to assign</option>
+                                                    @foreach ($roles as $role)
+                                                    <option value="{{$role->name}}" {{ $user->hasRole($role->name) ? 'selected' : ""}}>
+                                                        {{$role->name}}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                                <button type="submit" class="btn btn-sm btn-primary">Assign</button>
                                             </form>
 
 
                                         </td>
-                                        <td>
+                                        {{--<td>
                                             <form class="theme-form theme-form-2 mega-form" action="{{route('users.assign_permission', $user->id)}}" method="post">
-                                                @csrf
-                                                <div class="roles-form">
-                                                    <ul>
-                                                        @foreach ($permissions as $permission)
-                                                        <li>
-                                                            @if ($user->can($permission->name))
-                                                            <input onchange="this.form.submit()" class="checkbox_animated checkall" name="permissions[]" type="checkbox" value="{{$permission->name}}" id="{{$permission->name}}" checked />
-                                                            @else
-                                                            <input onchange="this.form.submit()" class="checkbox_animated checkall" name="permissions[]" type="checkbox" value="{{$permission->name}}" id="{{$permission->name}}" />
-                                                            @endif
-                                                            <label class="form-check-label m-0" for="{{$permission->name}}">{{$permission->name}}</label>
-                                                        </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </form>
+                                        @csrf
+                                        <div class="roles-form">
+                                            <ul>
+                                                @foreach ($permissions as $permission)
+                                                <li>
+                                                    @if ($user->can($permission->name))
+                                                    <input onchange="this.form.submit()" class="checkbox_animated checkall" name="permissions[]" type="checkbox" value="{{$permission->name}}" id="{{$permission->name}}" checked />
+                                                    @else
+                                                    <input onchange="this.form.submit()" class="checkbox_animated checkall" name="permissions[]" type="checkbox" value="{{$permission->name}}" id="{{$permission->name}}" />
+                                                    @endif
+                                                    <label class="form-check-label m-0" for="{{$permission->name}}">{{$permission->name}}</label>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        </form>
 
-                                        </td>
+                                        </td>--}}
 
                                     </tr>
                                     @endforeach

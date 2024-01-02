@@ -35,7 +35,7 @@
                                 <h5>Product Information</h5>
                             </div>
 
-                            <form class="theme-form theme-form-2 mega-form" method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
+                            <form  method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-4 row align-items-center" @if($errors->has('name'))style="background-color: rgb(248, 186, 181);" @endif>
                                     <label class="form-label-title col-sm-3 mb-0">Product
