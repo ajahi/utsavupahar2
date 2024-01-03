@@ -26,6 +26,9 @@ class UpdateBlogRequest extends FormRequest
             'content' => 'required',
             'quote' => 'nullable',
             'quote_author' => 'required_with:quote',
+            'status' => 'nullable',
+            'meta_title' => 'nullable',
+            'meta_description' => 'nullable',
             'image' => 'nullable',
         ];
     }

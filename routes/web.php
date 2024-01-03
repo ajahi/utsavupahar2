@@ -11,6 +11,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -151,8 +152,19 @@ Route::middleware('auth')->group(function () {
                 'destroy' => 'permissions.delete',
             ]
         ]);
+        Route::post('/{permission}/update-roles', [PermissionController::class, 'change'])->name('permissions.roles.change');
+        Route::resource('blog', BlogController::class,  [
+            'names' => [
+                'index' => 'blog.index',
+                'create' => 'blog.create',
+                'show' => 'blog.show',
+                'edit' => 'blog.edit',
+                'update' => 'blog.update',
+                'store' => 'blog.store',
+                'destroy' => 'blog.delete',
+            ]
+        ]);
     });
-    Route::post('/{permission}/update-roles', [PermissionController::class, 'change'])->name('permissions.roles.change');
 });
 Route::get('otp/{id}', [RegisteredUserController::class, 'otpShow'])->name('otp.show');
 Route::post('otpVerification', [RegisteredUserController::class, 'otpVerification'])->name('otp.verification');

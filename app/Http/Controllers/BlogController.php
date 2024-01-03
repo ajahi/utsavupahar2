@@ -34,7 +34,7 @@ class BlogController extends Controller
     {
         $data = $request->validated();
 
-        $blog = Blog::create($data);
+        $blog = Blog::create(array_diff_key($data, array_flip(['images'])));
 
         if ($request->hasFile('images')) {
             $blog->addMultipleMediaFromRequest(['images'])
@@ -42,7 +42,7 @@ class BlogController extends Controller
                     $fileAdder->toMediaCollection('images');
                 });
         }
-        return redirect()->route('blogs.index')->with('success', "Blog Created Succesfully");
+        return redirect()->route('blog.index')->with('success', "Blog Created Succesfully");
     }
 
     /**
@@ -88,7 +88,7 @@ class BlogController extends Controller
                     $fileAdder->toMediaCollection('images');
                 });
         }
-        return redirect()->route('blogs.index')->with('success', "Blog updated succesfully");
+        return redirect()->route('blog.index')->with('success', "Blog updated succesfully");
     }
 
     /**

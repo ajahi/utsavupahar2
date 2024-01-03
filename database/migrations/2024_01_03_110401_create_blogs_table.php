@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('title');
             $table->longText('content');
             $table->longText('quote')->nullable();
-            $table->string('quote_author');
+            $table->string('quote_author')->nullable(); 
+            $table->longText('meta_title')->nullable();
+            $table->longText('meta_description')->nullable();
+            $table->enum('status', ['published', 'pending'])->default('pending');
             $table->timestamps();
         });
     }
