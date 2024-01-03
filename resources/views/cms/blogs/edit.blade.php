@@ -135,7 +135,7 @@
                                 <label class="col-sm-3 col-form-label form-label-title">Publish Now</label>
                                 <div class="col-sm-9">
                                     <label class="switch">
-                                        <input type="checkbox" name="status" value="published" {{$blog->status === 'published' ? 'checked' : ''}}><span class="switch-state"></span>
+                                        <input type="checkbox" name="status" value="{{$blog->status}}" {{$blog->status === 'published' ? 'checked' : ''}}><span class="switch-state"></span>
                                     </label>
                                 </div>
                             </div>

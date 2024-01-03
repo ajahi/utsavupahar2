@@ -62,7 +62,7 @@
                                         <td>{{$blog->title}}</td>
 
 
-                                        <td class="td-price">RS {{$blog->user->name}}</td>
+                                        <td class="td-price"> {{$blog->user->name}}</td>
 
                                         @if($blog->status=='pending')
                                         <td class="status-danger">

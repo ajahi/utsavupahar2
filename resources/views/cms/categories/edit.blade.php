@@ -21,7 +21,7 @@
                             <h5>Category Information</h5>
                         </div>
 
-                        <form class="theme-form theme-form-2 mega-form" method="POST" action="{{route('category.update',$category)}}">
+                        <form class="theme-form theme-form-2 mega-form" method="POST" action="{{route('category.update',$category)}}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-4 row align-items-center">
@@ -54,7 +54,7 @@
                                             <i class="ri-upload-2-line"></i>
                                             <p>Choose an image file or drag it here.</p>
                                         </div>
-                                        <input type="file" class="dropzone">
+                                        <input type="file" class="dropzone" name="images[]" multiple>
                                     </div>
                                 </div>
                             </div>
