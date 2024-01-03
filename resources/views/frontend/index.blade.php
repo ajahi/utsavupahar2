@@ -15,9 +15,7 @@
                             <h1 class="text-uppercase">Stay home & delivered your <span class="daily">Daily
                                     Needs</span></h1>
                             <p class="w-75 d-none d-sm-block">Best gift ideas for men.</p>
-                            <button onclick="location.href = 'shop-left-sidebar.html';"
-                                class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i
-                                    class="fa-solid fa-right-long icon"></i></button>
+                            <button onclick="location.href = 'shop-left-sidebar.html';" class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i class="fa-solid fa-right-long icon"></i></button>
                         </div>
                     </div>
                 </div>
@@ -27,16 +25,14 @@
                 <div class="row g-4">
                     <div class="col-xl-12 col-md-6">
                         <div class="home-contain">
-                            <img src="frontassets/images/vegetable/banner/right-banner.jpg" class="bg-img blur-up lazyload"
-                                alt="">
+                            <img src="frontassets/images/vegetable/banner/right-banner.jpg" class="bg-img blur-up lazyload" alt="">
                             <div class="home-detail p-center-left home-p-sm w-75">
                                 <div>
                                     <h2 class="mt-0 text-danger">45% <span class="discount text-title">OFF</span>
                                     </h2>
                                     <h3 class="theme-color">Nut Collection</h3>
                                     <p class="w-75">We deliver organic vegetables & fruits</p>
-                                    <a href="{{route('front.category','marriage')}}" class="shop-button">Shop Now <i
-                                            class="fa-solid fa-right-long"></i></a>
+                                    <a href="{{route('front.category','marriage')}}" class="shop-button">Shop Now <i class="fa-solid fa-right-long"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -44,15 +40,13 @@
 
                     <div class="col-xl-12 col-md-6">
                         <div class="home-contain">
-                            <img src="frontassets/images/vegetable/banner/healthy.jpg" class="bg-img blur-up lazyload"
-                                alt="">
+                            <img src="frontassets/images/vegetable/banner/healthy.jpg" class="bg-img blur-up lazyload" alt="">
                             <div class="home-detail p-center-left home-p-sm w-75">
                                 <div>
                                     <h3 class="mt-0 theme-color fw-bold">Healthy Food</h3>
                                     <h4 class="text-danger">Organic Market</h4>
                                     <p class="organic">Start your daily shopping with some Organic food</p>
-                                    <a href="{{route('front.category','anniversary')}}" class="shop-button">Shop Now <i
-                                            class="fa-solid fa-right-long"></i></a>
+                                    <a href="{{route('front.category','anniversary')}}" class="shop-button">Shop Now <i class="fa-solid fa-right-long"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -77,8 +71,7 @@
                             <h5>Hot Deals on New Items</h5>
                             <h6 class="text-content">Daily Essentials Eggs & Dairy</h6>
                         </div>
-                        <a href="{{route('front.category','birthday')}}" class="banner-button text-white">Shop Now <i
-                                class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('front.category','birthday')}}" class="banner-button text-white">Shop Now <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -92,8 +85,7 @@
                             <h5>Buy More & Save More</h5>
                             <h6 class="text-content">Fresh Vegetables</h6>
                         </div>
-                        <a href="{{route('front.category','baby-shower')}}" class="banner-button text-white">Shop Now <i
-                                class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('front.category','baby-shower')}}" class="banner-button text-white">Shop Now <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -107,8 +99,7 @@
                             <h5>Organic Meat Prepared</h5>
                             <h6 class="text-content">Delivered to Your Home</h6>
                         </div>
-                        <a href="{{route('front.category','graduations')}}" class="banner-button text-white">Shop Now <i
-                                class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('front.category','graduations')}}" class="banner-button text-white">Shop Now <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -122,8 +113,7 @@
                             <h5>Buy More & Save More</h5>
                             <h6 class="text-content">Nuts & Snacks</h6>
                         </div>
-                        <a href="{{route('front.category','coorporate')}}" class="banner-button text-white">Shop Now <i
-                                class="fa-solid fa-right-long ms-2"></i></a>
+                        <a href="{{route('front.category','coorporate')}}" class="banner-button text-white">Shop Now <i class="fa-solid fa-right-long ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -144,14 +134,18 @@
                             @foreach($categories as $category)
                             <li>
                                 <div class="category-list">
+                                    @if($category->getMedia('images')->first()!==null)
+                                    <img class="blur-up lazyload" src={{$category->getMedia('images')->first()->getFullUrl()}}>
+                                    @else
                                     <img src="frontassets/svg/1/vegetable.svg" class="blur-up lazyload" alt="">
+                                    @endif
                                     <h5>
                                         <a href="{{route('front.category',$category->slug)}}">{{ucwords($category->name)}}</a>
                                     </h5>
                                 </div>
                             </li>
                             @endforeach
-                            
+
                         </ul>
 
                         {{-- <ul class="value-list">
@@ -181,17 +175,13 @@
 
                     <div class="ratio_156 section-t-space">
                         <div class="home-contain hover-effect">
-                            <img src="frontassets/images/vegetable/banner/8.jpg" class="bg-img blur-up lazyload"
-                                alt="">
+                            <img src="frontassets/images/vegetable/banner/8.jpg" class="bg-img blur-up lazyload" alt="">
                             <div class="home-detail p-top-left home-p-medium">
                                 <div>
                                     <h6 class="text-yellow home-banner">Seafood</h6>
-                                    <h3 class="text-uppercase fw-normal"><span
-                                            class="theme-color fw-bold">Freshes</span> Products</h3>
+                                    <h3 class="text-uppercase fw-normal"><span class="theme-color fw-bold">Freshes</span> Products</h3>
                                     <h3 class="fw-light">every hour</h3>
-                                    <button onclick="location.href = 'shop-left-sidebar.html';"
-                                        class="btn btn-animation btn-md mend-auto">Shop Now <i
-                                            class="fa-solid fa-arrow-right icon"></i></button>
+                                    <button onclick="location.href = 'shop-left-sidebar.html';" class="btn btn-animation btn-md mend-auto">Shop Now <i class="fa-solid fa-arrow-right icon"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -199,17 +189,14 @@
 
                     <div class="ratio_medium section-t-space">
                         <div class="home-contain hover-effect">
-                            <img src="frontassets/images/vegetable/banner/11.jpg" class="img-fluid blur-up lazyload"
-                                alt="">
+                            <img src="frontassets/images/vegetable/banner/11.jpg" class="img-fluid blur-up lazyload" alt="">
                             <div class="home-detail p-top-left home-p-medium">
                                 <div>
                                     <h4 class="text-yellow text-exo home-banner">Organic</h4>
                                     <h2 class="text-uppercase fw-normal mb-0 text-russo theme-color">fresh</h2>
                                     <h2 class="text-uppercase fw-normal text-title">Vegetables</h2>
                                     <p class="mb-3">Super Offer to 50% Off</p>
-                                    <button onclick="location.href = 'shop-left-sidebar.html';"
-                                        class="btn btn-animation btn-md mend-auto">Shop Now <i
-                                            class="fa-solid fa-arrow-right icon"></i></button>
+                                    <button onclick="location.href = 'shop-left-sidebar.html';" class="btn btn-animation btn-md mend-auto">Shop Now <i class="fa-solid fa-arrow-right icon"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -223,8 +210,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="frontassets/images/vegetable/product/23.png"
-                                                class="blur-up lazyload" alt="">
+                                            <img src="frontassets/images/vegetable/product/23.png" class="blur-up lazyload" alt="">
                                         </a>
 
                                         <div class="offer-detail">
@@ -242,8 +228,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="frontassets/images/vegetable/product/24.png"
-                                                class="blur-up lazyload" alt="">
+                                            <img src="frontassets/images/vegetable/product/24.png" class="blur-up lazyload" alt="">
                                         </a>
 
                                         <div class="offer-detail">
@@ -261,8 +246,7 @@
                                 <li>
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="frontassets/images/vegetable/product/25.png"
-                                                class="blur-up lazyload" alt="">
+                                            <img src="frontassets/images/vegetable/product/25.png" class="blur-up lazyload" alt="">
                                         </a>
 
                                         <div class="offer-detail">
@@ -280,8 +264,7 @@
                                 <li class="mb-0">
                                     <div class="offer-product">
                                         <a href="product-left-thumbnail.html" class="offer-image">
-                                            <img src="frontassets/images/vegetable/product/26.png"
-                                                class="blur-up lazyload" alt="">
+                                            <img src="frontassets/images/vegetable/product/26.png" class="blur-up lazyload" alt="">
                                         </a>
 
                                         <div class="offer-detail">
@@ -313,8 +296,7 @@
 
                                 <div class="review-profile">
                                     <div class="review-image">
-                                        <img src="frontassets/images/vegetable/review/1.jpg"
-                                            class="img-fluid blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/review/1.jpg" class="img-fluid blur-up lazyload" alt="">
                                     </div>
                                     <div class="review-detail">
                                         <h5>Tina Mcdonnale</h5>
@@ -389,11 +371,10 @@
                                             <div class="product-image">
                                                 <a href="{{route('front.product',$product->slug)}}" target="blank">
                                                     @if($product->getMedia('images')->first())
-                                                    <img src="{{$product->getMedia('images')->first()->getFullUrl()}}" alt={{$product->name}}
-                                                        class="img-fluid blur-up lazyload" alt="{{$product->name}}">
-                                                        @else
-                                                        <img src="frontassets/images/bg.jpg" alt="empty image" class="img-fluid blur-up lazyload">
-                                                        @endif
+                                                    <img src="{{$product->getMedia('images')->first()->getFullUrl()}}" alt={{$product->name}} class="img-fluid blur-up lazyload" alt="{{$product->name}}">
+                                                    @else
+                                                    <img src="frontassets/images/bg.jpg" alt="empty image" class="img-fluid blur-up lazyload">
+                                                    @endif
                                                 </a>
                                                 {{-- <ul class="product-option">
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
@@ -423,32 +404,32 @@
                                                 <span class="span-name">{{ucwords($product->category->first()->name)}}</span>
                                                 <a href="{{route('front.product',$product->slug)}}">
                                                     <h5 class="name">{{ucwords($product->name)}}</h5>
-                                                
-                                                <div class="product-rating mt-2">
-                                                    <ul class="rating">
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star"></i>
-                                                        </li>
-                                                    </ul>
-                                                    <span>(4.0)</span>
-                                                </div>
-                                                
-                                                <h6 class="unit">{{ucwords($product->discount_p)}} % OFF</h6>
-                                                <h5 class="price"><span class="theme-color">RS {{($product->variants->first()->price) -($product->variants->first()->price * $product->discount_p/100)}} </span> <del>RS {{$product->variants->first()->price}}</del>
-                                                </h5>
-                                            </a>
+
+                                                    <div class="product-rating mt-2">
+                                                        <ul class="rating">
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star"></i>
+                                                            </li>
+                                                        </ul>
+                                                        <span>(4.0)</span>
+                                                    </div>
+
+                                                    <h6 class="unit">{{ucwords($product->discount_p)}} % OFF</h6>
+                                                    <h5 class="price"><span class="theme-color">RS {{($product->variants->first()->price) -($product->variants->first()->price * $product->discount_p/100)}} </span> <del>RS {{$product->variants->first()->price}}</del>
+                                                    </h5>
+                                                </a>
                                                 {{-- <div class="add-to-cart-box bg-white">
                                                     <button class="btn btn-add-cart addcart-button">Add
                                                         <span class="add-icon bg-light-gray">
@@ -472,11 +453,11 @@
                                                 </div> --}}
                                             </div>
                                         </div>
-                                        
-                                    </div> 
+
+                                    </div>
                                 </div>
                             </div>
-                            @endforeach 
+                            @endforeach
                         </div>
                     </div>
 
@@ -490,11 +471,10 @@
                                             <div class="product-image">
                                                 <a href="{{route('front.product',$product->slug)}}" target="blank">
                                                     @if($product->getMedia('images')->first())
-                                                    <img src="{{$product->getMedia('images')->first()->getFullUrl()}}" alt={{$product->name}}
-                                                        class="img-fluid blur-up lazyload" alt="{{$product->name}}">
-                                                        @else
-                                                        <img src="frontassets/images/bg.jpg" alt="empty image" class="img-fluid blur-up lazyload">
-                                                        @endif
+                                                    <img src="{{$product->getMedia('images')->first()->getFullUrl()}}" alt={{$product->name}} class="img-fluid blur-up lazyload" alt="{{$product->name}}">
+                                                    @else
+                                                    <img src="frontassets/images/bg.jpg" alt="empty image" class="img-fluid blur-up lazyload">
+                                                    @endif
                                                 </a>
                                                 {{-- <ul class="product-option">
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
@@ -524,32 +504,32 @@
                                                 <span class="span-name">{{ucwords($product->category->first()->name)}}</span>
                                                 <a href="{{route('front.product',$product->slug)}}">
                                                     <h5 class="name">{{ucwords($product->name)}}</h5>
-                                                
-                                                <div class="product-rating mt-2">
-                                                    <ul class="rating">
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star" class="fill"></i>
-                                                        </li>
-                                                        <li>
-                                                            <i data-feather="star"></i>
-                                                        </li>
-                                                    </ul>
-                                                    <span>(4.0)</span>
-                                                </div>
-                                                
-                                                <h6 class="unit">{{ucwords($product->discount_p)}} % OFF</h6>
-                                                <h5 class="price"><span class="theme-color">RS {{($product->variants->first()->price) -($product->variants->first()->price * $product->discount_p/100)}} </span> <del>RS {{$product->variants->first()->price}}</del>
-                                                </h5>
-                                            </a>
+
+                                                    <div class="product-rating mt-2">
+                                                        <ul class="rating">
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star" class="fill"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i data-feather="star"></i>
+                                                            </li>
+                                                        </ul>
+                                                        <span>(4.0)</span>
+                                                    </div>
+
+                                                    <h6 class="unit">{{ucwords($product->discount_p)}} % OFF</h6>
+                                                    <h5 class="price"><span class="theme-color">RS {{($product->variants->first()->price) -($product->variants->first()->price * $product->discount_p/100)}} </span> <del>RS {{$product->variants->first()->price}}</del>
+                                                    </h5>
+                                                </a>
                                                 {{-- <div class="add-to-cart-box bg-white">
                                                     <button class="btn btn-add-cart addcart-button">Add
                                                         <span class="add-icon bg-light-gray">
@@ -573,11 +553,11 @@
                                                 </div> --}}
                                             </div>
                                         </div>
-                                        
-                                    </div> 
+
+                                    </div>
                                 </div>
                             </div>
-                            @endforeach 
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -661,30 +641,24 @@
                     <div class="row g-md-4 g-3">
                         <div class="col-md-6">
                             <div class="banner-contain hover-effect">
-                                <img src="frontassets/images/vegetable/banner/9.jpg" class="bg-img blur-up lazyload"
-                                    alt="">
+                                <img src="frontassets/images/vegetable/banner/9.jpg" class="bg-img blur-up lazyload" alt="">
                                 <div class="banner-details p-center-left p-4">
                                     <div>
                                         <h3 class="text-exo">50% offer</h3>
                                         <h4 class="text-russo fw-normal theme-color mb-2">Testy Mushrooms</h4>
-                                        <button onclick="location.href = 'shop-left-sidebar.html';"
-                                            class="btn btn-animation btn-sm mend-auto">Shop Now <i
-                                                class="fa-solid fa-arrow-right icon"></i></button>
+                                        <button onclick="location.href = 'shop-left-sidebar.html';" class="btn btn-animation btn-sm mend-auto">Shop Now <i class="fa-solid fa-arrow-right icon"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="banner-contain hover-effect">
-                                <img src="frontassets/images/vegetable/banner/10.jpg" class="bg-img blur-up lazyload"
-                                    alt="">
+                                <img src="frontassets/images/vegetable/banner/10.jpg" class="bg-img blur-up lazyload" alt="">
                                 <div class="banner-details p-center-left p-4">
                                     <div>
                                         <h3 class="text-exo">50% offer</h3>
                                         <h4 class="text-russo fw-normal theme-color mb-2">Fresh MEAT</h4>
-                                        <button onclick="location.href = 'shop-left-sidebar.html';"
-                                            class="btn btn-animation btn-sm mend-auto">Shop Now <i
-                                                class="fa-solid fa-arrow-right icon"></i></button>
+                                        <button onclick="location.href = 'shop-left-sidebar.html';" class="btn btn-animation btn-sm mend-auto">Shop Now <i class="fa-solid fa-arrow-right icon"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -710,26 +684,22 @@
                                     <div class="product-box">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.html">
-                                                <img src="frontassets/images/vegetable/product/1.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
+                                                <img src="frontassets/images/vegetable/product/1.png" class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                             <ul class="product-option">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#view">
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
                                                         <i data-feather="eye"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Compare">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
                                                     <a href="compare.html">
                                                         <i data-feather="refresh-cw"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Wishlist">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
                                                     <a href="wishlist.html" class="notifi-wishlist">
                                                         <i data-feather="heart"></i>
                                                     </a>
@@ -776,14 +746,11 @@
                                                 </button>
                                                 <div class="cart_qty qty-box">
                                                     <div class="input-group">
-                                                        <button type="button" class="qty-left-minus"
-                                                            data-type="minus" data-field="">
+                                                        <button type="button" class="qty-left-minus" data-type="minus" data-field="">
                                                             <i class="fa fa-minus" aria-hidden="true"></i>
                                                         </button>
-                                                        <input class="form-control input-number qty-input"
-                                                            type="text" name="quantity" value="0">
-                                                        <button type="button" class="qty-right-plus"
-                                                            data-type="plus" data-field="">
+                                                        <input class="form-control input-number qty-input" type="text" name="quantity" value="0">
+                                                        <button type="button" class="qty-right-plus" data-type="plus" data-field="">
                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                         </button>
                                                     </div>
@@ -801,26 +768,22 @@
                                     <div class="product-box">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.html">
-                                                <img src="frontassets/images/vegetable/product/2.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
+                                                <img src="frontassets/images/vegetable/product/2.png" class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                             <ul class="product-option">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#view">
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
                                                         <i data-feather="eye"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Compare">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
                                                     <a href="compare.html">
                                                         <i data-feather="refresh-cw"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Wishlist">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
                                                     <a href="wishlist.html" class="notifi-wishlist">
                                                         <i data-feather="heart"></i>
                                                     </a>
@@ -867,14 +830,11 @@
                                                 </button>
                                                 <div class="cart_qty qty-box">
                                                     <div class="input-group">
-                                                        <button type="button" class="qty-left-minus"
-                                                            data-type="minus" data-field="">
+                                                        <button type="button" class="qty-left-minus" data-type="minus" data-field="">
                                                             <i class="fa fa-minus" aria-hidden="true"></i>
                                                         </button>
-                                                        <input class="form-control input-number qty-input"
-                                                            type="text" name="quantity" value="0">
-                                                        <button type="button" class="qty-right-plus"
-                                                            data-type="plus" data-field="">
+                                                        <input class="form-control input-number qty-input" type="text" name="quantity" value="0">
+                                                        <button type="button" class="qty-right-plus" data-type="plus" data-field="">
                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                         </button>
                                                     </div>
@@ -892,26 +852,22 @@
                                     <div class="product-box">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.html">
-                                                <img src="frontassets/images/vegetable/product/3.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
+                                                <img src="frontassets/images/vegetable/product/3.png" class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                             <ul class="product-option">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#view">
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
                                                         <i data-feather="eye"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Compare">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
                                                     <a href="compare.html">
                                                         <i data-feather="refresh-cw"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Wishlist">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
                                                     <a href="wishlist.html" class="notifi-wishlist">
                                                         <i data-feather="heart"></i>
                                                     </a>
@@ -958,14 +914,11 @@
                                                 </button>
                                                 <div class="cart_qty qty-box">
                                                     <div class="input-group">
-                                                        <button type="button" class="qty-left-minus"
-                                                            data-type="minus" data-field="">
+                                                        <button type="button" class="qty-left-minus" data-type="minus" data-field="">
                                                             <i class="fa fa-minus" aria-hidden="true"></i>
                                                         </button>
-                                                        <input class="form-control input-number qty-input"
-                                                            type="text" name="quantity" value="0">
-                                                        <button type="button" class="qty-right-plus"
-                                                            data-type="plus" data-field="">
+                                                        <input class="form-control input-number qty-input" type="text" name="quantity" value="0">
+                                                        <button type="button" class="qty-right-plus" data-type="plus" data-field="">
                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                         </button>
                                                     </div>
@@ -983,26 +936,22 @@
                                     <div class="product-box">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.html">
-                                                <img src="frontassets/images/vegetable/product/4.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
+                                                <img src="frontassets/images/vegetable/product/4.png" class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                             <ul class="product-option">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#view">
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
                                                         <i data-feather="eye"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Compare">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
                                                     <a href="compare.html">
                                                         <i data-feather="refresh-cw"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Wishlist">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
                                                     <a href="wishlist.html" class="notifi-wishlist">
                                                         <i data-feather="heart"></i>
                                                     </a>
@@ -1049,14 +998,11 @@
                                                 </button>
                                                 <div class="cart_qty qty-box">
                                                     <div class="input-group">
-                                                        <button type="button" class="qty-left-minus"
-                                                            data-type="minus" data-field="">
+                                                        <button type="button" class="qty-left-minus" data-type="minus" data-field="">
                                                             <i class="fa fa-minus" aria-hidden="true"></i>
                                                         </button>
-                                                        <input class="form-control input-number qty-input"
-                                                            type="text" name="quantity" value="0">
-                                                        <button type="button" class="qty-right-plus"
-                                                            data-type="plus" data-field="">
+                                                        <input class="form-control input-number qty-input" type="text" name="quantity" value="0">
+                                                        <button type="button" class="qty-right-plus" data-type="plus" data-field="">
                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                         </button>
                                                     </div>
@@ -1074,26 +1020,22 @@
                                     <div class="product-box">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.html">
-                                                <img src="frontassets/images/vegetable/product/5.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
+                                                <img src="frontassets/images/vegetable/product/5.png" class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                             <ul class="product-option">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#view">
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
                                                         <i data-feather="eye"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Compare">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
                                                     <a href="compare.html">
                                                         <i data-feather="refresh-cw"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Wishlist">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
                                                     <a href="wishlist.html" class="notifi-wishlist">
                                                         <i data-feather="heart"></i>
                                                     </a>
@@ -1140,14 +1082,11 @@
                                                 </button>
                                                 <div class="cart_qty qty-box">
                                                     <div class="input-group">
-                                                        <button type="button" class="qty-left-minus"
-                                                            data-type="minus" data-field="">
+                                                        <button type="button" class="qty-left-minus" data-type="minus" data-field="">
                                                             <i class="fa fa-minus" aria-hidden="true"></i>
                                                         </button>
-                                                        <input class="form-control input-number qty-input"
-                                                            type="text" name="quantity" value="0">
-                                                        <button type="button" class="qty-right-plus"
-                                                            data-type="plus" data-field="">
+                                                        <input class="form-control input-number qty-input" type="text" name="quantity" value="0">
+                                                        <button type="button" class="qty-right-plus" data-type="plus" data-field="">
                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                         </button>
                                                     </div>
@@ -1165,26 +1104,22 @@
                                     <div class="product-box">
                                         <div class="product-image">
                                             <a href="product-left-thumbnail.html">
-                                                <img src="frontassets/images/vegetable/product/4.png"
-                                                    class="img-fluid blur-up lazyload" alt="">
+                                                <img src="frontassets/images/vegetable/product/4.png" class="img-fluid blur-up lazyload" alt="">
                                             </a>
                                             <ul class="product-option">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#view">
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
                                                         <i data-feather="eye"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Compare">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
                                                     <a href="compare.html">
                                                         <i data-feather="refresh-cw"></i>
                                                     </a>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Wishlist">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
                                                     <a href="wishlist.html" class="notifi-wishlist">
                                                         <i data-feather="heart"></i>
                                                     </a>
@@ -1231,14 +1166,11 @@
                                                 </button>
                                                 <div class="cart_qty qty-box">
                                                     <div class="input-group">
-                                                        <button type="button" class="qty-left-minus"
-                                                            data-type="minus" data-field="">
+                                                        <button type="button" class="qty-left-minus" data-type="minus" data-field="">
                                                             <i class="fa fa-minus" aria-hidden="true"></i>
                                                         </button>
-                                                        <input class="form-control input-number qty-input"
-                                                            type="text" name="quantity" value="0">
-                                                        <button type="button" class="qty-right-plus"
-                                                            data-type="plus" data-field="">
+                                                        <input class="form-control input-number qty-input" type="text" name="quantity" value="0">
+                                                        <button type="button" class="qty-right-plus" data-type="plus" data-field="">
                                                             <i class="fa fa-plus" aria-hidden="true"></i>
                                                         </button>
                                                     </div>
@@ -1268,17 +1200,14 @@
                     <div class="row g-md-4 g-3">
                         <div class="col-xxl-8 col-xl-12 col-md-7">
                             <div class="banner-contain hover-effect">
-                                <img src="frontassets/images/vegetable/banner/12.jpg" class="bg-img blur-up lazyload"
-                                    alt="">
+                                <img src="frontassets/images/vegetable/banner/12.jpg" class="bg-img blur-up lazyload" alt="">
                                 <div class="banner-details p-center-left p-4">
                                     <div>
                                         <h2 class="text-kaushan fw-normal theme-color">Get Ready To</h2>
                                         <h3 class="mt-2 mb-3">TAKE ON THE DAY!</h3>
                                         <p class="text-content banner-text">In publishing and graphic design, Lorem
                                             ipsum is a placeholder text commonly used to demonstrate.</p>
-                                        <button onclick="location.href = 'shop-left-sidebar.html';"
-                                            class="btn btn-animation btn-sm mend-auto">Shop Now <i
-                                                class="fa-solid fa-arrow-right icon"></i></button>
+                                        <button onclick="location.href = 'shop-left-sidebar.html';" class="btn btn-animation btn-sm mend-auto">Shop Now <i class="fa-solid fa-arrow-right icon"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -1286,8 +1215,7 @@
 
                         <div class="col-xxl-4 col-xl-12 col-md-5">
                             <a href="shop-left-sidebar.html" class="banner-contain hover-effect h-100">
-                                <img src="frontassets/images/vegetable/banner/13.jpg" class="bg-img blur-up lazyload"
-                                    alt="">
+                                <img src="frontassets/images/vegetable/banner/13.jpg" class="bg-img blur-up lazyload" alt="">
                                 <div class="banner-details p-center-left p-4 h-100">
                                     <div>
                                         <h2 class="text-kaushan fw-normal text-danger">20% Off</h2>
@@ -1318,8 +1246,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/11.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/11.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1337,8 +1264,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/12.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/12.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1356,8 +1282,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/13.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/13.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1375,8 +1300,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/14.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/14.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1398,8 +1322,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/15.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/15.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1417,8 +1340,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/16.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/16.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1436,8 +1358,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/17.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/17.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1455,8 +1376,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/18.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/18.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1478,8 +1398,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/19.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/19.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1497,8 +1416,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/20.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/20.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1516,8 +1434,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/21.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/21.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1535,8 +1452,7 @@
                             <li>
                                 <div class="offer-product">
                                     <a href="product-left-thumbnail.html" class="offer-image">
-                                        <img src="frontassets/images/vegetable/product/22.png"
-                                            class="blur-up lazyload" alt="">
+                                        <img src="frontassets/images/vegetable/product/22.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <div class="offer-detail">
@@ -1562,9 +1478,7 @@
                                 <h6 class="ls-expanded theme-color mb-sm-3 mb-1">SUMMER</h6>
                                 <h2 class="banner-title">VEGETABLE</h2>
                                 <h5 class="lh-sm mx-auto mt-1 text-content">Save up to 5% OFF</h5>
-                                <button onclick="location.href = 'shop-left-sidebar.html';"
-                                    class="btn btn-animation btn-sm mx-auto mt-sm-3 mt-2">Shop Now <i
-                                        class="fa-solid fa-arrow-right icon"></i></button>
+                                <button onclick="location.href = 'shop-left-sidebar.html';" class="btn btn-animation btn-sm mx-auto mt-sm-3 mt-2">Shop Now <i class="fa-solid fa-arrow-right icon"></i></button>
                             </div>
                         </div>
                     </div>
@@ -1585,8 +1499,7 @@
                         <div class="blog-box">
                             <div class="blog-box-image">
                                 <a href="blog-detail.html" class="blog-image">
-                                    <img src="frontassets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
-                                        alt="">
+                                    <img src="frontassets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
 
@@ -1601,8 +1514,7 @@
                         <div class="blog-box">
                             <div class="blog-box-image">
                                 <a href="blog-detail.html" class="blog-image">
-                                    <img src="frontassets/images/vegetable/blog/2.jpg" class="bg-img blur-up lazyload"
-                                        alt="">
+                                    <img src="frontassets/images/vegetable/blog/2.jpg" class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
 
@@ -1617,8 +1529,7 @@
                         <div class="blog-box">
                             <div class="blog-box-image">
                                 <a href="blog-detail.html" class="blog-image">
-                                    <img src="frontassets/images/vegetable/blog/3.jpg" class="bg-img blur-up lazyload"
-                                        alt="">
+                                    <img src="frontassets/images/vegetable/blog/3.jpg" class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
 
@@ -1633,8 +1544,7 @@
                         <div class="blog-box">
                             <div class="blog-box-image">
                                 <a href="blog-detail.html" class="blog-image">
-                                    <img src="frontassets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload"
-                                        alt="">
+                                    <img src="frontassets/images/vegetable/blog/1.jpg" class="bg-img blur-up lazyload" alt="">
                                 </a>
                             </div>
 
@@ -1663,8 +1573,7 @@
                                 <h2>Join our newsletter and get...</h2>
                                 <h5>$20 discount for your first order</h5>
                                 <div class="input-box">
-                                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Enter Your Email">
+                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your Email">
                                     <i class="fa-solid fa-envelope arrow"></i>
                                     <button class="sub-btn  btn-animation">
                                         <span class="d-sm-block d-none">Subscribe</span>
