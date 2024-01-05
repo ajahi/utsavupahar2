@@ -50,8 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::get('order_success/{id}', [OrderController::class, 'orderSuccess'])->name('order.success');
     Route::get('track-order/{id}', [OrderController::class, 'track'])->name('order.track');
     Route::post('order', [OrderController::class, 'store'])->name('store.checkout');
-
-
+    Route::get('/blogs', [BlogController::class, 'blogs'])->name('frontend.blogs.index');
 
 
 

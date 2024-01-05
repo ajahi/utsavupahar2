@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -50,9 +52,13 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return view('cms.blogs.show', [
-            'blog' => $blog
-        ]);
+        $data = [
+            'blog' => $blog,
+            'latest_posts' => Blog::latest()->limit(5),
+            'categories' => Category::all(),
+            'trending_products' => Product::all(),
+        ];
+        return view('frontend.blog.show', $data);
     }
 
     /**
@@ -98,5 +104,17 @@ class BlogController extends Controller
     {
         $blog->delete();
         return redirect()->back()->with('warning', 'Blog deleted succesfully');
+    }
+
+    // frontend
+    public function blogs()
+    {
+        $data = [
+            'blogs' => Blog::paginate(10),
+            'latest_posts' => Blog::latest()->limit(5),
+            'categories' => Category::all(),
+            'trending_products' => Product::all(),
+        ];
+        return view('frontend.blog.index', $data);
     }
 }
