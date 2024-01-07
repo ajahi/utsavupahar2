@@ -30,4 +30,14 @@ class UserController extends Controller
         $user->syncPermissions($request->permissions);
         return redirect()->back()->with('success', 'Permissions updated for ' . $user->name);
     }
+
+    public function userDashboard(User $user)
+    {
+        $data = [
+            'orders' => $user->orders,
+            'user' => $user,
+
+        ];
+        return view('frontend.user-dashboard', $data);
+    }
 }

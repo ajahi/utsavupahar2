@@ -55,7 +55,7 @@
                                             </a>
 
                                             <div class="recent-detail">
-                                                <a href="blog-detail.html">
+                                                <a href="{{route('blogs.show', $blog->id)}}">
                                                     <h5 class="recent-name">{{$latest->title}}</h5>
                                                 </a>
                                                 <h6>{{$latest->created_at->format('d M, Y')}} <i data-feather="thumbs-up"></i></h6>
@@ -181,7 +181,7 @@
 
             <div class="col-xxl-9 col-xl-8 col-lg-7 ratio_50">
                 <div class="blog-detail-image rounded-3 mb-4">
-                    <img src="../assets/images/inner-page/blog/1.jpg" class="bg-img blur-up lazyload" alt="">
+                    <img src="{{$blog->getMedia('images')->first()->getFullUrl()}}" class="bg-img blur-up lazyload" alt="">
                     <div class="blog-image-contain">
                         <ul class="contain-list">
                             <li>backpack</li>

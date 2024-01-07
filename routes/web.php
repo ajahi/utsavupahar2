@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('track-order/{id}', [OrderController::class, 'track'])->name('order.track');
     Route::post('order', [OrderController::class, 'store'])->name('store.checkout');
     Route::get('/blogs', [BlogController::class, 'blogs'])->name('frontend.blogs.index');
+    Route::get('/profile/{user}', [UserController::class, 'userDashboard'])->name('frontend.user.user-dashboard');
 
 
 
