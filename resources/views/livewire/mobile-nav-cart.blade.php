@@ -1,4 +1,4 @@
-<div>
+<div wire:key="mobile-nav-cart">
     <span class="position-absolute bg-white badge  text-dark">
         {{$cartItemCount}}
     </span>
