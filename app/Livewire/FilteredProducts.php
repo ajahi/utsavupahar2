@@ -28,6 +28,8 @@ class FilteredProducts extends Component
             'search' => $this->search ?? '',
             'category' => $filters['category'] ?? '',
             'rating' => $filters['rating'] ?? '',
+            'discount' => $filters['discount'] ?? '',
+            'weight' => $filters['weight'] ?? "",
             'sorting' => $filters['sorting'] ?? '',
         ]);
         $this->results = Product::filter($allFilters);

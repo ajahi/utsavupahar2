@@ -57,6 +57,7 @@ class Product extends Model implements HasMedia
 
     public function scopeFilter($query, $filters)
     {
+        // dd($filters);
         $query
             ->when($filters['search'] ?? false, fn ($query, $search) =>
             $query->where(fn ($query) =>
@@ -74,7 +75,35 @@ class Product extends Model implements HasMedia
                 $filters['rating'] ?? false,
                 fn ($query, $rating) =>
                 $query->where(function () use ($rating) {
+                    dd($rating);
                     return $this->review()->avg('rating') >= $rating;
+                })
+            );
+
+        $query
+            ->when(
+                $filters['discount'] ?? false,
+                fn ($query, $discount) =>
+                $query->where(function () use ($query, $discount) {
+                    if (in_array(-1, $discount)) {
+                        $query->whereNull('discount_p')
+                            ->orWhere('discount_p', 'between', $discount);
+                    } else {
+                        $query->whereBetween('discount_p', $discount);
+                    }
+                })
+            );
+        $query
+            ->when(
+                $filters['weight'] ?? false,
+                fn ($query, $weight) =>
+                $query->where(function () use ($query, $weight) {
+                    if (in_array(-1, $weight)) {
+                        $query->whereNull('weight')
+                            ->orWhere('weight', 'between', $weight);
+                    } else {
+                        $query->whereBetween('weight', $weight);
+                    }
                 })
             );
         $query

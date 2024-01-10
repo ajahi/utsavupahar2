@@ -10,6 +10,7 @@ class FilterCategories extends Component
 {
 
     private $results;
+    public $searchText;
     public $selected = [];
     public function boot()
     {
@@ -22,6 +23,9 @@ class FilterCategories extends Component
     }
     public function render()
     {
+        if ($this->searchText) {
+            $this->results = Category::where('name', 'like', '%' . $this->searchText . '%')->get();
+        }
         return view('livewire.filter-categories', ['categories' => $this->results]);
     }
 }
