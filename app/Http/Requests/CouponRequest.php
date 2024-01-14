@@ -31,6 +31,8 @@ class CouponRequest extends FormRequest
             'start_date' => 'nullable|date|after:today',
             'end_date' => 'nullable|date|after:today',
             'is_active' => 'nullable|in:on',
+            'free_shipping' => 'nullable|in:on',
+            'all_products' => 'nullable|in:on',
         ];
     }
 }

@@ -6,25 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-// use Spatie\Searchable\Searchable;
-// use Spatie\Searchable\SearchResult;
-use Laravel\Scout\Searchable;
 
 class Category extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, Searchable;
+    use HasFactory, InteractsWithMedia;
     protected $guarded = [];
 
-    // public function getSearchResult(): SearchResult
-    // {
-    // $url = route('front.category', $this->slug);
-
-    //     return new \Spatie\Searchable\SearchResult(
-    //     $this,
-    //     $this->name,
-    //     $url
-    //     );
-    // }
     public function products()
     {
         return $this->belongsToMany(Product::class);
@@ -33,6 +20,11 @@ class Category extends Model implements HasMedia
     public function options()
     {
         return $this->belongsToMany(Option::class);
+    }
+
+    public function coupons(): BelongsToMany
+    {
+        return $this->belongsToMany(Coupon::class);
     }
 
     public function getAssociatedValue($key)

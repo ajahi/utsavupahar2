@@ -46,7 +46,7 @@
                                         <td>{{ $coupon->description }}</td>
                                         <td>{{ $coupon->discount_type }}</td>
                                         <td class="theme-color">
-                                            @if ($coupon->discount_type === 'percentage')
+                                            @if ($coupon->discount_type === 'Percent')
                                                 {{ $coupon->discount_value }}%
                                             @elseif ($coupon->discount_type === 'fixed')
                                                 ${{ $coupon->discount_value }}

@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -54,6 +55,11 @@ class Product extends Model implements HasMedia
     // {
     //     return $this->review()->avg('rating');
     // }
+
+    public function coupons(): BelongsToMany
+    {
+        return $this->belongsToMany(Coupon::class);
+    }
 
     public function scopeFilter($query, $filters)
     {

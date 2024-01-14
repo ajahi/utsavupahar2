@@ -49,9 +49,7 @@
 <body>
     <table class="styled-table">
         <thead>
-            <tr style="background-color: #009879;
-            color: #ffffff;
-            text-align: left;">
+            <tr>
                 <th>Order Code</th>
                 <th>Date</th>
                 <th>Payment Method</th>
@@ -62,7 +60,7 @@
         <tbody>
             @foreach ($orders as $order)
 
-            <tr style="border-bottom: 1px solid #dddddd;">
+            <tr>
                 <td>
                     <a href="{{route('order.show',$order->id)}}">
                         {{ $order->order_number }}

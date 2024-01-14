@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Coupon;
 use Illuminate\Support\Str;
 
 
@@ -24,7 +25,8 @@ class CategoryController extends Controller
     public function create()
     {
         $categories = Category::where('parent_id', null)->get();
-        return view('cms.categories.create', compact('categories'));
+        $coupons = Coupon::where('is_active', true)->get();
+        return view('cms.categories.create', compact('categories', 'coupons'));
     }
 
     public function store(Request $request)
@@ -33,6 +35,7 @@ class CategoryController extends Controller
             'name' => 'required|unique:categories',
             'parent_id' => 'nullable|exists:categories,id',
             'images' => 'nullable',
+            'selected_coupons' => 'required|exists:coupons,id',
         ]);
         $request['slug'] = Str::slug($request->name);
         $category = Category::create($request->except(['images']));
@@ -64,7 +67,9 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $categories = Category::where('parent_id', null)->get();
-        return view('cms.categories.edit', compact('category', 'categories'));
+        $coupons = Coupon::where('is_active', true)->get();
+        $selected_coupon = $category->coupons()->pluck('coupons.id');
+        return view('cms.categories.edit', compact('category', 'categories', 'coupons', 'selected_coupons'));
     }
 
     public function update(Request $request, Category $category)
@@ -73,6 +78,7 @@ class CategoryController extends Controller
             'name' => 'required|unique:categories,name,' . $category->id,
             'parent_id' => 'nullable|exists:categories,id',
             'images' => 'nullable',
+            'selected_coupons' => 'required|exists:coupons,id',
         ]);
 
         $category->update($request->except(['images']));

@@ -119,6 +119,19 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- coupons -->
+                            <div class="row align-items-center" @if($errors->has('coupons'))style="background-color: rgb(248, 186, 181);" @endif>
+                                <label class="col-sm-3 col-form-label form-label-title">Coupons</label>
+                                <div class="category-container col-sm-9 ">
+                                    <input type="hidden" name="selected_coupons" id="selected_coupons">
+                                    <!-- Your other form fields here -->
+                                    @foreach($coupons as $coupon)
+                                    <button class='category-button' type="button" data-coupon-id="{{$coupon->id}}" onclick="toggleCoupon(this)">{{$coupon->code}}</button>
+                                    @endforeach
+
+                                    <!-- Add more coupon checkboxes and labels as needed -->
+                                </div>
+                            </div>
                             <button type="submit" class="form-control">Submit</button>
                         </form>
                     </div>
@@ -127,5 +140,26 @@
         </div>
     </div>
 </div>
+<script>
+    // coupons multipl select
+    let selectedCoupons = [];
+
+    function toggleCoupon(button) {
+        const couponId = button.getAttribute("data-coupon-id");
+
+        if (selectedCoupons.includes(couponId)) {
+            // Deselect the coupon
+            selectedCoupons = selectedCoupons.filter(id => id !== couponId);
+            button.style.backgroundColor = "";
+        } else {
+            // Select the coupon
+            selectedCoupons.push(couponId);
+            button.style.backgroundColor = "lightblue";
+        }
+
+        // Update the hidden input field
+        document.getElementById("selected_coupons").value = selectedCoupons.join(",");
+    }
+</script>
 
 @endsection

@@ -11,7 +11,7 @@
                         <div class="title-header option-title">
                             <h5>Create Coupon</h5>
                         </div>
-                        
+
 
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
@@ -49,17 +49,17 @@
                                             <label class="form-label-title col-lg-2 col-md-3 mb-0">Active</label>
                                             <div class="col-md-10">
                                                 <div class="form-check user-checkbox ps-0">
-                                                    <input class="checkbox_animated check-it" type="checkbox"  id="flexCheckDefault" name="is_active" @checked($coupon->is_active=='on')>
-                                                    <label class="form-label-title col-md-2 mb-0" >Active</label>
-                                                
-                                                    <input class="checkbox_animated check-it" type="checkbox"  id="flexCheckDefault" >
+                                                    <input class="checkbox_animated check-it" type="checkbox" id="flexCheckDefault" name="is_active" @checked($coupon->is_active)>
+                                                    <label class="form-label-title col-md-2 mb-0">Active</label>
+
+                                                    <input class="checkbox_animated check-it" type="checkbox" id="flexCheckDefault" name="free_shipping" @checked($coupon->free_shipping)>
                                                     <label class="form-label-title col-md-2 mb-0">Allow Free <br> Shipping</label>
                                                 </div>
                                             </div>
-                                            
-                                            
-                                               
-                                            
+
+
+
+
                                         </div>
 
                                         <div class="mb-4 row align-items-center">
@@ -74,7 +74,7 @@
                                             <div class="col-sm-10">
                                                 <select class="form-control" name="discount_type">
                                                     <option disabled>--Select--</option>
-                                                    <option value="Percent" @selected($coupon->discount_type=='percent')>Percent</option>
+                                                    <option value="Percent" @selected($coupon->discount_type=='Percent')>Percent</option>
                                                     <option value="Fixed" @selected($coupon->discount_type=='fixed')>Fixed</option>
                                                 </select>
                                             </div>
@@ -83,7 +83,7 @@
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-lg-2 col-md-3 mb-0">Discount Value</label>
                                             <div class="col-md-9 col-lg-10">
-                                                <input class="form-control" type="number" name="discount_value" value="{{ old('discount_value')  ? old('discount_value') : $coupon->discount_value}}">
+                                                <input class="form-control" type="number" name="discount_value" value="{{ $coupon->discount_value ? $coupon->discount_value :  old('discount_value') }}">
                                             </div>
                                         </div>
 
@@ -92,6 +92,12 @@
                                             <div class="col-md-9 col-lg-10">
                                                 <input class="form-control" type="number" name="min_order_amount" placeholder='2' value="{{$coupon->min_order_amount ? $coupon->min_order_amount : old('min_order_amount')}}">
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-check d-flex align-items-center">
+                                        <label class=" col-lg-2 col-md-3 form-check-label form-label-title" for="all_products">Apply for all products</label>
+                                        <div class="col-md-9 col-lg-10">
+                                            <input class="form-check-input p-2" type="checkbox" name="all_products" id="all_products" @checked($coupon->all_products)>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-solid">Edit Coupon</button>
@@ -107,5 +113,5 @@
     </div>
 </div>
 
-    
+
 @endsection
