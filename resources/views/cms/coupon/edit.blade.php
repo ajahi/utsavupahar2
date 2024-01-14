@@ -95,9 +95,9 @@
                                         </div>
                                     </div>
                                     <div class="form-check d-flex align-items-center">
-                                        <label class=" col-lg-2 col-md-3 form-check-label form-label-title" for="all_products">Apply for all products</label>
+                                        <label class=" col-lg-2 col-md-3 form-check-label form-label-title" for="all_products" id="all_products-label">{{$coupon->all_products ? 'Remove' :'Apply'}} for all products</label>
                                         <div class="col-md-9 col-lg-10">
-                                            <input class="form-check-input p-2" type="checkbox" name="all_products" id="all_products" @checked($coupon->all_products)>
+                                            <input class="form-check-input p-2" type="checkbox" name="all_products" id="all_products" onchange="changeLabelText(this)" @checked($coupon->all_products) >
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-solid">Edit Coupon</button>
@@ -112,6 +112,14 @@
         </div>
     </div>
 </div>
-
+<script>
+    const changeLabelText = (checkbox) => {
+        if (checkbox.checked) {
+            document.getElementById('all_products-label').innerText = "Remove for all Products";
+        } else {
+            document.getElementById('all_products-label').innerText = "Apply for all Products";
+        }
+    }
+</script>
 
 @endsection

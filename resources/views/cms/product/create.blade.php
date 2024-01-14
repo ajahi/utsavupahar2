@@ -434,7 +434,16 @@
         };
 
         // coupons multipl select
-        let selectedCoupons = [];
+        let selectedCoupons = @json($selected_coupons);
+        //selects the selected coupons
+        selectedCoupons.forEach(couponId => {
+            const couponButton = document.querySelector(`[data-coupon-id="${couponId}"]`);
+            if (couponButton) {
+
+                // Simulate a click to select the coupon
+                toggleCoupon(couponButton);
+            }
+        });
 
         function toggleCoupon(button) {
             const couponId = button.getAttribute("data-coupon-id");
