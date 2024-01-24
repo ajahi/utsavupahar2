@@ -11,8 +11,8 @@ use Livewire\Attributes\Validate;
 
 class ProductShowButtons extends Component
 {
-    
-    public $count=1;
+
+    public $count = 1;
     public $variant;
     public $product;
     public $activeVariant = null;
@@ -27,42 +27,53 @@ class ProductShowButtons extends Component
         // make activeVariant and variant to the first variant.
         $firstVariant = $this->product->variants->first();
         $this->activeVariant = $firstVariant->id;
-        $this->variant=$firstVariant;
-    }
-    
-    public function updateVariant($variantId){
-        $variant=Variant::findOrFail($variantId);
-        $this->variant=$variant;
-        $this->activeVariant=$variantId;
+        $this->variant = $firstVariant;
     }
 
-    public function increment(){
+    public function updateVariant($variantId)
+    {
+        $variant = Variant::findOrFail($variantId);
+        $this->variant = $variant;
+        $this->activeVariant = $variantId;
+    }
+
+    public function increment()
+    {
         $this->count++;
     }
 
-    public function decrement(){
+    public function decrement()
+    {
         $this->count--;
     }
 
     public function addToCart($productId)
-    {   $pro=Product::findOrFail($productId);
-        Cart::add($pro->id, $pro->name . "( ". $this->variant->name .")", $this->count, ($this->variant->price - $this->variant->price*$pro->discount_p/100),
-        [
-            'variant'=>$this->variant->name,
-            'variant_id'=>$this->variant->id,
-            'variant_price'=>$this->variant->price
-            ])->associate($pro);
+    {
+        $pro = Product::findOrFail($productId);
+        Cart::add(
+            $pro->id,
+            $pro->name . "( " . $this->variant->name . ")",
+            $this->count,
+            ($this->variant->price - $this->variant->price * $pro->discount_p / 100),
+            [
+                'variant' => $this->variant->name,
+                'variant_id' => $this->variant->id,
+                'variant_price' => $this->variant->price
+            ]
+        )->associate($pro);
         //mssg flash to uer
         //updates cart.
         $this->dispatch('update-cart');
     }
-    
-    public function buyNow($productId){
-        Cart::remove($rowId);
-        Cart::deleteStoredCart();
-        $this->product=Product::findOrFail($productId);
-        Cart::add($this->product->id, $this->product->name, 1, $this->product->purchase_price*$this->product->sell_margin_p,['variant'=>$this->product->variants()->first()->name])->associate($this->product);
-          return redirect()->to('/checkout');
-      }
-    
+
+    public function buyNow($productId)
+    {
+
+        foreach (Cart::content() as $cart) {
+            Cart::remove($cart->rowId);
+        }
+        $this->product = Product::findOrFail($productId);
+        Cart::add($this->product->id, $this->product->name, 1, $this->product->purchase_price * $this->product->sell_margin_p, ['variant' => $this->product->variants()->first()->name])->associate($this->product);
+        return redirect()->to('/checkout');
+    }
 }

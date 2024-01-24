@@ -182,7 +182,7 @@ Route::post('addItemByOne', [CartController::class], 'addItemByOne')->name('addI
 Route::get('about_us', [FeedController::class, 'about_us'])->name('aboutus');
 Route::get('contact_us', [FeedController::class, 'contact_us'])->name('contactus');
 Route::get('/product/{slug}', [FeedController::class, 'show'])->name('front.product');
-Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/products', [SearchController::class, 'search'])->name('search');
 
 
 ROute::get('/category/{slug}', [CategoryController::class, 'showBySlug'])->name('front.category');

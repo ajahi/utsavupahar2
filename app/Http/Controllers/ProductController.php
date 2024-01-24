@@ -11,6 +11,7 @@ use App\Http\Resources\ProductResource;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Coupon;
+use App\Models\User;
 use Illuminate\Support\Str;
 
 
@@ -21,6 +22,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        if (request()->user()->cannot('viewAny', Product::class)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $query = Product::query();
 
         $search = $request->input('search');
@@ -45,6 +49,9 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+        if (request()->user()->cannot('create', Product::class)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         if (!$request->refundable) {
             $request->refundable = 0;
         }
@@ -94,7 +101,9 @@ class ProductController extends Controller
 
     public function create()
     {
-
+        if (request()->user()->cannot('create', Product::class)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         return view('cms.product.create', [
             'categories' => Category::all(),
             'coupons' => Coupon::where('is_active', true)->get(),
@@ -104,6 +113,9 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+        if (request()->user()->cannot('view', $product)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         return view(
             'cms.product.show',
             [
@@ -115,6 +127,9 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        if (request()->user()->cannot('update', $product)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         return view(
             'cms.product.edit',
             [
@@ -132,6 +147,9 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
+        if (request()->user()->cannot('update', $product)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         try {
 
             $variants = $product->variants;
@@ -181,6 +199,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if (request()->user()->cannot('delete', $product)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $product->delete();
         return redirect()->back()->with('warning', 'Succesfully deleted your Product.');
     }

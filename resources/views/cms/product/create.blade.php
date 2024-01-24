@@ -463,8 +463,4 @@
         }
     </script>
 
-
-
-
-
     @endsection

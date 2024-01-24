@@ -16,6 +16,9 @@ class BlogController extends Controller
      */
     public function index()
     {
+        if (request()->user()->cannot('viewAny', Blog::class)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         return view('cms.blogs.index', [
             'blogs' => Blog::paginate(10),
         ]);
@@ -26,6 +29,9 @@ class BlogController extends Controller
      */
     public function create()
     {
+        if (request()->user()->cannot('create', Blog::class)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         return view('cms.blogs.create');
     }
 
@@ -34,6 +40,9 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
+        if (request()->user()->cannot('create', Blog::class)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $data = $request->validated();
 
         $blog = Blog::create(array_diff_key($data, array_flip(['images'])));
@@ -52,6 +61,9 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
+        if (request()->user()->cannot('view', $blog)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $data = [
             'blog' => $blog,
             'latest_posts' => Blog::latest()->limit(5),
@@ -66,6 +78,9 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
+        if (request()->user()->cannot('edit',$blog)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         return view('cms.blogs.edit', [
             'blog' => $blog,
         ]);
@@ -76,6 +91,9 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
+        if (request()->user()->cannot('edit',$blog)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $data = $request->validated();
         $blog->update($data);
 
@@ -102,6 +120,9 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
+        if (request()->user()->cannot('delete',$blog)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $blog->delete();
         return redirect()->back()->with('warning', 'Blog deleted succesfully');
     }

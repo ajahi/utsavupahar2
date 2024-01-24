@@ -8,23 +8,29 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\OrderDetail;
-
-
+use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        Gate::allows(['admin', 'super-admin', 'vendor', 'delivery']);
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view("cms.dashboard",[
-            'total_revenue'=>Order::sum('total_amount'),
-            'total_products'=>Product::count(),
-            'total_customers'=>User::count(),
-            'total_orders'=>Order::count(),
-            'categories'=>Category::all(),
-            'soldProducts'=>OrderDetail::all()
+        if (!request()->user()->canAny(['admin', 'super-admin', 'vendor', 'delivery'],)) {
+            return redirect()->route('home')->with('warning', "Unauthorized");
+        }
+        return view("cms.dashboard", [
+            'total_revenue' => Order::sum('total_amount'),
+            'total_products' => Product::count(),
+            'total_customers' => User::count(),
+            'total_orders' => Order::count(),
+            'categories' => Category::all(),
+            'soldProducts' => OrderDetail::all()
         ]);
     }
 

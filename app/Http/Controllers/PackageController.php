@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PackageRequest;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PackageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        Gate::allows(['super-admin', 'admin']);
+    }
     public function index()
     {
         $packages = Package::all();
