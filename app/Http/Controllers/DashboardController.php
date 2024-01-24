@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
 {
-    public function __construct()
-    {
-        Gate::allows(['admin', 'super-admin', 'vendor', 'delivery']);
-    }
     /**
      * Display a listing of the resource.
      */
