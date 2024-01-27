@@ -24,6 +24,9 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
+        if (request()->user()->cannot('viewAny', Order::class)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $query = Order::query();
 
         // Check if a search term is provided
@@ -44,11 +47,17 @@ class OrderController extends Controller
 
     public function create()
     {
+        if (request()->user()->cannot('create', Order::class)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         return view('cms.order.create');
     }
 
     public function store(OrderRequest $request)
     {
+        if (request()->user()->cannot('create', Order::class)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $request['user_id'] = Auth::id();
         $request['order_number'] = '#' . substr(User::find(Auth::id())->phone_number, 5 - 9) . Order::count();
         $totalCostString = str_replace(',', '', Cart::total());
@@ -79,6 +88,9 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
+        if (request()->user()->cannot('view', $order)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $orderDetail = $order->items;
         $shipping = 100.00;
         $totalCost = $shipping + $order->total_amount;
@@ -95,11 +107,17 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
+        if (request()->user()->cannot('update', $order)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         return view('cms.order.edit', compact('order'));
     }
 
     public function update(OrderRequest $request, Order $order)
     {
+        if (request()->user()->cannot('update', $order)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $validatedData = $request->validated();
 
         // Update the order using the validated data
@@ -111,6 +129,9 @@ class OrderController extends Controller
 
     public function destroy(Order $order)
     {
+        if (request()->user()->cannot('create', $order)) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $order->delete();
 
         // Redirect to the order index page or a success page
@@ -119,6 +140,9 @@ class OrderController extends Controller
 
     public function orderSuccess($id)
     {
+        if (request()->user()->cannot('view', Order::find($id))) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $order = Order::findOrFail($id);
         return view('frontend.order-success', [
             'order' => $order,
@@ -128,8 +152,10 @@ class OrderController extends Controller
 
     public function track($id)
     {
+        if (request()->user()->cannot('view', Order::find($id))) {
+            return back()->with('warning', 'You are not authorized to perform this task');
+        }
         $order = Order::findOrFail($id);
-        // dd($order);
         return view('frontend.track-order', ['order' => $order]);
     }
 }

@@ -21,13 +21,12 @@
                             <h5>Category Information</h5>
                         </div>
 
-                        <form class="theme-form theme-form-2 mega-form" method="POST" action="{{route('category.store')}}">
+                        <form class="theme-form theme-form-2 mega-form" method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-4 row align-items-center">
                                 <label class="form-label-title col-sm-3 mb-0">Category Name</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" type="text" name="name"
-                                        placeholder="Category Name">
+                                    <input class="form-control" type="text" name="name" placeholder="Category Name">
                                 </div>
                             </div>
 
@@ -36,10 +35,10 @@
                                 <div class="col-sm-9">
                                     <select name="parent_id" class="form-control" id="">
                                         <option value="">Select Parent Category</option>
-                                        @foreach ($categories  as $category )
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @foreach ($categories as $category )
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
-                                        
+
                                     </select>
                                 </div>
                             </div>
@@ -53,7 +52,7 @@
                                             <i class="ri-upload-2-line"></i>
                                             <p>Choose an image file or drag it here.</p>
                                         </div>
-                                        <input type="file" class="dropzone">
+                                        <input type="file" class="dropzone" name="images" multiple>
                                     </div>
                                 </div>
                             </div>
@@ -62,74 +61,75 @@
                                 <div class="col-sm-3 form-label-title">Select Category Icon</div>
                                 <div class="col-sm-9">
                                     <div class="dropdown icon-dropdown">
-                                        <button class="btn dropdown-toggle" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
                                             Select Icon
                                         </button>
-                                        <ul class="dropdown-menu"
-                                            aria-labelledby="dropdownMenuButton1">
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             <li>
                                                 <a class="dropdown-item" href="#">
-                                                    <img src="../assets/svg/1/vegetable.svg"
-                                                        class="img-fluid" alt="">
+                                                    <img src="../assets/svg/1/vegetable.svg" class="img-fluid" alt="">
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#">
-                                                    <img src="../assets/svg/1/cup.svg"
-                                                        class="blur-up lazyload" alt="">
+                                                    <img src="../assets/svg/1/cup.svg" class="blur-up lazyload" alt="">
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#">
-                                                    <img src="../assets/svg/1/meats.svg"
-                                                        class="img-fluid" alt="">
+                                                    <img src="../assets/svg/1/meats.svg" class="img-fluid" alt="">
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#">
-                                                    <img src="../assets/svg/1/breakfast.svg"
-                                                        class="img-fluid" alt="">
+                                                    <img src="../assets/svg/1/breakfast.svg" class="img-fluid" alt="">
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#">
-                                                    <img src="../assets/svg/1/frozen.svg"
-                                                        class="img-fluid" alt="">
+                                                    <img src="../assets/svg/1/frozen.svg" class="img-fluid" alt="">
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#">
-                                                    <img src="../assets/svg/1/biscuit.svg"
-                                                        class="img-fluid" alt="">
+                                                    <img src="../assets/svg/1/biscuit.svg" class="img-fluid" alt="">
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#">
-                                                    <img src="../assets/svg/1/grocery.svg"
-                                                        class="img-fluid" alt="">
+                                                    <img src="../assets/svg/1/grocery.svg" class="img-fluid" alt="">
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#">
-                                                    <img src="../assets/svg/1/drink.svg"
-                                                        class="img-fluid" alt="">
+                                                    <img src="../assets/svg/1/drink.svg" class="img-fluid" alt="">
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#">
-                                                    <img src="../assets/svg/1/milk.svg"
-                                                        class="img-fluid" alt="">
+                                                    <img src="../assets/svg/1/milk.svg" class="img-fluid" alt="">
                                                 </a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#">
-                                                    <img src="../assets/svg/1/pet.svg"
-                                                        class="img-fluid" alt="">
+                                                    <img src="../assets/svg/1/pet.svg" class="img-fluid" alt="">
                                                 </a>
                                             </li>
                                         </ul>
                                     </div>
+                                </div>
+                            </div>
+                            <!-- coupons -->
+                            <div class="row align-items-center" @if($errors->has('coupons'))style="background-color: rgb(248, 186, 181);" @endif>
+                                <label class="col-sm-3 col-form-label form-label-title">Coupons</label>
+                                <div class="category-container col-sm-9 ">
+                                    <input type="hidden" name="selected_coupons" id="selected_coupons">
+                                    <!-- Your other form fields here -->
+                                    @foreach($coupons as $coupon)
+                                    <button class='category-button' type="button" data-coupon-id="{{$coupon->id}}" onclick="toggleCoupon(this)">{{$coupon->code}}</button>
+                                    @endforeach
+
+                                    <!-- Add more coupon checkboxes and labels as needed -->
                                 </div>
                             </div>
                             <button type="submit" class="form-control">Submit</button>
@@ -140,6 +140,26 @@
         </div>
     </div>
 </div>
-    
-@endsection
+<script>
+    // coupons multipl select
+    let selectedCoupons = [];
 
+    function toggleCoupon(button) {
+        const couponId = button.getAttribute("data-coupon-id");
+
+        if (selectedCoupons.includes(couponId)) {
+            // Deselect the coupon
+            selectedCoupons = selectedCoupons.filter(id => id !== couponId);
+            button.style.backgroundColor = "";
+        } else {
+            // Select the coupon
+            selectedCoupons.push(couponId);
+            button.style.backgroundColor = "lightblue";
+        }
+
+        // Update the hidden input field
+        document.getElementById("selected_coupons").value = selectedCoupons.join(",");
+    }
+</script>
+
+@endsection

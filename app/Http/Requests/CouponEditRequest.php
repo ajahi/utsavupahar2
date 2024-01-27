@@ -22,7 +22,7 @@ class CouponEditRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => 'required|unique:coupons,code,'.$this->coupon->id,
+            'code' => 'required|unique:coupons,code,' . $this->coupon->id,
             'title' => 'nullable|string',
             'discount_type' => 'required|string',
             'discount_value' => 'required|numeric',
@@ -31,6 +31,8 @@ class CouponEditRequest extends FormRequest
             'start_date' => 'nullable|date|after:today',
             'end_date' => 'nullable|date|after:today',
             'is_active' => 'nullable|in:on',
+            'free_shipping' => 'nullable|in:on',
+            'all_products' => 'nullable|in:on',
         ];
     }
 }

@@ -13,9 +13,10 @@
                                 <input type="text" name="search" placeholder="Search products by id or name" value="{{ request('query') }}">
                                 <button class="form-search" type="submit"><i class="ri-search-line"></i></button>
                             </form>
-                            
+
                         </div>
-                        <a href="#" class="btn btn-solid">Download all orders</a>
+                        <!-- <a href="#" class="btn btn-solid">Download all orders</a> -->
+                        @livewire('order-export')
                     </div>
                     <div>
                         <div class="table-responsive">
@@ -35,21 +36,21 @@
                                 <tbody>
                                     @foreach($orders as $order)
                                     <tr data-bs-toggle="offcanvas" href="#order-details">
-                                       <!-- Display recipient name -->
-                                       
+                                        <!-- Display recipient name -->
+
                                         <td>
                                             <a href="{{route('order.show',$order->id)}}">
                                                 {{ $order->order_number }}
                                             </a>
                                         </td>
-                                    
+
                                         <td>{{ $order->created_at }}</td>
                                         <td>{{ $order->payment_method }}</td>
                                         <td class="order-{{ $order->status }}">
                                             <span>{{ $order->status }}</span>
                                         </td>
                                         <td>RS{{ number_format($order->total_amount, 2) }}</td>
-                                    
+
                                         <td>
                                             <ul>
                                                 <li>
@@ -63,14 +64,12 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModalToggle">
+                                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
                                                         <i class="ri-delete-bin-line"></i>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="btn btn-sm btn-solid text-white"
-                                                        href="#">
+                                                    <a class="btn btn-sm btn-solid text-white" href="#">
                                                         Tracking
                                                     </a>
                                                 </li>
@@ -80,7 +79,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            
+
                         </div>
                         <span class="form-control">{{$orders->links()}} </span>
                     </div>

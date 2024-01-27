@@ -1,5 +1,5 @@
 
-<div class="fixed-top mx-auto mt-3 ml-3">
+<div wire:key="flash-message" class="fixed-top mx-auto mt-3 ml-3">
     @if($flashMessage)
     <div class="alert alert-success w-25" role="alert" id='flashMessage'>
         

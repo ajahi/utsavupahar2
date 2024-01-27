@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Coupon;
 use Illuminate\Support\Str;
 
 
@@ -23,19 +24,28 @@ class CategoryController extends Controller
 
     public function create()
     {
-        $categories = Category::where('parent_id',null)->get();
-        return view('cms.categories.create',compact('categories'));
+        $categories = Category::where('parent_id', null)->get();
+        $coupons = Coupon::where('is_active', true)->get();
+        return view('cms.categories.create', compact('categories', 'coupons'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|unique:categories',
-            'parent_id'=>'nullable|exists:categories,id'
+            'parent_id' => 'nullable|exists:categories,id',
+            'images' => 'nullable',
+            'selected_coupons' => 'required|exists:coupons,id',
         ]);
-        $request['slug']=Str::slug($request->name);
-        Category::create($request->all());
-        return redirect()->route('category.index')->with('success','Category created successfully!');
+        $request['slug'] = Str::slug($request->name);
+        $category = Category::create($request->except(['images']));
+        if ($request->hasFile('images')) {
+            $fileAdders = $category->addMultipleMediaFromRequest(['images'])
+                ->each(function ($fileAdder) {
+                    $fileAdder->toMediaCollection('images');
+                });
+        }
+        return redirect()->route('category.index')->with('success', 'Category created successfully!');
     }
 
     public function show(Category $category)
@@ -43,38 +53,57 @@ class CategoryController extends Controller
         return view('categories.show', compact('category'));
     }
 
-    public function showBySlug(Request $request){
-        $cat=Category::where('slug',$request->slug)->first();
-        
-        return view('frontend.category',[
-            'category'=>$cat,
-            'products'=>$cat->products,
-            'categories'=>Category::all()
+    public function showBySlug(Request $request)
+    {
+        $cat = Category::where('slug', $request->slug)->first();
+
+        return view('frontend.category', [
+            'category' => $cat,
+            'products' => $cat->products,
+            'categories' => Category::all()
         ]);
     }
 
     public function edit(Category $category)
     {
-        $categories = Category::where('parent_id',null)->get();
-        return view('cms.categories.edit', compact('category','categories'));
+        $categories = Category::where('parent_id', null)->get();
+        $coupons = Coupon::where('is_active', true)->get();
+        $selected_coupon = $category->coupons()->pluck('coupons.id');
+        return view('cms.categories.edit', compact('category', 'categories', 'coupons', 'selected_coupons'));
     }
 
     public function update(Request $request, Category $category)
     {
         $request->validate([
             'name' => 'required|unique:categories,name,' . $category->id,
-            'parent_id'=> 'nullable|exists:categories,id'
+            'parent_id' => 'nullable|exists:categories,id',
+            'images' => 'nullable',
+            'selected_coupons' => 'required|exists:coupons,id',
         ]);
 
-        $category->update($request->all());
+        $category->update($request->except(['images']));
+        if ($request->has('images') && $request->images !== null) {
+            // Check if there is an existing image
+            $existingImage = $category->getFirstMedia('images');
 
+            if ($existingImage !== null) {
+                // Delete the existing image
+                $existingImage->delete();
+            }
+
+            // Add the new images
+            $fileAdders = $category->addMultipleMediaFromRequest(['images'])
+                ->each(function ($fileAdder) {
+                    $fileAdder->toMediaCollection('images');
+                });
+        }
         return redirect()->route('category.index')->with('info', 'Category updated successfully');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-       
-        return redirect()->route('category.index')->with('warning','Successfully deleted your category.');
+
+        return redirect()->route('category.index')->with('warning', 'Successfully deleted your category.');
     }
 }

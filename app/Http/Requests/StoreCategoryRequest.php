@@ -25,6 +25,7 @@ class StoreCategoryRequest extends FormRequest
             'name' => 'required|string',
             'slug' => 'required|unique:categories,slug',
             'parent_id' => 'nullable|exists:categories,id',
+            'selected_coupons' => 'nullable|exists:coupons,id',
         ];
     }
 }

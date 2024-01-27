@@ -13,20 +13,17 @@
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> -->
 
     <!-- bootstrap css -->
     <link id="rtl-link" rel="stylesheet" type="text/css" href="/frontassets/css/vendors/bootstrap.css">
 
     <!-- wow css -->
-   
+
 
     <!-- font-awesome css -->
     <link rel="stylesheet" type="text/css" href="/frontassets/css/vendors/font-awesome.css">
@@ -44,14 +41,14 @@
 
     <!-- Template css -->
     <link id="color-link" rel="stylesheet" type="text/css" href="/frontassets/css/style.css">
-    
-    @livewireStyles 
+
+    @livewireStyles
 </head>
 
 <body class="bg-effect">
 
     <!-- Loader Start -->
-     <div class="fullpage-loader">
+    <div class="fullpage-loader">
         <span></span>
         <span></span>
         <span></span>
@@ -158,11 +155,11 @@
                 </div>
             </div>
         </div>
-<!-- Livewire Blade View -->
+        <!-- Livewire Blade View -->
 
 
-@livewire('flash-message')
-    
+        @livewire('flash-message')
+
 
 
 
@@ -173,8 +170,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="navbar-top">
-                            <button class="navbar-toggler d-xl-none d-inline navbar-menu-button" type="button"
-                                data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
+                            <button class="navbar-toggler d-xl-none d-inline navbar-menu-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
                                 <span class="navbar-toggler-icon">
                                     <i class="fa-solid fa-bars"></i>
                                 </span>
@@ -185,8 +181,7 @@
 
                             <div class="middle-box">
                                 <div class="location-box">
-                                    <button class="btn location-button" data-bs-toggle="modal"
-                                        data-bs-target="#locationModal">
+                                    <button class="btn location-button" data-bs-toggle="modal" data-bs-target="#locationModal">
                                         <span class="location-arrow">
                                             <i data-feather="map-pin"></i>
                                         </span>
@@ -198,8 +193,7 @@
                                 <div class="search-box">
                                     <form action="{{route('search')}}" method="GET">
                                         <div class="input-group">
-                                            <input name='search' type="search" class="form-control" placeholder="I'm searching for..."
-                                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                                            <input name='search' type="search" class="form-control" placeholder="I'm searching for..." aria-label="Recipient's username" aria-describedby="button-addon2">
                                             <button class="btn" type="button" id="button-addon2" onclick="this.form.submit()">
                                                 <i data-feather="search"></i>
                                             </button>
@@ -231,7 +225,7 @@
                                         </div>
                                     </li>
                                     <li class="right-side">
-                                        <a href="{{route('contactus')}}" class="delivery-login-box" >
+                                        <a href="{{route('contactus')}}" class="delivery-login-box">
                                             <div class="delivery-icon">
                                                 <i data-feather="phone-call"></i>
                                             </div>
@@ -277,15 +271,21 @@
                                                 <li>
                                                     {{ucwords(Auth::user()->name)}}
                                                 </li>
+                                                @canany(['super-admin', 'admin', 'delivery', 'vendor'])
                                                 <li>
                                                     <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Dashboard</a>
+                                                </li>
+
+                                                @endcanany
+                                                <li>
+                                                    <a href="{{route('frontend.user.user-dashboard', auth()->id())}}" class="btn btn-primary">Profile</a>
                                                 </li>
                                                 <li>
                                                     <form action="{{route('logout')}}" method="POST">
                                                         @csrf
                                                         <button type="submit" class="btn btn-primary">Logout</button>
                                                     </form>
-                                                    
+
                                                 </li>
                                                 @endauth
                                             </ul>
@@ -715,14 +715,12 @@
                                 <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
                                     <div class="offcanvas-header navbar-shadow">
                                         <h5>Menu</h5>
-                                        <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
-                                            aria-label="Close"></button>
+                                        <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                     </div>
                                     <div class="offcanvas-body">
                                         <ul class="navbar-nav">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{route('home')}}" alt="Return Home page"
-                                                    >Home</a>
+                                                <a class="nav-link" href="{{route('home')}}" alt="Return Home page">Home</a>
 
                                                 {{-- <ul class="dropdown-menu">
                                                     <li>
@@ -756,17 +754,15 @@
                                             </li>
 
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">Blogs</a>
+                                                <a class="nav-link dropdown-toggle" href="{{route('frontend.blogs.index')}}">Blogs</a>
 
-                                                
+
                                             </li>
 
-                                            
+
 
                                             <li class="nav-item dropdown dropdown-mega">
-                                                <a class="nav-link dropdown-toggle ps-xl-2 ps-0"
-                                                    href="javascript:void(0)" data-bs-toggle="dropdown">Personalized</a>
+                                                <a class="nav-link dropdown-toggle ps-xl-2 ps-0" href="javascript:void(0)" data-bs-toggle="dropdown">Personalized</a>
 
                                                 <div class="dropdown-menu dropdown-menu-2">
                                                     <div class="row">
@@ -774,64 +770,45 @@
                                                             <h5 class="dropdown-header">For Family</h5>
                                                             <a class="dropdown-item" href="shop-left-sidebar.html">For Father</a>
 
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">For Mother</a>
+                                                            <a class="dropdown-item" href="shop-left-sidebar.html">For Mother</a>
 
-                                                            <a href="shop-left-sidebar.html"
-                                                                class="dropdown-item">For Brother</a>
+                                                            <a href="shop-left-sidebar.html" class="dropdown-item">For Brother</a>
 
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">For Sister</a>
+                                                            <a class="dropdown-item" href="shop-left-sidebar.html">For Sister</a>
 
-                                                            
+
                                                         </div>
 
                                                         <div class="dropdown-column col-xl-3">
                                                             <h5 class="dropdown-header">Baby Tender</h5>
                                                             <a class="dropdown-item" href="shop-left-sidebar.html">For Him</a>
 
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">For Her</a>
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">For Husband</a>
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">For Wife</a>
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">For Kid</a>
+                                                            <a class="dropdown-item" href="shop-left-sidebar.html">For Her</a>
+                                                            <a class="dropdown-item" href="shop-left-sidebar.html">For Husband</a>
+                                                            <a class="dropdown-item" href="shop-left-sidebar.html">For Wife</a>
+                                                            <a class="dropdown-item" href="shop-left-sidebar.html">For Kid</a>
                                                         </div>
 
-                                                        
+
 
                                                         <div class="dropdown-column dropdown-column-img col-3"></div>
                                                     </div>
                                                 </div>
                                             </li>
 
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">Blog</a>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="blog-detail.html">Tips and Tricks</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="blog-grid.html">Gift Ideas</a>
-                                                    </li>
-                                                    
-                                                </ul>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('search')}}">Products</a>
                                             </li>
 
                                             <li class="nav-item dropdown new-nav-item">
                                                 {{-- <label class="new-dropdown">New</label> --}}
-                                                <a class="nav-link dropdown-toggle" href="{{route('aboutus')}}"
-                                                    data-bs-toggle="dropdown">Contact-us</a>
-                                                
+                                                <a class="nav-link dropdown-toggle" href="{{route('aboutus')}}" data-bs-toggle="dropdown">Contact-us</a>
+
                                             </li>
 
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="{{route('aboutus')}}"
-                                                    data-bs-toggle="dropdown">About-us</a>
-                                                
+                                                <a class="nav-link dropdown-toggle" href="{{route('aboutus')}}" data-bs-toggle="dropdown">About-us</a>
+
                                             </li>
                                         </ul>
                                     </div>
@@ -885,14 +862,14 @@
             <li>
                 @livewire('mobile-nav-cart')
             </li>
-            
-            
+
+
         </ul>
     </div>
     <!-- mobile fix menu end -->
 
     <!-- Home Section Start -->
-@yield('page-content')
+    @yield('page-content')
     <!-- Newsletter Section End -->
 
     <!-- Footer Section Start -->
@@ -1090,14 +1067,12 @@
                                     <ul>
                                         <li class="mb-0">
                                             <a href="https://play.google.com/store/apps" target="_blank">
-                                                <img src="/frontassets/images/playstore.svg" class="blur-up lazyload"
-                                                    alt="">
+                                                <img src="/frontassets/images/playstore.svg" class="blur-up lazyload" alt="">
                                             </a>
                                         </li>
                                         <li class="mb-0">
                                             <a href="https://www.apple.com/in/app-store/" target="_blank">
-                                                <img src="/frontassets/images/appstore.svg" class="blur-up lazyload"
-                                                    alt="">
+                                                <img src="/frontassets/images/appstore.svg" class="blur-up lazyload" alt="">
                                             </a>
                                         </li>
                                     </ul>
@@ -1148,8 +1123,7 @@
     <!-- Footer Section End -->
 
     <!-- Quick View Modal Box Start -->
-    <div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
             <div class="modal-content">
                 <div class="modal-header p-0">
@@ -1161,8 +1135,7 @@
                     <div class="row g-sm-4 g-2">
                         <div class="col-lg-6">
                             <div class="slider-image">
-                                <img src="/frontassets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
-                                    alt="">
+                                <img src="/frontassets/images/product/category/1.jpg" class="img-fluid blur-up lazyload" alt="">
                             </div>
                         </div>
 
@@ -1236,11 +1209,9 @@
                                 </div>
 
                                 <div class="modal-button">
-                                    <button onclick="location.href = 'cart.html';"
-                                        class="btn btn-md add-cart-button icon">Add
+                                    <button onclick="location.href = 'cart.html';" class="btn btn-md add-cart-button icon">Add
                                         To Cart</button>
-                                    <button onclick="location.href = 'product-left.html';"
-                                        class="btn theme-bg-color view-button icon text-white fw-bold btn-md">
+                                    <button onclick="location.href = 'product-left.html';" class="btn theme-bg-color view-button icon text-white fw-bold btn-md">
                                         View More Details</button>
                                 </div>
                             </div>
@@ -1253,8 +1224,7 @@
     <!-- Quick View Modal Box End -->
 
     <!-- Location Modal Start -->
-    <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1313,7 +1283,7 @@
                                     <span>RS. 300</span>
                                 </a>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </div>
@@ -1343,8 +1313,7 @@
     <!-- Cookie Bar Box End -->
 
     <!-- Deal Box Modal Start -->
-    <div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1362,8 +1331,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="frontassets/images/vegetable/product/10.png" class="blur-up lazyload"
-                                            alt="">
+                                        <img src="frontassets/images/vegetable/product/10.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <a href="shop-left-sidebar.html" class="deal-contain">
@@ -1376,8 +1344,7 @@
                             <li class="list-2">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="/frontassets/images/vegetable/product/11.png" class="blur-up lazyload"
-                                            alt="">
+                                        <img src="/frontassets/images/vegetable/product/11.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <a href="shop-left-sidebar.html" class="deal-contain">
@@ -1390,8 +1357,7 @@
                             <li class="list-3">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="/frontassets/images/vegetable/product/12.png" class="blur-up lazyload"
-                                            alt="">
+                                        <img src="/frontassets/images/vegetable/product/12.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <a href="shop-left-sidebar.html" class="deal-contain">
@@ -1404,8 +1370,7 @@
                             <li class="list-1">
                                 <div class="deal-offer-contain">
                                     <a href="shop-left-sidebar.html" class="deal-image">
-                                        <img src="frontassets/images/vegetable/product/13.png" class="blur-up lazyload"
-                                            alt="">
+                                        <img src="frontassets/images/vegetable/product/13.png" class="blur-up lazyload" alt="">
                                     </a>
 
                                     <a href="shop-left-sidebar.html" class="deal-contain">
@@ -1437,9 +1402,9 @@
     <!-- Bg overlay End -->
 
     <!-- latest jquery-->
-    <script src="//code.jquery.com/jquery.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="{{asset('/frontassets/js/jquery-3.6.0.min.js')}}" ></script>
+    <!-- <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+    <script src="{{asset('/frontassets/js/jquery-3.6.0.min.js')}}"></script>
     {{-- <script>
         // Wait for the document to be ready
         $(document).ready(function() {
@@ -1460,8 +1425,8 @@
 
     <!-- jquery ui-->
     <script src="{{asset('/frontassets/js/jquery-ui.min.js')}}"></script>
-    
-    
+
+
 
     <!-- Bootstrap js-->
     <script src="{{asset('/frontassets/js/bootstrap/bootstrap.bundle.min.js')}}"></script>

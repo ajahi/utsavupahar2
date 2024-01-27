@@ -15,11 +15,11 @@
                                 <li>{{$order->created_at->toDateString()}}</li>
                                 <li>{{count($orderDetail)}}</li>
                                 <li>Total RS {{$order->total_amount}}</li>
-                                
+
                                 <li class="bg-primary text-light  p-3">
-                                    
-                                        @livewire('order-status', ['oid' => $order->id])
-                                    
+
+                                    @livewire('order-status', ['oid' => $order->id])
+
                                 </li>
                             </ul>
                         </div>
@@ -44,7 +44,7 @@
                                             <tr class="table-order">
                                                 <td>
                                                     <a href="javascript:void(0)">
-                                                        <img src={{$item->product->getMedia('images')->first()->getFullUrl()}} class="img-fluid blur-up lazyload" alt="">
+                                                        <img src={{$item->product->getMedia('images')->first()?->getFullUrl()}} class="img-fluid blur-up lazyload" alt="">
                                                     </a>
                                                 </td>
                                                 <td>

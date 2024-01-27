@@ -45,28 +45,28 @@
                             @csrf
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating">
-                                    <input type="text" class="form-control" id="fullname" placeholder="Full Name" name="name" value="{{old('name')}}" required autofocus autocomplete="name" >
+                                    <input type="text" class="form-control" id="fullname" placeholder="Full Name" name="name" value="{{old('name')}}" required autofocus autocomplete="name">
                                     <label for="fullname">Full Name</label>
                                     <x-input-error :messages="$errors->get('name')" class="mt-2 alert alert-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Email Address" name="email" value="{{old('email')}}" required autocomplete="username" >
+                                    <input type="email" class="form-control" id="email" placeholder="Email Address" name="email" value="{{old('email')}}" required autocomplete="username">
                                     <label for="email">Email Address</label>
                                     <x-input-error :messages="$errors->get('email')" class="mt-2 alert alert-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating">
-                                    <input type="Number" class="form-control" id="number"  placeholder="Phone Number" name="phone_number" value="{{old('phone_number')}}" required autocomplete="phone_number" >
+                                    <input type="Number" class="form-control" id="number" placeholder="Phone Number" name="phone_number" value="{{old('phone_number')}}" required autocomplete="phone_number">
                                     <label for="Number">Phone Number</label>
                                     <x-input-error :messages="$errors->get('phone_number')" class="mt-2 alert alert-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating">
-                                    <input type="date" class="form-control" id="date" placeholder="PDate of Birth" name="dob" value="{{old('dob')}}" required autocomplete="dob" >
+                                    <input type="date" class="form-control" id="date" placeholder="PDate of Birth" name="dob" value="{{old('dob')}}" required autocomplete="dob">
                                     <label for="date">Date of Birth</label>
                                     <x-input-error :messages="$errors->get('dob')" class="mt-2 alert alert-danger" />
                                 </div>
@@ -74,9 +74,7 @@
 
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating">
-                                    <input type="password" class="form-control" id="password"
-                                        placeholder="Password" name="password"
-                                        required autocomplete="new-password">
+                                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required autocomplete="new-password">
                                     <label for="password">Password</label>
                                     <x-input-error :messages="$errors->get('password')" class="mt-2 alert alert-danger" />
                                 </div>
@@ -84,8 +82,7 @@
 
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating">
-                                    <input type="password" class="form-control" id="password"
-                                        placeholder="Password" name="password_confirmation" required autocomplete="new-password" >
+                                    <input type="password" class="form-control" id="password" placeholder="Password" name="password_confirmation" required autocomplete="new-password">
                                     <label for="password">Confirm Password</label>
                                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 alert alert-danger" />
 
@@ -95,8 +92,7 @@
                             <div class="col-12">
                                 <div class="forgot-box">
                                     <div class="form-check ps-0 m-0 remember-box">
-                                        <input class="checkbox_animated check-box" type="checkbox"
-                                            id="flexCheckDefault" required>
+                                        <input class="checkbox_animated check-box" type="checkbox" id="flexCheckDefault" required>
                                         <label class="form-check-label" for="flexCheckDefault">I agree with
                                             <span>Terms</span> and <span>Privacy</span></label>
                                     </div>
@@ -116,17 +112,14 @@
                     <div class="log-in-button">
                         <ul>
                             <li>
-                                <a href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin"
-                                    class="btn google-button w-100">
-                                    <img src="frontassets/images/inner-page/google.png" class="blur-up lazyload"
-                                        alt="">
+                                <a href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="btn google-button w-100">
+                                    <img src="frontassets/images/inner-page/google.png" class="blur-up lazyload" alt="">
                                     Sign up with Google
                                 </a>
                             </li>
                             <li>
                                 <a href="https://www.facebook.com/" class="btn google-button w-100">
-                                    <img src="frontassets/images/inner-page/facebook.png" class="blur-up lazyload"
-                                        alt=""> Sign up with Facebook
+                                    <img src="frontassets/images/inner-page/facebook.png" class="blur-up lazyload" alt=""> Sign up with Facebook
                                 </a>
                             </li>
                         </ul>
@@ -147,5 +140,5 @@
         </div>
     </div>
 </section>
-    
+
 @endsection

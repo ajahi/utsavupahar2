@@ -1,4 +1,4 @@
-<div>
+<div wire:key="notification-list">
 
     <div class="notification-box">
         <i class="ri-notification-line"></i>

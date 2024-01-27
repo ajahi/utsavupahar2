@@ -1,4 +1,4 @@
-<div>
+<div wire:key="prod-show-btn">
     <hr>  
     <div class="product-packege">
                     <h3 class="name">Variants</h3>  

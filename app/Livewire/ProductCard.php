@@ -10,7 +10,10 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class ProductCard extends Component
 {
     public $product;
-    
+    public function mount()
+    {
+        
+    }
     public function render()
     {
         return view('livewire.product-card');

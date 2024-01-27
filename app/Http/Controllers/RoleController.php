@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Permission;
@@ -10,11 +11,18 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+
+    public function __construct()
+    {
+        Gate::allows('super-admin');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        // dd(auth()->user());
         $roles = Role::all();
         return view('cms.roles.index', ['roles' => $roles]);
     }

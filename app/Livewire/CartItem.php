@@ -9,7 +9,10 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CartItem extends Component
 {
     public $cartItems;
-
+    public function mount()
+    {
+        
+    }
     #[On('update-cart')]
     public function updateCartData()
     {

@@ -10,7 +10,7 @@ use Livewire\Attributes\On;
 class MobileNavCart extends Component
 {
     public $cartItemCount;
-
+    
     #[On('update-cart')]
     public function updateCartCount(){
         $this->cartItemCount=Cart::count();

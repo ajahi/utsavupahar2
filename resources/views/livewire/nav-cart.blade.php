@@ -1,4 +1,4 @@
-<li class="right-side">
+<li class="right-side" wire:key="nav-cart">
     <div class="onhover-dropdown header-badge">
         <button type="button" class="btn p-0 position-relative header-wishlist">
             <a href="{{ route('cart.index') }}">

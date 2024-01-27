@@ -33,11 +33,12 @@ class UpdateProductRequest extends FormRequest
             'sell_margin_p' => 'nullable|numeric|max:100',
             'meta_word' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
-            'selected_categories'=>'required|exists:categories,id',
-            'images'=>'nullable',
-            
-             
-    
+            'selected_categories' => 'required|exists:categories,id',
+            'selected_coupons' => 'nullable|exists:coupons,id',
+            'images' => 'nullable',
+
+
+
             // Validation rules for each variant
             'variants' => 'required|max:255',
             'prices' => 'required',

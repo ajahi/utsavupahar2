@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
+
 return [
 
     /*
@@ -174,7 +175,8 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Ichtrojan\Otp\OtpServiceProvider::class,
         App\Providers\SmsServiceProvider::class,
-        
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ])->toArray(),
 
     /*
@@ -189,10 +191,12 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-       'OTP'=> Ichtrojan\Otp\Otp::class,
+        'OTP' => Ichtrojan\Otp\Otp::class,
 
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         // 'Example' => App\Facades\Example::class,
+
     ])->toArray(),
 
 ];

@@ -1,4 +1,4 @@
-<ul>
+<ul wire:key="order-status">
     <li class="onhover-dropdown">
         <div class="notification-box">
             Change Status

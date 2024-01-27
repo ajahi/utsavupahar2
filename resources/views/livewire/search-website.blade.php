@@ -1,4 +1,4 @@
-<div>
+<div wire:key="search-wb">
     <section class="search-section">
         <div class="container-fluid-lg">
             <div class="row">

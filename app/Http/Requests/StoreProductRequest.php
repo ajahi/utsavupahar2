@@ -33,12 +33,13 @@ class StoreProductRequest extends FormRequest
             'sell_margin_p' => 'nullable|numeric|max:100',
             'meta_word' => 'required|string|max:255',
             'meta_description' => 'required|string',
-            'selected_categories'=>'required|exists:categories,id',
+            'selected_categories' => 'required|exists:categories,id',
+            'selected_coupons' => 'nullable|exists:coupons,id',
             'images' => 'required|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            
-             
-    
+
+
+
             // Validation rules for each variant
             'variants' => 'required|max:255',
             'prices' => 'required',
